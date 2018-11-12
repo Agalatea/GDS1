@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Paddle.tscn" type="PackedScene" id=2]
@@ -15,12 +15,7 @@ render_mode blend_mix;
 render_priority = 0
 shader = SubResource( 1 )
 
-[sub_resource type="RectangleShape2D" id=3]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 31.9869 )
-
-[sub_resource type="StreamTexture" id=5]
+[sub_resource type="StreamTexture" id=3]
 
 flags = 4
 load_path = "res://.import/wall.jpg-8ed0d7df155526a983718de180132827.stex"
@@ -28,12 +23,22 @@ load_path = "res://.import/wall.jpg-8ed0d7df155526a983718de180132827.stex"
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 360.938 )
+extents = Vector2( 10, 94.3485 )
 
-[sub_resource type="StreamTexture" id=6]
+[sub_resource type="StreamTexture" id=5]
 
 flags = 4
 load_path = "res://.import/wall.jpg-8ed0d7df155526a983718de180132827.stex"
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 535.211 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 221.748, 10 )
 
 [node name="Main" type="Node2D" index="0"]
 
@@ -48,12 +53,11 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Ball" parent="." index="2" instance=ExtResource( 3 )]
 
+collision_layer = 2
+collision_mask = 15
 mass = 0.01
 bounce = 1.0
-gravity_scale = 10.0
-contact_monitor = true
-angular_velocity = 0.1
-_sections_unfolded = [ "Angular" ]
+angular_velocity = 20.0
 
 [node name="BallStartPosition" type="Position2D" parent="." index="3"]
 
@@ -67,30 +71,52 @@ position = Vector2( 601.005, 300.925 )
 scale = Vector2( 0.214351, 9.39829 )
 input_pickable = false
 collision_layer = 1
-collision_mask = 1
+collision_mask = 7
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Material" ]
+_sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound" index="0"]
-
-shape = SubResource( 3 )
-_sections_unfolded = [ "Material", "Transform", "Visibility" ]
-
-[node name="Sprite" type="Sprite" parent="RightBound" index="1"]
+[node name="Sprite" type="Sprite" parent="RightBound" index="0"]
 
 modulate = Color( 0.902344, 0.394775, 0.394775, 1 )
 position = Vector2( 33.1267, -32.0628 )
 scale = Vector2( 2.59327, 63.833 )
-texture = SubResource( 5 )
+texture = SubResource( 3 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound" index="1"]
+
+position = Vector2( -27.6831, 58.0317 )
+shape = SubResource( 4 )
 
 [node name="LeftBound" type="StaticBody2D" parent="." index="5"]
 
 position = Vector2( 179.048, 202.502 )
 scale = Vector2( 0.233815, 0.835998 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 7
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="Sprite" type="Sprite" parent="LeftBound" index="0"]
+
+position = Vector2( -27.4921, -43.9623 )
+scale = Vector2( -2.0801, 319.661 )
+texture = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound" index="1"]
+
+shape = SubResource( 6 )
+
+[node name="TopBound" type="StaticBody2D" parent="." index="6"]
+
+position = Vector2( 379.896, -8.39668 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -99,15 +125,10 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound" index="0"]
 
-position = Vector2( 0, 117.889 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="LeftBound" index="1"]
-
-position = Vector2( -27.4921, -43.9623 )
-scale = Vector2( -2.0801, 319.661 )
-texture = SubResource( 6 )
+[connection signal="body_entered" from="Paddle" to="." method="_on_Paddle_body_entered"]
 
 

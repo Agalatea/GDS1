@@ -1,17 +1,19 @@
-extends KinematicBody2D
+#extends KinematicBody2D
+extends Area2D
+
 
 export (int) var speed  # How fast the player will move (pixels/sec).
-var screensize  # Size of the game window.
+var xMin
+var xMax
 
-func _ready():
-    screensize = get_viewport_rect().size  #to be replaced with board game size ?
- #   hide()
+func _ready():    
+    hide()
 
 func _process(delta):
-    var velocity = Vector2() # The player's movement vector.
-    if Input.is_action_pressed("ui_right"):
-        velocity.x += 1
-    if Input.is_action_pressed("ui_left"):
+    var velocity = Vector2(0,0) # The player's movement vector.
+    if Input.is_action_pressed("ui_right") && position.x <= xMax:
+            velocity.x += 1
+    if Input.is_action_pressed("ui_left") && position.x >= xMin:
         velocity.x -= 1
     if velocity.length() > 0:
         velocity = velocity.normalized() * speed
@@ -19,14 +21,18 @@ func _process(delta):
     else:
         $AnimatedSprite.stop()
     position += velocity * delta
-    position.x = clamp(position.x, 0, screensize.x)
-    position.y = clamp(position.y, 0, screensize.y)
+
     if velocity.x != 0:
         $AnimatedSprite.animation = "right"
         $AnimatedSprite.flip_v = false
         $AnimatedSprite.flip_h = velocity.x < 0
+
    
-func start(pos):
+func start(pos, xMin, xMax):
+    self.xMin = xMin + $CollisionShape2D.shape.extents.x/2   #so paddle does not leave bounds
+    self.xMax = xMax - $CollisionShape2D.shape.extents.x/2
     position = pos
     show()
     $CollisionShape2D.disabled = false
+
+

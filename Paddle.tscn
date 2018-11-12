@@ -24,13 +24,19 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 57.9009, 23.0713 )
 
-[node name="Paddle" type="KinematicBody2D"]
+[node name="Paddle" type="Area2D"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+collision_mask = 3
+audio_bus_override = false
+audio_bus_name = "Master"
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 speed = 500
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
@@ -41,5 +47,8 @@ animation = "left"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 2 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[connection signal="body_entered" from="." to="." method="_on_Paddle_body_entered"]
 
 
