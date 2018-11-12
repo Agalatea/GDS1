@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Paddle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+render_mode blend_mix;
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 31.9869 )
+
+[sub_resource type="StreamTexture" id=5]
+
+flags = 4
+load_path = "res://.import/wall.jpg-8ed0d7df155526a983718de180132827.stex"
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 360.938 )
+
+[sub_resource type="StreamTexture" id=6]
+
+flags = 4
+load_path = "res://.import/wall.jpg-8ed0d7df155526a983718de180132827.stex"
+
+[node name="Main" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Paddle" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="PaddleStartPosition" type="Position2D" parent="." index="1"]
+
+position = Vector2( 390.48, 542.231 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ball" parent="." index="2" instance=ExtResource( 3 )]
+
+mass = 0.01
+bounce = 1.0
+gravity_scale = 10.0
+contact_monitor = true
+angular_velocity = 0.1
+_sections_unfolded = [ "Angular" ]
+
+[node name="BallStartPosition" type="Position2D" parent="." index="3"]
+
+position = Vector2( 388.075, 428.347 )
+scale = Vector2( 1, 1.03407 )
+
+[node name="RightBound" type="StaticBody2D" parent="." index="4"]
+
+material = SubResource( 2 )
+position = Vector2( 601.005, 300.925 )
+scale = Vector2( 0.214351, 9.39829 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Material" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound" index="0"]
+
+shape = SubResource( 3 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="Sprite" type="Sprite" parent="RightBound" index="1"]
+
+modulate = Color( 0.902344, 0.394775, 0.394775, 1 )
+position = Vector2( 33.1267, -32.0628 )
+scale = Vector2( 2.59327, 63.833 )
+texture = SubResource( 5 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="LeftBound" type="StaticBody2D" parent="." index="5"]
+
+position = Vector2( 179.048, 202.502 )
+scale = Vector2( 0.233815, 0.835998 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound" index="0"]
+
+position = Vector2( 0, 117.889 )
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="LeftBound" index="1"]
+
+position = Vector2( -27.4921, -43.9623 )
+scale = Vector2( -2.0801, 319.661 )
+texture = SubResource( 6 )
+
+
