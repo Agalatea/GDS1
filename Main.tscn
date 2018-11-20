@@ -23,7 +23,7 @@ load_path = "res://.import/wall.jpg-8ed0d7df155526a983718de180132827.stex"
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 94.3485 )
+extents = Vector2( 423.819, 94.3451 )
 
 [sub_resource type="StreamTexture" id=5]
 
@@ -33,12 +33,12 @@ load_path = "res://.import/wall.jpg-8ed0d7df155526a983718de180132827.stex"
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 535.211 )
+extents = Vector2( 55.6919, 535.211 )
 
 [sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
-extents = Vector2( 221.748, 10 )
+extents = Vector2( 221.748, 47.7027 )
 
 [node name="Main" type="Node2D" index="0"]
 
@@ -58,24 +58,26 @@ collision_mask = 15
 mass = 0.01
 bounce = 1.0
 angular_velocity = 20.0
+paddleSpeedFactor = 1.7
 
 [node name="BallStartPosition" type="Position2D" parent="." index="3"]
 
 position = Vector2( 388.075, 428.347 )
 scale = Vector2( 1, 1.03407 )
 
-[node name="RightBound" type="StaticBody2D" parent="." index="4"]
+[node name="RightBound" type="Area2D" parent="." index="4"]
 
 material = SubResource( 2 )
 position = Vector2( 601.005, 300.925 )
 scale = Vector2( 0.214351, 9.39829 )
-input_pickable = false
-collision_layer = 1
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
 collision_mask = 7
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+audio_bus_override = false
+audio_bus_name = "Master"
 _sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index" ]
 
 [node name="Sprite" type="Sprite" parent="RightBound" index="0"]
@@ -88,30 +90,33 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound" index="1"]
 
-position = Vector2( -27.6831, 58.0317 )
+position = Vector2( 415.516, 58.0317 )
 shape = SubResource( 4 )
 
-[node name="LeftBound" type="StaticBody2D" parent="." index="5"]
+[node name="LeftBound" type="Area2D" parent="." index="5"]
 
 position = Vector2( 179.048, 202.502 )
 scale = Vector2( 0.233815, 0.835998 )
-input_pickable = false
-collision_layer = 1
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
 collision_mask = 7
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+audio_bus_override = false
+audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
 
 [node name="Sprite" type="Sprite" parent="LeftBound" index="0"]
 
 position = Vector2( -27.4921, -43.9623 )
-scale = Vector2( -2.0801, 319.661 )
+rotation = 3.14159
+scale = Vector2( 2.0801, -319.661 )
 texture = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound" index="1"]
 
+position = Vector2( -51.3226, 0 )
 shape = SubResource( 6 )
 
 [node name="TopBound" type="StaticBody2D" parent="." index="6"]
@@ -127,8 +132,13 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound" index="0"]
 
+position = Vector2( 0, -32 )
 shape = SubResource( 7 )
 
 [connection signal="body_entered" from="Paddle" to="." method="_on_Paddle_body_entered"]
+
+[connection signal="body_entered" from="RightBound" to="." method="_on_RightBound_body_entered"]
+
+[connection signal="body_entered" from="LeftBound" to="." method="_on_LeftBound_body_entered"]
 
 

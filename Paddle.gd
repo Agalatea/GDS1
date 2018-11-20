@@ -36,3 +36,8 @@ func start(pos, xMin, xMax):
     $CollisionShape2D.disabled = false
 
 
+
+
+func _on_Paddle_body_entered(body):
+    var position = body.position #or body.get_pos()
+    print("collision position: ", str(position))
