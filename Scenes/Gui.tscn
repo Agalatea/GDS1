@@ -1,0 +1,203 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/LeftBottomTexture.jpg" type="Texture" id=1]
+[ext_resource path="res://Assets/RightTopTexture.jpg" type="Texture" id=2]
+[ext_resource path="res://Assets/RightBottomTexture.jpg" type="Texture" id=3]
+[ext_resource path="res://Scenes/Win.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Loose.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=6]
+
+
+
+
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Loose"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Loose:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 660 ), Vector2( 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Win"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Win:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 661 ), Vector2( 7, 1 ) ]
+}
+
+[node name="GUI" type="Control"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin", "Pause", "Size Flags" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Left" type="VBoxContainer" parent="HBoxContainer" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 596.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 2
+_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "custom_constants" ]
+
+[node name="LeftBottom" type="TextureRect" parent="HBoxContainer/Left" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 400.0
+margin_right = 596.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 1 )
+stretch_mode = 0
+
+[node name="Right" type="VBoxContainer" parent="HBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 600.0
+margin_right = 800.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 0
+alignment = 0
+_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "custom_constants" ]
+
+[node name="LeftTop2" type="TextureRect" parent="HBoxContainer/Right" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 200.0
+margin_bottom = 399.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+stretch_mode = 0
+_sections_unfolded = [ "Size Flags", "Theme" ]
+
+[node name="LeftCenter2" type="TextureRect" parent="HBoxContainer/Right" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 399.0
+margin_right = 200.0
+margin_bottom = 599.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+stretch_mode = 0
+
+[node name="Win" parent="." index="1" instance=ExtResource( 4 )]
+
+margin_left = 7.0
+margin_top = 661.0
+margin_right = 7.0
+margin_bottom = 661.0
+_sections_unfolded = [ "Anchor", "Pause", "Rect", "custom_constants" ]
+
+[node name="Loose" parent="." index="2" instance=ExtResource( 5 )]
+
+margin_top = 660.0
+margin_bottom = 660.0
+_sections_unfolded = [ "Anchor", "Margin", "Pause", "Rect", "Size Flags", "custom_constants" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Loose = SubResource( 1 )
+anims/Win = SubResource( 2 )
+blend_times = [  ]
+
+[node name="Pause" parent="." index="4" instance=ExtResource( 6 )]
+
+visible = false
+
+
