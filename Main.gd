@@ -37,3 +37,9 @@ func _on_LeftBound_body_entered(body):
 	print ("LeftBound collision with " + body.get_name())
 	if (body.get_name() == "Ball"):
 		$Ball.emit_signal("leftBoundHit")
+
+
+func _on_BottomBound_body_entered(body):
+	print ("BottomBound collision with " + body.get_name())
+	if (body.get_name() == "Ball"):
+		get_tree().change_scene("res://Loose.tscn")

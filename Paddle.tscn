@@ -11,12 +11,12 @@ animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "left",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "right",
-"speed": 3.0
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -25,7 +25,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 30.1623, 15.2232 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Paddle" type="Area2D"]
+[node name="Paddle" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -44,6 +44,8 @@ speed = 500
 
 frames = SubResource( 1 )
 animation = "left"
+frame = 2
+playing = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]

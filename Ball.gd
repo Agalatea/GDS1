@@ -70,3 +70,11 @@ func _on_Ball_rightBoundHit():
 func _on_Ball_leftBoundHit():
 	var ImpulsePoint = Vector2 (0, $CollisionShape2D.shape.radius/2)
 	apply_impulse(ImpulsePoint, Vector2(5, 0))
+
+#Sprawdzanie czy pilka odbila sie od brick i czy wszystkieklocki zostaly zbite
+func _on_Ball_body_entered(body):
+	if(body.is_in_group("brick")):
+		var tree=body.get_tree()
+		body.get_parent().free()
+		if(tree.get_nodes_in_group("brick").size()==0):
+			get_tree().change_scene("res://Win.tscn")

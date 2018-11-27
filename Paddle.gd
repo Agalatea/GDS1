@@ -18,8 +18,8 @@ func _process(delta):
     if velocity.length() > 0:
         velocity = velocity.normalized() * speed
         $AnimatedSprite.play()
-    else:
-        $AnimatedSprite.stop()
+    #else:
+        #$AnimatedSprite.stop()
     position += velocity * delta
 
     if velocity.x != 0:
