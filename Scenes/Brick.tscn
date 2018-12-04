@@ -1,20 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Brick_(blue).png" type="Texture" id=1]
-[ext_resource path="res://Assets/Brick_(green).png" type="Texture" id=2]
-[ext_resource path="res://Scripts/brick.gd" type="Script" id=3]
-
-
+[ext_resource path="res://Assets/Brick_(light_orange).png" type="Texture" id=1]
+[ext_resource path="res://Assets/Brick_(red).png" type="Texture" id=2]
+[ext_resource path="res://Assets/Brick_(blue).png" type="Texture" id=3]
+[ext_resource path="res://Assets/Brick_(green).png" type="Texture" id=4]
+[ext_resource path="res://Scripts/brick.gd" type="Script" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
-"name": "blue",
+"name": "light",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "blue",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "green",
 "speed": 5.0
@@ -26,7 +36,9 @@ custom_solver_bias = 0.0
 extents = Vector2( 20.8386, 14.0759 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="Brick" type="AnimatedSprite"]
+[node name="Brick" type="AnimatedSprite" groups=[
+"brick",
+]]
 
 frames = SubResource( 1 )
 animation = "blue"
@@ -43,7 +55,7 @@ input_pickable = false
 collision_layer = 8
 collision_mask = 2
 collision/safe_margin = 0.08
-script = ExtResource( 3 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="brick" index="0"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/BricksBoss.gd" type="Script" id=1]
+
+[node name="BricksBoss" type="Node2D" index="0" groups=[
+"bricksBoss",
+]]
+
+script = ExtResource( 1 )
+
+[connection signal="dead" from="." to="." method="_on_BricksBoss_dead"]
+
+

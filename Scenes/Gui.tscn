@@ -1,15 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/LeftBottomTexture.jpg" type="Texture" id=1]
-[ext_resource path="res://Assets/RightTopTexture.jpg" type="Texture" id=2]
-[ext_resource path="res://Assets/RightBottomTexture.jpg" type="Texture" id=3]
-[ext_resource path="res://Scenes/Win.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Loose.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=6]
-
-
-
-
+[ext_resource path="res://Scripts/Gui.gd" type="Script" id=1]
+[ext_resource path="res://Assets/LeftBottomTexture.jpg" type="Texture" id=2]
+[ext_resource path="res://Assets/RightTopTexture.jpg" type="Texture" id=3]
+[ext_resource path="res://Assets/RightBottomTexture.jpg" type="Texture" id=4]
+[ext_resource path="res://Scenes/Win.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Loose.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 
@@ -62,11 +59,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Margin", "Pause", "Size Flags" ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -113,7 +110,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 stretch_mode = 0
 
 [node name="Right" type="VBoxContainer" parent="HBoxContainer" index="1"]
@@ -149,9 +146,254 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 0
 _sections_unfolded = [ "Size Flags", "Theme" ]
+
+[node name="RightPanel" type="VBoxContainer" parent="HBoxContainer/Right/LeftTop2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="ScorePoint" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 200.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel/ScorePoint" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_right = 200.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/ScorePoint/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 192.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Soccer point:"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Score" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/ScorePoint/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 192.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "000000000"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Time" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 36.0
+margin_right = 200.0
+margin_bottom = 68.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel/Time" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_right = 200.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/Time/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 192.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Time:"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Time" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/Time/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 192.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0:00"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Life" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 72.0
+margin_right = 200.0
+margin_bottom = 130.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+_sections_unfolded = [ "custom_constants" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel/Life" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 180.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/Life/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 160.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Life points:"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="LifePoints" type="HBoxContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel/Life/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 160.0
+margin_bottom = 18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+alignment = 1
+_sections_unfolded = [ "Anchor", "Margin", "Size Flags", "custom_constants" ]
 
 [node name="LeftCenter2" type="TextureRect" parent="HBoxContainer/Right" index="1"]
 
@@ -168,10 +410,10 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 0
 
-[node name="Win" parent="." index="1" instance=ExtResource( 4 )]
+[node name="Win" parent="." index="1" instance=ExtResource( 5 )]
 
 margin_left = 7.0
 margin_top = 661.0
@@ -179,7 +421,7 @@ margin_right = 7.0
 margin_bottom = 661.0
 _sections_unfolded = [ "Anchor", "Pause", "Rect", "custom_constants" ]
 
-[node name="Loose" parent="." index="2" instance=ExtResource( 5 )]
+[node name="Loose" parent="." index="2" instance=ExtResource( 6 )]
 
 margin_top = 660.0
 margin_bottom = 660.0
@@ -196,8 +438,23 @@ anims/Loose = SubResource( 1 )
 anims/Win = SubResource( 2 )
 blend_times = [  ]
 
-[node name="Pause" parent="." index="4" instance=ExtResource( 6 )]
+[node name="Pause" parent="." index="4" instance=ExtResource( 7 )]
 
 visible = false
+
+[node name="Timer" type="Timer" parent="." index="5"]
+
+pause_mode = 1
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+_sections_unfolded = [ "Pause" ]
+
+[connection signal="addLifePoints" from="." to="." method="_on_GUI_addLifePoints"]
+
+[connection signal="addScorePoints" from="." to="." method="_on_GUI_addScorePoints"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
