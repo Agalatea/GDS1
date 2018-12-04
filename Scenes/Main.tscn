@@ -55,7 +55,7 @@ load_path = "res://.import/top.png-e6ac22684bd8fb5fb9332140beac38f7.stex"
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 11.553 )
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 LifeCount = 3
@@ -205,40 +205,38 @@ shape = SubResource( 9 )
 
 [node name="BricksSecondBoss" parent="." index="10" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 389.604, 303.481 )
 
 [node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
 
-position = Vector2( 71.4556, -2.2713 )
+position = Vector2( 140.456, -2.2713 )
 animation = "light"
 
 [node name="Brick3" parent="BricksSecondBoss" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( -52.9138, -2.80234 )
+position = Vector2( -116.914, -2.80234 )
 animation = "light"
 
 [node name="Brick4" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( 4.70389, -1.69431 )
+position = Vector2( 24.7039, -1.69431 )
 animation = "light"
 
 [node name="BricksFirstBoss" parent="." index="11" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 391.654, 309.632 )
 
 [node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 7 )]
 
-position = Vector2( -75.7315, -191.981 )
+position = Vector2( -127.731, -191.981 )
 
 [node name="Brick2" parent="BricksFirstBoss" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( -13.0146, -191.981 )
+position = Vector2( 12.9854, -191.981 )
 
 [node name="Brick3" parent="BricksFirstBoss" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( 53.7749, -191.981 )
+position = Vector2( 138.775, -191.981 )
 
 [node name="Ball" parent="." index="12" instance=ExtResource( 8 )]
 
