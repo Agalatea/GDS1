@@ -1,6 +1,10 @@
 extends Control
 signal addLifePoints(lifePoints)
 signal addScorePoints(scorePoints)
+signal hitBossFirst
+signal hitBossSecond
+signal deadBossFirst
+signal deadBossSecond
 var second=0
 var minute=0
 func _on_GUI_addLifePoints(lifePoints):

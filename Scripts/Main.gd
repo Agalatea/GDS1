@@ -72,3 +72,19 @@ func start():
 func _on_Main_addScorePoints():
 	scorePoints=scorePoints+1
 	$GUI.emit_signal("addScorePoints",scorePoints)
+
+
+func _on_BricksSecondBoss_dead():
+	$GUI.emit_signal("deadBossSecond")
+
+
+func _on_BricksFirstBoss_dead():
+	$GUI.emit_signal("deadBossFirst")
+
+
+func _on_BricksSecondBoss_hitBoss():
+	$GUI.emit_signal("hitBossSecond")
+
+
+func _on_BricksFirstBoss_hitBoss():
+	$GUI.emit_signal("hitBossFirst")

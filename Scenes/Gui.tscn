@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Gui.gd" type="Script" id=1]
-[ext_resource path="res://Assets/LeftBottomTexture.jpg" type="Texture" id=2]
-[ext_resource path="res://Assets/RightTopTexture.jpg" type="Texture" id=3]
-[ext_resource path="res://Assets/RightBottomTexture.jpg" type="Texture" id=4]
-[ext_resource path="res://Scenes/Win.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Loose.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Left_Image.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/BossFirst.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/BossSecond.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Right_Image.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Win.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Loose.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -76,24 +77,25 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="Left" type="VBoxContainer" parent="HBoxContainer" index="0"]
+[node name="Left" type="MarginContainer" parent="HBoxContainer" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 596.0
+margin_right = 594.0
 margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 0
-alignment = 2
-_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "custom_constants" ]
+size_flags_vertical = 1
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "custom_constants" ]
 
 [node name="LeftBottom" type="TextureRect" parent="HBoxContainer/Left" index="0"]
 
@@ -101,8 +103,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 400.0
-margin_right = 596.0
+margin_right = 594.0
 margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -112,25 +113,37 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 2 )
 stretch_mode = 0
+_sections_unfolded = [ "Anchor", "Margin", "Size Flags" ]
 
-[node name="Right" type="VBoxContainer" parent="HBoxContainer" index="1"]
+[node name="BossFirst" parent="HBoxContainer/Left" index="1" instance=ExtResource( 3 )]
 
+position = Vector2( 99.495, 98.7973 )
+
+[node name="BossSecond" parent="HBoxContainer/Left" index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 99.4949, 297.841 )
+
+[node name="Right" type="MarginContainer" parent="HBoxContainer" index="1"]
+
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 600.0
+margin_left = 598.0
 margin_right = 800.0
 margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/separation = 0
-alignment = 0
-_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "custom_constants" ]
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "custom_constants" ]
 
 [node name="LeftTop2" type="TextureRect" parent="HBoxContainer/Right" index="0"]
 
@@ -138,24 +151,27 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 200.0
-margin_bottom = 399.0
+margin_right = 202.0
+margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 stretch_mode = 0
-_sections_unfolded = [ "Size Flags", "Theme" ]
+_sections_unfolded = [ "Theme" ]
 
 [node name="RightPanel" type="VBoxContainer" parent="HBoxContainer/Right/LeftTop2" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -171,7 +187,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 200.0
+margin_right = 202.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -187,7 +203,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 8.0
-margin_right = 200.0
+margin_right = 202.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -203,7 +219,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 192.0
+margin_right = 194.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -225,7 +241,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 18.0
-margin_right = 192.0
+margin_right = 194.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -247,7 +263,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 36.0
-margin_right = 200.0
+margin_right = 202.0
 margin_bottom = 68.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -263,7 +279,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 8.0
-margin_right = 200.0
+margin_right = 202.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -279,7 +295,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 192.0
+margin_right = 194.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -301,7 +317,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 18.0
-margin_right = 192.0
+margin_right = 194.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -323,7 +339,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 72.0
-margin_right = 200.0
+margin_right = 202.0
 margin_bottom = 130.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -345,7 +361,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 180.0
+margin_right = 182.0
 margin_bottom = 38.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -361,7 +377,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 160.0
+margin_right = 162.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -383,7 +399,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 18.0
-margin_right = 160.0
+margin_right = 162.0
 margin_bottom = 18.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -395,25 +411,7 @@ custom_constants/separation = 20
 alignment = 1
 _sections_unfolded = [ "Anchor", "Margin", "Size Flags", "custom_constants" ]
 
-[node name="LeftCenter2" type="TextureRect" parent="HBoxContainer/Right" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 399.0
-margin_right = 200.0
-margin_bottom = 599.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 4 )
-stretch_mode = 0
-
-[node name="Win" parent="." index="1" instance=ExtResource( 5 )]
+[node name="Win" parent="." index="1" instance=ExtResource( 6 )]
 
 margin_left = 7.0
 margin_top = 661.0
@@ -421,7 +419,7 @@ margin_right = 7.0
 margin_bottom = 661.0
 _sections_unfolded = [ "Anchor", "Pause", "Rect", "custom_constants" ]
 
-[node name="Loose" parent="." index="2" instance=ExtResource( 6 )]
+[node name="Loose" parent="." index="2" instance=ExtResource( 7 )]
 
 margin_top = 660.0
 margin_bottom = 660.0
@@ -438,7 +436,7 @@ anims/Loose = SubResource( 1 )
 anims/Win = SubResource( 2 )
 blend_times = [  ]
 
-[node name="Pause" parent="." index="4" instance=ExtResource( 7 )]
+[node name="Pause" parent="." index="4" instance=ExtResource( 8 )]
 
 visible = false
 
@@ -454,6 +452,14 @@ _sections_unfolded = [ "Pause" ]
 [connection signal="addLifePoints" from="." to="." method="_on_GUI_addLifePoints"]
 
 [connection signal="addScorePoints" from="." to="." method="_on_GUI_addScorePoints"]
+
+[connection signal="deadBossFirst" from="." to="HBoxContainer/Left/BossFirst" method="_on_Boss_dead"]
+
+[connection signal="deadBossSecond" from="." to="HBoxContainer/Left/BossSecond" method="_on_Boss_dead"]
+
+[connection signal="hitBossFirst" from="." to="HBoxContainer/Left/BossFirst" method="_hitBoss"]
+
+[connection signal="hitBossSecond" from="." to="HBoxContainer/Left/BossSecond" method="_hitBoss"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
