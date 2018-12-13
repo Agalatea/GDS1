@@ -9,12 +9,17 @@ export (int) var LifeCount
 var scorePoints=0
 signal showWin
 signal addScorePoints
+signal setScorePoints(points)
+signal setLifePoints(points)
+signal setTime(minute, secondd)
 func _ready():
 	$GUI.emit_signal("addLifePoints",LifeCount)
 	winer=false
 	loose=false
+	$MusicBackground.play()
 	get_tree().paused=false
 	start()
+	print(str(LifeCount))
 
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel") && !winer && !loose:
@@ -47,7 +52,9 @@ func _on_BottomBound_body_entered(body):
 		if (LifeCount == 0):
 			get_tree().paused=true
 			loose=true
+			$MusicBackground.stop()
 			$GUI/AnimationPlayer.play("Loose")
+			$GUI/Loose/Music.play()
 		else:
 			LifeCount=LifeCount-1
 			$GUI.losse_LifePoint()
@@ -56,7 +63,14 @@ func _on_BottomBound_body_entered(body):
 func _on_Main_showWin():
 	get_tree().paused=true
 	winer=true
+	$MusicBackground.stop()
+	$GUI.emit_signal("visibleNextLexel",true)
+	$GUI.emit_signal("visibleReturnMain",false)
 	$GUI/AnimationPlayer.play("Win")
+	$GUI/Win.Seconds=$GUI.second
+	$GUI/Win.Minute=$GUI.minute
+	$GUI/Win.LifePoint=self.LifeCount
+	$GUI/Win/Music.play()
 
 
 func _on_TopBound_body_entered(body):
@@ -88,3 +102,17 @@ func _on_BricksSecondBoss_hitBoss():
 
 func _on_BricksFirstBoss_hitBoss():
 	$GUI.emit_signal("hitBossFirst")
+
+func _on_Level_setScorePoints(points):
+	scorePoints=points
+	print("JEST")
+	$GUI.emit_signal("addScorePoints",scorePoints)
+
+
+func _on_Level_setLifePoints(points):
+	LifeCount=points
+
+
+func _on_Level_setTime(minute, secondd):
+	$GUI.minute=minute
+	$GUI.second=secondd

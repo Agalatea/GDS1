@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/13 - Danger.ogg-af1091441ba83bcda932768dce96cebf.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Level1/13 - Danger.ogg"
+dest_files=[ "res://.import/13 - Danger.ogg-af1091441ba83bcda932768dce96cebf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

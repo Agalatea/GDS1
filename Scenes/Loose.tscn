@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Loose.gd" type="Script" id=1]
 [ext_resource path="res://Assets/LOOSE.png" type="Texture" id=2]
-
-
+[ext_resource path="res://Sounds/GameOver/09 - Z 339 - Here the Deities approve.ogg" type="AudioStream" id=3]
 
 [node name="Loose" type="Control"]
 
@@ -132,6 +131,15 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Mouse", "custom_colors" ]
+
+[node name="Music" type="AudioStreamPlayer" parent="." index="1"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="gui_input" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Return" to="." method="_on_Return_gui_input"]
 

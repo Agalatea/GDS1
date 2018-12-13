@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Backround_Level1.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Paddle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Right_Sidewalls.png" type="Texture" id=4]
@@ -9,8 +9,7 @@
 [ext_resource path="res://Scenes/Brick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Gui.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sounds/House In a Forest Loop.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Sounds/gameover.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/Level1/13 - Danger.ogg" type="AudioStream" id=10]
 
 [sub_resource type="Shader" id=1]
 
@@ -38,17 +37,14 @@ extents = Vector2( 315.285, 792.863 )
 custom_solver_bias = 0.0
 extents = Vector2( 25.6705, 27.3838 )
 
-[sub_resource type="StreamTexture" id=6]
-
-flags = 4
-load_path = "res://.import/top.png-e6ac22684bd8fb5fb9332140beac38f7.stex"
-
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 11.553 )
 
-[node name="Main" type="Node2D" index="0"]
+[node name="Level1" type="Node2D" groups=[
+"Level",
+]]
 
 script = ExtResource( 1 )
 LifeCount = 3
@@ -172,13 +168,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="TopBound" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound" index="0"]
 
-texture = SubResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound" index="1"]
-
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
@@ -203,19 +195,20 @@ animation = "light"
 [node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
 
 editor/display_folded = true
-position = Vector2( 391.654, 309.632 )
+position = Vector2( 391.654, 69.632 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 7 )]
 
-position = Vector2( -127.731, -191.981 )
+position = Vector2( -127.731, 0 )
 
 [node name="Brick2" parent="BricksFirstBoss" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( 12.9854, -191.981 )
+position = Vector2( 12.9854, 0 )
 
 [node name="Brick3" parent="BricksFirstBoss" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( 138.775, -191.981 )
+position = Vector2( 138.775, 0 )
 
 [node name="Ball" parent="." index="10" instance=ExtResource( 8 )]
 
@@ -234,7 +227,7 @@ margin_top = -1.0
 margin_right = 799.0
 margin_bottom = 598.0
 
-[node name="Music" type="AudioStreamPlayer" parent="." index="12"]
+[node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 
 stream = ExtResource( 10 )
 volume_db = 0.0
@@ -243,9 +236,18 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Bound" type="AudioStreamPlayer" parent="." index="13"]
+[node name="MusicHitBrick" type="AudioStreamPlayer" parent="." index="13"]
 
-stream = ExtResource( 11 )
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="MusicBound" type="AudioStreamPlayer" parent="." index="14"]
+
+stream = null
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -253,6 +255,12 @@ mix_target = 0
 bus = "Master"
 
 [connection signal="addScorePoints" from="." to="." method="_on_Main_addScorePoints"]
+
+[connection signal="setLifePoints" from="." to="." method="_on_Level_setLifePoints"]
+
+[connection signal="setScorePoints" from="." to="." method="_on_Level_setScorePoints"]
+
+[connection signal="setTime" from="." to="." method="_on_Level_setTime"]
 
 [connection signal="showWin" from="." to="." method="_on_Main_showWin"]
 

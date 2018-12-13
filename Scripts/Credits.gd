@@ -1,18 +1,13 @@
-extends Node
-
-var labelReturn
-func _ready():
-	labelReturn=get_tree().get_nodes_in_group("Return")
-
+extends MarginContainer
 
 func _on_Return_mouse_entered():
-	labelReturn[0].set("custom_colors/font_color", Color(0,0,0))
-
+	$MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Return.set("custom_colors/font_color", Color(0,0,0))
 
 func _on_Return_mouse_exited():
-	labelReturn[0].set("custom_colors/font_color", Color(1,1,1))
-
+	$MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Return.set("custom_colors/font_color", Color(1,1,1))
 
 func _on_Return_gui_input(ev):
 	if ev is InputEventMouseButton and ev.button_index == BUTTON_LEFT and ev.pressed:
-		get_tree().change_scene("res://Scenes//MainMenu.tscn")
+		get_tree().current_scene.get_node("MainMenu").visible=true
+		self.visible=false
+		$MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Return.set("custom_colors/font_color", Color(1,1,1))

@@ -16,6 +16,7 @@ func _on_ReturnGame_mouse_exited():
 
 func _on_Retun_to_main_menu_gui_input(ev):
 	if ev is InputEventMouseButton and ev.button_index == BUTTON_LEFT and ev.pressed:
+		get_tree().root.get_children()[0].queue_free()
 		get_tree().change_scene("res://Scenes//MainMenu.tscn")
 
 

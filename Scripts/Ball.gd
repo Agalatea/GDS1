@@ -106,7 +106,7 @@ func _Brick_Hit(body):
 		var tree=body.get_tree()
 		body.get_parent().get_parent().emit_signal("hitBoss")
 		body.get_parent().free()
-		get_tree().current_scene.get_node(".").emit_signal("addScorePoints")
+		get_tree().root.get_tree().get_nodes_in_group("Level")[0].emit_signal("addScorePoints")
 		
 		#Sprawdzanie bossa
 		for boss in tree.get_nodes_in_group("bricksBoss"):
@@ -120,7 +120,7 @@ func _Brick_Hit(body):
 		
 		#Sprawdzanie wygranej
 		if(tree.get_nodes_in_group("brick").size()==0):
-			get_tree().current_scene.get_node(".").emit_signal("showWin")
+			get_tree().root.get_tree().get_nodes_in_group("Level")[0].emit_signal("showWin")
 
 func _reset():
 	self.linear_velocity=Vector2(0,0)
