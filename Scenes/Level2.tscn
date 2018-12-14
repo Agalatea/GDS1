@@ -1,0 +1,304 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Backround_Level1.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Paddle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Right_Sidewalls.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Left_Sidewalls.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/BricksBoss.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Brick.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Gui.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sounds/Level2/15 - Dungeon.ogg" type="AudioStream" id=10]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+render_mode blend_mix;
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 423.819, 94.3451 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 315.285, 792.863 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 25.6705, 27.3838 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 193.469, 11.553 )
+
+[node name="Level2" type="Node2D" groups=[
+"Level",
+]]
+
+script = ExtResource( 1 )
+LifeCount = null
+NextLevel = "Level3"
+
+[node name="Background" type="Sprite" parent="." index="0"]
+
+modulate = Color( 0.709804, 0.25098, 0.25098, 1 )
+position = Vector2( 398.504, 299.853 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="Paddle" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="PaddleStartPosition" type="Position2D" parent="." index="2"]
+
+position = Vector2( 390.48, 542.231 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="BallStartPosition" type="Position2D" parent="." index="3"]
+
+position = Vector2( 388.075, 428.347 )
+scale = Vector2( 1, 1.03407 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RightBound" type="Area2D" parent="." index="4"]
+
+editor/display_folded = true
+material = SubResource( 2 )
+position = Vector2( 587.127, 291.591 )
+scale = Vector2( 0.214351, 9.39829 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_mask = 7
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound" index="0"]
+
+position = Vector2( 415.516, 58.0317 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="RightBound" index="1"]
+
+position = Vector2( 21.5095, 0.84159 )
+scale = Vector2( 4.60096, 0.106579 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="LeftBound" type="Area2D" parent="." index="5"]
+
+editor/display_folded = true
+position = Vector2( 214.015, 208.054 )
+scale = Vector2( 0.233815, 0.835998 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_mask = 7
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="LeftBound" index="0"]
+
+position = Vector2( -29.5859, 108.187 )
+rotation = 3.14159
+scale = Vector2( 5.59766, 1.19982 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound" index="1"]
+
+position = Vector2( -310.207, 769.049 )
+scale = Vector2( 1, 1.35241 )
+shape = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="BottomBound" type="Area2D" parent="." index="6"]
+
+editor/display_folded = true
+position = Vector2( 366.027, 815.624 )
+scale = Vector2( -17.5834, -6.08222 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_mask = 7
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBound" index="0"]
+
+position = Vector2( 0, 3.04252 )
+scale = Vector2( 1, 1.14006 )
+shape = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="TopBound" type="Area2D" parent="." index="7"]
+
+editor/display_folded = true
+position = Vector2( 400.469, -11.4674 )
+scale = Vector2( 6.65625, 1.07914 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_mask = 3
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound" index="0"]
+
+shape = SubResource( 6 )
+
+[node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
+
+position = Vector2( 389.604, 303.481 )
+
+[node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
+
+position = Vector2( 140.456, -2.2713 )
+animation = "light"
+
+[node name="Brick5" parent="BricksSecondBoss" index="1" instance=ExtResource( 7 )]
+
+position = Vector2( 85.456, -2.2713 )
+animation = "light"
+
+[node name="Brick3" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
+
+position = Vector2( -116.914, -2.80234 )
+animation = "light"
+
+[node name="Brick4" parent="BricksSecondBoss" index="3" instance=ExtResource( 7 )]
+
+position = Vector2( 18.7039, -1.69431 )
+animation = "light"
+
+[node name="Brick6" parent="BricksSecondBoss" index="4" instance=ExtResource( 7 )]
+
+position = Vector2( -49.2961, -1.69431 )
+animation = "light"
+
+[node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
+
+position = Vector2( 391.654, 69.632 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 7 )]
+
+position = Vector2( -127.731, 0 )
+
+[node name="Brick4" parent="BricksFirstBoss" index="1" instance=ExtResource( 7 )]
+
+position = Vector2( -60.731, 0 )
+
+[node name="Brick2" parent="BricksFirstBoss" index="2" instance=ExtResource( 7 )]
+
+position = Vector2( 12.9854, 0 )
+
+[node name="Brick5" parent="BricksFirstBoss" index="3" instance=ExtResource( 7 )]
+
+position = Vector2( 76.9854, 0 )
+
+[node name="Brick3" parent="BricksFirstBoss" index="4" instance=ExtResource( 7 )]
+
+position = Vector2( 138.775, 0 )
+
+[node name="Ball" parent="." index="10" instance=ExtResource( 8 )]
+
+collision_layer = 2
+collision_mask = 15
+mass = 0.01
+bounce = 1.0
+angular_velocity = 20.0
+paddleSpeedFactor = 1.2
+
+[node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
+
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = -1.0
+margin_right = 799.0
+margin_bottom = 598.0
+
+[node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
+
+stream = ExtResource( 10 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="MusicHitBrick" type="AudioStreamPlayer" parent="." index="13"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="MusicBound" type="AudioStreamPlayer" parent="." index="14"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[connection signal="addScorePoints" from="." to="." method="_on_Main_addScorePoints"]
+
+[connection signal="setLifePoints" from="." to="." method="_on_Level_setLifePoints"]
+
+[connection signal="setScorePoints" from="." to="." method="_on_Level_setScorePoints"]
+
+[connection signal="setTime" from="." to="." method="_on_Level_setTime"]
+
+[connection signal="showWin" from="." to="." method="_on_Main_showWin"]
+
+[connection signal="body_entered" from="Paddle" to="." method="_on_Paddle_body_entered"]
+
+[connection signal="body_entered" from="RightBound" to="." method="_on_RightBound_body_entered"]
+
+[connection signal="body_entered" from="LeftBound" to="." method="_on_LeftBound_body_entered"]
+
+[connection signal="body_entered" from="BottomBound" to="." method="_on_BottomBound_body_entered"]
+
+[connection signal="body_entered" from="TopBound" to="." method="_on_TopBound_body_entered"]
+
+[connection signal="dead" from="BricksSecondBoss" to="." method="_on_BricksSecondBoss_dead"]
+
+[connection signal="hitBoss" from="BricksSecondBoss" to="." method="_on_BricksSecondBoss_hitBoss"]
+
+[connection signal="dead" from="BricksFirstBoss" to="." method="_on_BricksFirstBoss_dead"]
+
+[connection signal="hitBoss" from="BricksFirstBoss" to="." method="_on_BricksFirstBoss_hitBoss"]
+
+

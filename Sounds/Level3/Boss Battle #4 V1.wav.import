@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Boss Battle #4 V1.wav-3540c8944f9e6b38223a83dfaa754f5f.sample"
+
+[deps]
+
+source_file="res://Sounds/Level3/Boss Battle #4 V1.wav"
+dest_files=[ "res://.import/Boss Battle #4 V1.wav-3540c8944f9e6b38223a83dfaa754f5f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

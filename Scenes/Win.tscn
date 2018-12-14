@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Win.gd" type="Script" id=1]
 [ext_resource path="res://Assets/WIN.png" type="Texture" id=2]
 [ext_resource path="res://Sounds/Victory/17 - Victory.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/Victory/End_Credits_Theme_ogg.ogg" type="AudioStream" id=4]
 
 [node name="Win" type="Control"]
 
@@ -19,7 +20,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Pause", "custom_constants" ]
-NextLevel = ""
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="0"]
 
@@ -164,6 +164,15 @@ _sections_unfolded = [ "Mouse", "Pause", "custom_colors" ]
 [node name="Music" type="AudioStreamPlayer" parent="." index="1"]
 
 stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Victory" type="AudioStreamPlayer" parent="." index="2"]
+
+stream = ExtResource( 4 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false

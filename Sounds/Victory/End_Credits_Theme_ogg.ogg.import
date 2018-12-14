@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/End_Credits_Theme_ogg.ogg-25cd1c8b4cc254691f85c5e88d99a169.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Victory/End_Credits_Theme_ogg.ogg"
+dest_files=[ "res://.import/End_Credits_Theme_ogg.ogg-25cd1c8b4cc254691f85c5e88d99a169.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/15 - Dungeon.ogg-aab200fb3cacd6c15836b8605d10cce1.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Level2/15 - Dungeon.ogg"
+dest_files=[ "res://.import/15 - Dungeon.ogg-aab200fb3cacd6c15836b8605d10cce1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

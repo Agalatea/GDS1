@@ -5,6 +5,7 @@ signal hitBossFirst
 signal hitBossSecond
 signal deadBossFirst
 signal deadBossSecond
+signal setNextLevel(text)
 signal setTime(minute,second)
 signal visibleNextLexel(value)
 signal visibleReturnMain(value)
@@ -53,3 +54,7 @@ func _on_GUI_visibleReturnMain(value):
 func _on_GUI_setTime(minute, second):
 	self.second=second
 	self.minute=minute
+
+
+func _on_GUI_setNextLevel(text):
+	$Win.NextLevel=text
