@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/deadMonster3.wav-c84e48e59aec9fc67e30976b73af81be.sample"
+
+[deps]
+
+source_file="res://Sounds/Monster/deadMonster3.wav"
+dest_files=[ "res://.import/deadMonster3.wav-c84e48e59aec9fc67e30976b73af81be.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -177,6 +177,7 @@ shape = SubResource( 6 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 389.604, 303.481 )
 
 [node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
@@ -206,6 +207,7 @@ animation = "light"
 
 [node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 391.654, 69.632 )
 _sections_unfolded = [ "Transform" ]
 
@@ -245,6 +247,19 @@ anchor_bottom = 0.0
 margin_top = -1.0
 margin_right = 799.0
 margin_bottom = 598.0
+
+[node name="Left" parent="GUI/HBoxContainer" index="0"]
+
+margin_right = 593.0
+
+[node name="LeftBottom" parent="GUI/HBoxContainer/Left" index="0"]
+
+margin_right = 593.0
+
+[node name="Right" parent="GUI/HBoxContainer" index="1"]
+
+margin_left = 597.0
+margin_right = 799.0
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 
@@ -302,3 +317,4 @@ bus = "Master"
 [connection signal="hitBoss" from="BricksFirstBoss" to="." method="_on_BricksFirstBoss_hitBoss"]
 
 
+[editable path="GUI"]

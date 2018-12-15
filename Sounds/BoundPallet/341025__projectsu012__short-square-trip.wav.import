@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/341025__projectsu012__short-square-trip.wav-64f2bcea0c841e1539a965f5c86ea86b.sample"
+
+[deps]
+
+source_file="res://Sounds/BoundPallet/341025__projectsu012__short-square-trip.wav"
+dest_files=[ "res://.import/341025__projectsu012__short-square-trip.wav-64f2bcea0c841e1539a965f5c86ea86b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Assets/PAUSE.png" type="Texture" id=2]
-
-
+[ext_resource path="res://Sounds/MainMenu/340943__projectsu012__activate-ringing.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/MainMenu/360869__projectsu012__ticking1-chiptone.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/Pause/pause.wav" type="AudioStream" id=5]
 
 [node name="Pause" type="Control" index="0"]
 
@@ -178,6 +179,33 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Mouse", "custom_colors" ]
+
+[node name="MusicInteraction" type="AudioStreamPlayer" parent="." index="2"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="MusicHighlight" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="MusicShow" type="AudioStreamPlayer" parent="." index="4"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="gui_input" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/ReturnGame" to="." method="_on_ReturnGame_gui_input"]
 

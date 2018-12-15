@@ -22,6 +22,7 @@ func _on_GUI_addLifePoints(lifePoints):
 		$HBoxContainer/Right/LeftTop2/RightPanel/Life/VBoxContainer/LifePoints.add_child(life)
 
 func losse_LifePoint():
+	$MusicLostLifePoint.play()
 	$HBoxContainer/Right/LeftTop2/RightPanel/Life/VBoxContainer/LifePoints.get_child(0).queue_free()
 
 

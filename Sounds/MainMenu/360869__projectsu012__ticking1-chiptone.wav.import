@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/360869__projectsu012__ticking1-chiptone.wav-c2e52bd3b396057494b95623c6b8d31f.sample"
+
+[deps]
+
+source_file="res://Sounds/MainMenu/360869__projectsu012__ticking1-chiptone.wav"
+dest_files=[ "res://.import/360869__projectsu012__ticking1-chiptone.wav-c2e52bd3b396057494b95623c6b8d31f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

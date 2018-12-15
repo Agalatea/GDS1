@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hitMonster2.wav-6803aa73c9c0f3d7c91b3f012df45281.sample"
+
+[deps]
+
+source_file="res://Sounds/Monster/hitMonster2.wav"
+dest_files=[ "res://.import/hitMonster2.wav-6803aa73c9c0f3d7c91b3f012df45281.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

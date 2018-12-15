@@ -27,6 +27,7 @@ func _process(delta):
 	if Input.is_action_pressed("ui_cancel") && !winer && !loose:
 		get_tree().paused=true
 		$GUI/Pause.show()
+		$GUI/Pause.showPause()
 
 func _on_Paddle_body_entered(body):
 	print ("Paddle collision with " + body.get_name())
@@ -112,7 +113,6 @@ func _on_BricksFirstBoss_hitBoss():
 
 func _on_Level_setScorePoints(points):
 	scorePoints=points
-	print("JEST")
 	$GUI.emit_signal("addScorePoints",scorePoints)
 
 

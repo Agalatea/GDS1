@@ -237,24 +237,6 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="MusicHitBrick" type="AudioStreamPlayer" parent="." index="13"]
-
-stream = null
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="MusicBound" type="AudioStreamPlayer" parent="." index="14"]
-
-stream = null
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
 [connection signal="addScorePoints" from="." to="." method="_on_Main_addScorePoints"]
 
 [connection signal="setLifePoints" from="." to="." method="_on_Level_setLifePoints"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Gui.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Left_Image.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Win.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Loose.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sounds/GameOver/lostLifePoint.wav" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -86,7 +87,7 @@ tracks/0/keys = {
 "values": [ Vector2( 7, 661 ), Vector2( 7, 1 ) ]
 }
 
-[node name="GUI" type="Control"]
+[node name="GUI" type="Control" index="0"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -118,7 +119,6 @@ alignment = 0
 
 [node name="Left" type="MarginContainer" parent="HBoxContainer" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -165,6 +165,7 @@ position = Vector2( 99.4949, 297.841 )
 
 [node name="Right" type="MarginContainer" parent="HBoxContainer" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -502,6 +503,15 @@ wait_time = 1.0
 one_shot = false
 autostart = true
 _sections_unfolded = [ "Pause" ]
+
+[node name="MusicLostLifePoint" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 10 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="addLifePoints" from="." to="." method="_on_GUI_addLifePoints"]
 

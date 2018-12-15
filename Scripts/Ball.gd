@@ -44,6 +44,7 @@ func start(pos):
 
 
 func _on_Ball_paddleHit(paddlePosition):
+	$MusicBoundPallet.play()
 	print ("BALL HIT with paddle "  )
 	print ("Mid of Paddle position" + str(paddlePosition) )
 	print ("_on_Ball_paddleHit linear_velocity " + str(linear_velocity))
@@ -74,6 +75,7 @@ func _on_Ball_paddleHit(paddlePosition):
 		apply_impulse(ImpulsePoint, Vector2(1* factor, -2.5 * paddleSpeedFactor-modY))
 
 func _on_Ball_rightBoundHit():
+	$MusicBoundSide.play()
 	print (" _on_Ball_rightBoundHit linear_velocity " + str(linear_velocity))
 	var ImpulsePoint = Vector2 (0, $CollisionShape2D.shape.radius/2)
 	if (linear_velocity.y >= 0):  #going down
@@ -83,6 +85,7 @@ func _on_Ball_rightBoundHit():
 
 
 func _on_Ball_leftBoundHit():
+	$MusicBoundSide.play()
 	print ("_on_Ball_leftBoundHit linear_velocity " + str(linear_velocity))
 	var ImpulsePoint = Vector2 (0, $CollisionShape2D.shape.radius/2)
 	if (linear_velocity.y >= 0):  #going down
@@ -91,6 +94,7 @@ func _on_Ball_leftBoundHit():
 		apply_impulse(ImpulsePoint, Vector2(5, -2.5 *paddleSpeedFactor ))
 		
 func _on_Ball_topBoundHit():
+	$MusicBoundSide.play()
 	print ("_on_Ball_topBoundHit linear_velocity " + str(linear_velocity))
 	var ImpulsePoint = Vector2 (0, $CollisionShape2D.shape.radius/2)
 	apply_impulse(ImpulsePoint, Vector2(linear_velocity.x * 0.05, linear_velocity.y *-0.05))
@@ -103,6 +107,7 @@ func _on_Ball_body_entered(body):
 func _Brick_Hit(body):
 	#Sprawdzenie trafienia klocka
 	if(body.is_in_group("brick")):
+		$MusicBoundBrick.play()
 		var tree=body.get_tree()
 		body.get_parent().get_parent().emit_signal("hitBoss")
 		body.get_parent().free()
