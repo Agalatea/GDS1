@@ -236,7 +236,10 @@ collision_mask = 15
 mass = 0.01
 bounce = 1.0
 angular_velocity = 20.0
-paddleSpeedFactor = 1.2
+maxBallXSpeed = null
+maxBallYSpeed = null
+ballSpeefFactor = null
+hitAngle = null
 
 [node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
 

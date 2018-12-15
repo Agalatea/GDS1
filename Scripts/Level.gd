@@ -123,3 +123,6 @@ func _on_Level_setLifePoints(points):
 func _on_Level_setTime(minute, secondd):
 	$GUI.minute=minute
 	$GUI.second=secondd
+
+
+

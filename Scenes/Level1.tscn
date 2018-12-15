@@ -42,7 +42,7 @@ extents = Vector2( 25.6705, 27.3838 )
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 11.553 )
 
-[node name="Level1" type="Node2D" groups=[
+[node name="Level1" type="Node2D" index="0" groups=[
 "Level",
 ]]
 
@@ -98,7 +98,6 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform",
 
 [node name="LeftBound" type="Area2D" parent="." index="5"]
 
-editor/display_folded = true
 position = Vector2( 214.015, 208.054 )
 scale = Vector2( 0.233815, 0.835998 )
 input_pickable = true
@@ -128,7 +127,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="BottomBound" type="Area2D" parent="." index="6"]
 
-editor/display_folded = true
 position = Vector2( 366.027, 815.624 )
 scale = Vector2( -17.5834, -6.08222 )
 input_pickable = true
@@ -175,33 +173,32 @@ shape = SubResource( 6 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 389.604, 303.481 )
 
 [node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 140.456, -2.2713 )
-animation = "light"
 
 [node name="Brick3" parent="BricksSecondBoss" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( -116.914, -2.80234 )
-animation = "light"
 
 [node name="Brick4" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( 24.7039, -1.69431 )
-animation = "light"
 
 [node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 391.654, 69.632 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( -127.731, 0 )
+
+[node name="AnimatedSprite" parent="BricksFirstBoss/Brick" index="0"]
+
+animation = "light_orange"
 
 [node name="Brick2" parent="BricksFirstBoss" index="1" instance=ExtResource( 7 )]
 
@@ -218,7 +215,10 @@ collision_mask = 15
 mass = 0.01
 bounce = 1.0
 angular_velocity = 20.0
-paddleSpeedFactor = 1.2
+maxBallXSpeed = 300
+maxBallYSpeed = 600
+ballSpeefFactor = 0.05
+hitAngle = 3
 
 [node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
 
@@ -284,3 +284,9 @@ bus = "Master"
 [connection signal="hitBoss" from="BricksFirstBoss" to="." method="_on_BricksFirstBoss_hitBoss"]
 
 
+[editable path="BricksSecondBoss/Brick2"]
+[editable path="BricksSecondBoss/Brick3"]
+[editable path="BricksSecondBoss/Brick4"]
+[editable path="BricksFirstBoss/Brick"]
+[editable path="BricksFirstBoss/Brick2"]
+[editable path="BricksFirstBoss/Brick3"]
