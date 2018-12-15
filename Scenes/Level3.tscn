@@ -177,35 +177,32 @@ shape = SubResource( 6 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 389.604, 303.481 )
 
 [node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 140.456, -2.2713 )
-animation = "light"
 
 [node name="Brick5" parent="BricksSecondBoss" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 85.456, -2.2713 )
-animation = "light"
 
 [node name="Brick3" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( -116.914, -2.80234 )
-animation = "light"
 
 [node name="Brick4" parent="BricksSecondBoss" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( 18.7039, -1.69431 )
-animation = "light"
 
 [node name="Brick6" parent="BricksSecondBoss" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( -49.2961, -1.69431 )
-animation = "light"
 
 [node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 391.654, 69.632 )
 _sections_unfolded = [ "Transform" ]
 
@@ -256,7 +253,6 @@ collision_mask = 15
 mass = 0.01
 bounce = 1.0
 angular_velocity = 20.0
-paddleSpeedFactor = 1.2
 
 [node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
 

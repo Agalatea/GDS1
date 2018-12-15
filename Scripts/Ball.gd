@@ -1,10 +1,15 @@
 extends RigidBody2D
 
-export (float) var paddleSpeedFactor  #export (float) var boundSpeecFactor # 
+var paddleSpeedFactor  #export (float) var boundSpeecFactor # 
+export (int) var maxBallXSpeed
+export (int) var maxBallYSpeed
+export (float) var ballSpeefFactor
+export (int) var hitAngle
 signal paddleHit(paddlePosition)
 signal rightBoundHit
 signal leftBoundHit
 signal topBoundHit
+signal brickHit(brickBody)
 
 # class member variables go here, for example:
 # var a = 2
@@ -15,21 +20,22 @@ var _initial_position
 func _ready():
     _initial_position = get_global_transform().origin
     self.set_physics_process(true)
-#    connect("paddleHit", self, "_on_Ball_paddleHit")
+    paddleSpeedFactor = 1.2
+	
     hide()
 
 func _process(delta):
 	pass
 	
 func _integrate_forces(state):
-	if linear_velocity.y > 600:
-		linear_velocity.y=600
-	elif linear_velocity.y < -600:
-		linear_velocity.y=-600
-	if linear_velocity.x > 300:
-		linear_velocity.x = 300
-	elif linear_velocity.x < -300:
-		linear_velocity.x = -300
+	if linear_velocity.y > maxBallYSpeed:
+		linear_velocity.y=maxBallYSpeed
+	elif linear_velocity.y < -1 * maxBallYSpeed:
+		linear_velocity.y=-1 * maxBallYSpeed
+	if linear_velocity.x > maxBallXSpeed:
+		linear_velocity.x = maxBallXSpeed
+	elif linear_velocity.x < -1 * maxBallXSpeed:
+		linear_velocity.x = -1 * maxBallXSpeed
 #	elif linear_velocity.x >0 and linear_velocity.x < 30:
 #		linear_velocity.x = 30
 #	elif linear_velocity.x <0 and linear_velocity.x > -30:
@@ -48,10 +54,10 @@ func _on_Ball_paddleHit(paddlePosition):
 	print ("BALL HIT with paddle "  )
 	print ("Mid of Paddle position" + str(paddlePosition) )
 	print ("_on_Ball_paddleHit linear_velocity " + str(linear_velocity))
-	var modY = linear_velocity.y * 0.05;
+	var modY = linear_velocity.y * ballSpeefFactor;
 	var ImpulsePoint = Vector2 (0, $CollisionShape2D.shape.radius/2)
 	var positionDiffrence = position.x - paddlePosition.x 
-	var factor = 3
+	var factor = hitAngle
 	print ("positionDiffrence " + str(positionDiffrence))
 	if (position.x - paddlePosition.x < -25 ): #left side
 		apply_impulse(ImpulsePoint, Vector2(-1 * factor ,-0.5 * paddleSpeedFactor -modY))
@@ -97,34 +103,50 @@ func _on_Ball_topBoundHit():
 	$MusicBoundSide.play()
 	print ("_on_Ball_topBoundHit linear_velocity " + str(linear_velocity))
 	var ImpulsePoint = Vector2 (0, $CollisionShape2D.shape.radius/2)
-	apply_impulse(ImpulsePoint, Vector2(linear_velocity.x * 0.05, linear_velocity.y *-0.05))
+	apply_impulse(ImpulsePoint, Vector2(linear_velocity.x * ballSpeefFactor, linear_velocity.y * -1 * ballSpeefFactor))
 
+
+func _on_Ball_brickHit(brickBody):
+	print ("_on_Ball_brickHit linear_velocity " + str(linear_velocity))
+	var ImpulsePoint = Vector2 (0, $CollisionShape2D.shape.radius/2)
+	apply_impulse(ImpulsePoint, Vector2(linear_velocity.x * ballSpeefFactor, linear_velocity.y * -1 * ballSpeefFactor))
+#	if (linear_velocity.y >= 0):  #going down
+#		apply_impulse(ImpulsePoint, Vector2(-5, 2.5 * paddleSpeedFactor))
+#	else: #going up
+#		apply_impulse(ImpulsePoint, Vector2(-5, -2.5 * paddleSpeedFactor))
+#	print ("BrickBody  name " + brickBody.get_name())
+	_Brick_Hit(brickBody)
+	pass
 
 #Sprawdzanie czy pilka odbila sie od brick i czy wszystkieklocki zostaly zbite
-func _on_Ball_body_entered(body):
-	_Brick_Hit(body)
+#func _on_Ball_body_entered(body):
+#	print ("on_Ball_body_entered " + str(linear_velocity))
+#	_Brick_Hit(body)
 
 func _Brick_Hit(body):
 	#Sprawdzenie trafienia klocka
-	if(body.is_in_group("brick")):
-		$MusicBoundBrick.play()
+		body.get_parent().emit_signal("hitBoss")
+		body.beFree=true
 		var tree=body.get_tree()
-		body.get_parent().get_parent().emit_signal("hitBoss")
-		body.get_parent().free()
 		get_tree().root.get_tree().get_nodes_in_group("Level")[0].emit_signal("addScorePoints")
-		
-		#Sprawdzanie bossa
+#
+#		#Sprawdzanie bossa
 		for boss in tree.get_nodes_in_group("bricksBoss"):
 			var dead=true
 			for node in boss.get_children():
-				if(node.is_in_group("brick")):
+				if(node.is_in_group("brick") && !node.beFree):
 					dead=false
 					break
 			if(dead && !boss._isDead()):
 				boss.emit_signal("dead")
-		
-		#Sprawdzanie wygranej
-		if(tree.get_nodes_in_group("brick").size()==0):
+
+#		#Sprawdzanie wygranej
+		var win=true
+		for vbrick in tree.get_nodes_in_group("brick"):
+			if !vbrick.beFree:
+				win=false
+
+		if(win):
 			get_tree().root.get_tree().get_nodes_in_group("Level")[0].emit_signal("showWin")
 
 func _reset():

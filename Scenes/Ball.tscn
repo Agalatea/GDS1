@@ -44,7 +44,10 @@ _sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Mate
 __meta__ = {
 "_edit_group_": true
 }
-paddleSpeedFactor = null
+maxBallXSpeed = 300
+maxBallYSpeed = 600
+ballSpeefFactor = 0.05
+hitAngle = 3
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -84,6 +87,8 @@ mix_target = 0
 bus = "Master"
 
 [connection signal="body_entered" from="." to="." method="_on_Ball_body_entered"]
+
+[connection signal="brickHit" from="." to="." method="_on_Ball_brickHit"]
 
 [connection signal="leftBoundHit" from="." to="." method="_on_Ball_leftBoundHit"]
 
