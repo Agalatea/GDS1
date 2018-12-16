@@ -59,6 +59,8 @@ _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Paddle" parent="." index="1" instance=ExtResource( 3 )]
 
+speed = 325
+
 [node name="PaddleStartPosition" type="Position2D" parent="." index="2"]
 
 position = Vector2( 390.48, 542.231 )
@@ -233,6 +235,10 @@ collision_mask = 15
 mass = 0.01
 bounce = 1.0
 angular_velocity = 20.0
+maxBallXSpeed = 175
+maxBallYSpeed = 425
+ballSpeefFactor = 0.04
+hitAngle = 1
 
 [node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
 
