@@ -4,37 +4,65 @@ var SoccerPoint=0
 var LifePoint=0
 var Seconds=0
 var Minute=0
+var Buttons
+var focusIndex=0
+func getButtons():
+	focusIndex=0
+	Buttons=self.get_tree().get_nodes_in_group("ButtonWin")
+	focusButton(Buttons[focusIndex])
 
-func _on_Return_mouse_entered():
-	$MusicHighlight.play()
-	$MarginContainer/CenterContainer/Rows/ExitRow/Return.set("custom_colors/font_color", Color(1,0,0))
+func focusButton(button):
+	button.set("custom_colors/font_color", Color(1,0,0))
+	
+func exitfocusButton(button):
+	button.set("custom_colors/font_color", Color(0,0,0))
 
-func _on_Return_mouse_exited():
-	$MarginContainer/CenterContainer/Rows/ExitRow/Return.set("custom_colors/font_color", Color(0,0,0))
+func _input(event):
+	if !self.visible:
+		return
 
-func _on_Return_gui_input(ev):
-	if ev is InputEventMouseButton and ev.button_index == BUTTON_LEFT and ev.pressed:
-		$MusicInteract.play()
-		get_tree().root.get_children()[0].queue_free()
-		get_tree().change_scene("res://Scenes//MainMenu.tscn")
+	if event.is_action("ui_up") and event.is_pressed():
+		exitfocusButton(Buttons[focusIndex])
+		var focus=0
+		if focusIndex==0:
+			focus=Buttons.size()-1
+		else:
+			focus=focusIndex-1
+		if focusIndex!=focus:
+			focusIndex=focus
+			$MusicHighlight.play()
+		focusButton(Buttons[focusIndex])
+	elif event.is_action("ui_down") and event.is_pressed():
+		exitfocusButton(Buttons[focusIndex])
+		var focus=0
+		if focusIndex==Buttons.size()-1:
+			focus=0
+		else:
+			focus=focusIndex+1
+		if focusIndex!=focus:
+			focusIndex=focus
+			$MusicHighlight.play()
+		focusButton(Buttons[focusIndex])
+	elif event.is_action("ui_accept") and event.is_pressed():
+		enterButton(Buttons[focusIndex])
+	event=null
 
-func _on_NextLevel_mouse_entered():
-	$MusicHighlight.play()
-	$MarginContainer/CenterContainer/Rows/ExitRow/NextLevel.set("custom_colors/font_color", Color(1,0,0))
+func enterButton(button):
+	if !self.visible:
+		return
 
-func _on_NextLevel_mouse_exited():
-	$MarginContainer/CenterContainer/Rows/ExitRow/NextLevel.set("custom_colors/font_color", Color(0,0,0))
-
-func _on_NextLevel_gui_input(ev):
-	if ev is InputEventMouseButton and ev.button_index == BUTTON_LEFT and ev.pressed and NextLevel!="":
+	$MusicInteract.play()
+	if button.is_in_group("Next"):
+		# Remove the current level
+		var level = get_tree().root.get_children()[0]
+		level.queue_free()
+		#Add level to scen
 		var next_level_resource =load("res://Scenes//"+NextLevel+".tscn")
 		var next=next_level_resource.instance()
 		next.emit_signal("setScorePoints",SoccerPoint)
 		next.emit_signal("setLifePoints",LifePoint)
 		next.emit_signal("setTime",Minute,Seconds)
 		get_tree().root.add_child(next)
-		
-		# Remove the current level
-		var level = get_tree().root.get_children()[0]
-		level.queue_free()
-		
+	elif button.is_in_group("Return"):
+		get_tree().root.get_children()[0].queue_free()
+		get_tree().change_scene("res://Scenes//Main.tscn")

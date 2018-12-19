@@ -129,7 +129,7 @@ func _Brick_Hit(body):
 		body.beFree=true
 		var tree=body.get_tree()
 		get_tree().root.get_tree().get_nodes_in_group("Level")[0].emit_signal("addScorePoints")
-#
+		$MusicBoundBrick.play()
 #		#Sprawdzanie bossa
 		for boss in tree.get_nodes_in_group("bricksBoss"):
 			var dead=true

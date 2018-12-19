@@ -47,7 +47,7 @@ extents = Vector2( 193.469, 11.553 )
 ]]
 
 script = ExtResource( 1 )
-LifeCount = null
+LifeCount = 2
 NextLevel = "Level3"
 
 [node name="Background" type="Sprite" parent="." index="0"]
@@ -58,6 +58,8 @@ texture = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Paddle" parent="." index="1" instance=ExtResource( 3 )]
+
+speed = 325
 
 [node name="PaddleStartPosition" type="Position2D" parent="." index="2"]
 
@@ -178,7 +180,7 @@ shape = SubResource( 6 )
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
 editor/display_folded = true
-position = Vector2( 389.604, 303.481 )
+position = Vector2( 389.604, 71.481 )
 
 [node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
 
@@ -203,7 +205,7 @@ position = Vector2( -49.2961, -1.69431 )
 [node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
 
 editor/display_folded = true
-position = Vector2( 391.654, 69.632 )
+position = Vector2( 391.654, 299.632 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 7 )]
@@ -233,27 +235,19 @@ collision_mask = 15
 mass = 0.01
 bounce = 1.0
 angular_velocity = 20.0
+maxBallXSpeed = 175
+maxBallYSpeed = 425
+ballSpeefFactor = 0.04
+hitAngle = 1
 
 [node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
 
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = -1.0
-margin_right = 799.0
-margin_bottom = 598.0
-
-[node name="Left" parent="GUI/HBoxContainer" index="0"]
-
-margin_right = 593.0
-
-[node name="LeftBottom" parent="GUI/HBoxContainer/Left" index="0"]
-
-margin_right = 593.0
-
-[node name="Right" parent="GUI/HBoxContainer" index="1"]
-
-margin_left = 597.0
-margin_right = 799.0
+margin_right = 734.0
+margin_bottom = 539.0
+NameBossFirst = "AYRE THE IMP"
+NameBossSecond = "FOAN THE BEHOLDER"
+TextStage = "STAGE 2"
+NameLevel = "CAVE ENTRANCE"
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 
@@ -284,6 +278,8 @@ bus = "Master"
 
 [connection signal="addScorePoints" from="." to="." method="_on_Main_addScorePoints"]
 
+[connection signal="closePause" from="." to="." method="_on_Level_closePause"]
+
 [connection signal="setLifePoints" from="." to="." method="_on_Level_setLifePoints"]
 
 [connection signal="setScorePoints" from="." to="." method="_on_Level_setScorePoints"]
@@ -311,4 +307,3 @@ bus = "Master"
 [connection signal="hitBoss" from="BricksFirstBoss" to="." method="_on_BricksFirstBoss_hitBoss"]
 
 
-[editable path="GUI"]

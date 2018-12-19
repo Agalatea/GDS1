@@ -38,7 +38,7 @@ use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="Credits" type="Control"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -240,6 +240,7 @@ _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [node name="Return" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer" index="1" groups=[
 "Return",
+"ButtonCredits",
 ]]
 
 anchor_left = 0.0
@@ -281,11 +282,5 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-
-[connection signal="gui_input" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Return" to="." method="_on_Return_gui_input"]
-
-[connection signal="mouse_entered" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Return" to="." method="_on_Return_mouse_entered"]
-
-[connection signal="mouse_exited" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Return" to="." method="_on_Return_mouse_exited"]
 
 

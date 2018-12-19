@@ -5,6 +5,7 @@ extends Node2D
 # var b = "textvar"
 var winer=false
 var loose=false
+var pauseMusic
 export (int) var LifeCount
 export var NextLevel=""
 var scorePoints=0
@@ -13,6 +14,7 @@ signal addScorePoints
 signal setScorePoints(points)
 signal setLifePoints(points)
 signal setTime(minute, secondd)
+signal closePause
 func _ready():
 	$GUI.emit_signal("addLifePoints",LifeCount)
 	$GUI.emit_signal("setNextLevel",NextLevel)
@@ -21,13 +23,14 @@ func _ready():
 	$MusicBackground.play()
 	get_tree().paused=false
 	start()
-	print(str(LifeCount))
 
-func _process(delta):
-	if Input.is_action_pressed("ui_cancel") && !winer && !loose:
+func _input(event):
+	if event.is_action("ui_cancel") and event.is_pressed() && !winer && !loose:
 		get_tree().paused=true
 		$GUI/Pause.show()
 		$GUI/Pause.showPause()
+		pauseMusic = $MusicBackground.get_playback_position( )
+		$MusicBackground.stop()
 
 func _on_Paddle_body_entered(body):
 	print ("Paddle collision with " + body.get_name())
@@ -56,6 +59,8 @@ func _on_BottomBound_body_entered(body):
 			get_tree().paused=true
 			loose=true
 			$MusicBackground.stop()
+			$GUI/Loose.getButtons()
+			$GUI/Loose.show()
 			$GUI/AnimationPlayer.play("Loose")
 			$GUI/Loose/Music.play()
 		else:
@@ -67,6 +72,7 @@ func _on_Main_showWin():
 	get_tree().paused=true
 	winer=true
 	$MusicBackground.stop()
+	$GUI/Win.getButtons()
 	if NextLevel!="":
 		$GUI.emit_signal("visibleNextLexel",true)
 		$GUI.emit_signal("visibleReturnMain",false)
@@ -75,6 +81,7 @@ func _on_Main_showWin():
 		$GUI.emit_signal("visibleNextLexel",false)
 		$GUI.emit_signal("visibleReturnMain",true)
 		$GUI/Win/Victory.play()
+	$GUI/Win.show()
 	$GUI/AnimationPlayer.play("Win")
 	$GUI/Win.Seconds=$GUI.second
 	$GUI/Win.Minute=$GUI.minute
@@ -124,5 +131,6 @@ func _on_Level_setTime(minute, secondd):
 	$GUI.minute=minute
 	$GUI.second=secondd
 
-
-
+func _on_Level_closePause():
+	$MusicBackground.play()
+	$MusicBackground.seek(pauseMusic)

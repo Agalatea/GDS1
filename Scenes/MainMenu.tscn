@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/title.png" type="Texture" id=2]
 [ext_resource path="res://Assets/emulogic.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Scenes/Credits.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sounds/MainMenu/Avgvst - Dispersion Foundry (edit).ogg" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/MainMenu/360869__projectsu012__ticking1-chiptone.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sounds/MainMenu/340943__projectsu012__activate-ringing.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/MainMenu/Avgvst - Dispersion Foundry (edit).ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/MainMenu/360869__projectsu012__ticking1-chiptone.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/MainMenu/340943__projectsu012__activate-ringing.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -51,14 +50,25 @@ use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Main" type="Node"]
+[node name="MainMenu" type="Control"]
 
 pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Pause", "custom_constants" ]
 
 [node name="MainMenu" type="MarginContainer" parent="." index="0"]
 
+pause_mode = 2
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -74,19 +84,18 @@ custom_constants/margin_right = 120
 custom_constants/margin_top = 120
 custom_constants/margin_left = 120
 custom_constants/margin_bottom = 120
-_sections_unfolded = [ "custom_constants" ]
+_sections_unfolded = [ "Pause", "custom_constants" ]
 
 [node name="CenterContainer" type="CenterContainer" parent="MainMenu" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 120.0
 margin_top = 120.0
-margin_right = 680.0
-margin_bottom = 480.0
+margin_right = 657.0
+margin_bottom = 351.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -97,15 +106,12 @@ use_top_left = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 11.0
-margin_top = 64.0
-margin_right = 548.0
-margin_bottom = 295.0
+margin_right = 537.0
+margin_bottom = 231.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -116,7 +122,6 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/CenterContainer/VBoxContainer" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -145,7 +150,6 @@ blend_times = [  ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer/VBoxContainer" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -164,6 +168,7 @@ alignment = 0
 _sections_unfolded = [ "custom_constants" ]
 
 [node name="NewGame" type="Label" parent="MainMenu/CenterContainer/VBoxContainer/VBoxContainer" index="0" groups=[
+"Button",
 "NewGame",
 ]]
 
@@ -190,6 +195,7 @@ max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "custom_colors", "custom_fonts" ]
 
 [node name="Credits" type="Label" parent="MainMenu/CenterContainer/VBoxContainer/VBoxContainer" index="1" groups=[
+"Button",
 "Credits",
 ]]
 
@@ -216,6 +222,7 @@ max_lines_visible = -1
 _sections_unfolded = [ "Mouse", "custom_fonts" ]
 
 [node name="Exit" type="Label" parent="MainMenu/CenterContainer/VBoxContainer/VBoxContainer" index="2" groups=[
+"Button",
 "Exit",
 ]]
 
@@ -241,11 +248,16 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Creadits" parent="." index="1" instance=ExtResource( 4 )]
+[node name="Music" type="AudioStreamPlayer" parent="." index="1"]
 
-visible = false
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
-[node name="Music" type="AudioStreamPlayer" parent="." index="2"]
+[node name="MusicHighlight" type="AudioStreamPlayer" parent="." index="2"]
 
 stream = ExtResource( 5 )
 volume_db = 0.0
@@ -254,7 +266,7 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="MusicHighlight" type="AudioStreamPlayer" parent="." index="3"]
+[node name="MusicInteract" type="AudioStreamPlayer" parent="." index="3"]
 
 stream = ExtResource( 6 )
 volume_db = 0.0
@@ -262,32 +274,5 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-
-[node name="MusicInteract" type="AudioStreamPlayer" parent="." index="4"]
-
-stream = ExtResource( 7 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[connection signal="gui_input" from="MainMenu/CenterContainer/VBoxContainer/VBoxContainer/NewGame" to="." method="_on_NewGame_gui_input"]
-
-[connection signal="mouse_entered" from="MainMenu/CenterContainer/VBoxContainer/VBoxContainer/NewGame" to="." method="_on_NewGame_mouse_entered"]
-
-[connection signal="mouse_exited" from="MainMenu/CenterContainer/VBoxContainer/VBoxContainer/NewGame" to="." method="_on_NewGame_mouse_exited"]
-
-[connection signal="gui_input" from="MainMenu/CenterContainer/VBoxContainer/VBoxContainer/Credits" to="." method="_on_Credits_gui_input"]
-
-[connection signal="mouse_entered" from="MainMenu/CenterContainer/VBoxContainer/VBoxContainer/Credits" to="." method="_on_Credits_mouse_entered"]
-
-[connection signal="mouse_exited" from="MainMenu/CenterContainer/VBoxContainer/VBoxContainer/Credits" to="." method="_on_Credits_mouse_exited"]
-
-[connection signal="gui_input" from="MainMenu/CenterContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_gui_input"]
-
-[connection signal="mouse_entered" from="MainMenu/CenterContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_mouse_entered"]
-
-[connection signal="mouse_exited" from="MainMenu/CenterContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_mouse_exited"]
 
 

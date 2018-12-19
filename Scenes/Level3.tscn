@@ -8,8 +8,8 @@
 [ext_resource path="res://Scenes/BricksBoss.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Brick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Gui.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sounds/Level3/Boss Battle #4 V2.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/Level3/Boss Battle #4 V2.wav" type="AudioStream" id=9]
+[ext_resource path="res://Scenes/Gui.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Shader" id=1]
 
@@ -42,12 +42,12 @@ extents = Vector2( 25.6705, 27.3838 )
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 11.553 )
 
-[node name="Level3" type="Node2D" index="0" groups=[
+[node name="Level3" type="Node2D" groups=[
 "Level",
 ]]
 
 script = ExtResource( 1 )
-LifeCount = null
+LifeCount = 1
 NextLevel = ""
 
 [node name="Background" type="Sprite" parent="." index="0"]
@@ -58,6 +58,8 @@ texture = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Paddle" parent="." index="1" instance=ExtResource( 3 )]
+
+speed = 325
 
 [node name="PaddleStartPosition" type="Position2D" parent="." index="2"]
 
@@ -175,35 +177,10 @@ __meta__ = {
 
 shape = SubResource( 6 )
 
-[node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
+[node name="BricksFirstBoss" parent="." index="8" instance=ExtResource( 6 )]
 
 editor/display_folded = true
-position = Vector2( 389.604, 303.481 )
-
-[node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
-
-position = Vector2( 140.456, -2.2713 )
-
-[node name="Brick5" parent="BricksSecondBoss" index="1" instance=ExtResource( 7 )]
-
-position = Vector2( 85.456, -2.2713 )
-
-[node name="Brick3" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
-
-position = Vector2( -116.914, -2.80234 )
-
-[node name="Brick4" parent="BricksSecondBoss" index="3" instance=ExtResource( 7 )]
-
-position = Vector2( 18.7039, -1.69431 )
-
-[node name="Brick6" parent="BricksSecondBoss" index="4" instance=ExtResource( 7 )]
-
-position = Vector2( -49.2961, -1.69431 )
-
-[node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
-
-editor/display_folded = true
-position = Vector2( 391.654, 69.632 )
+position = Vector2( 391.654, 301.632 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 7 )]
@@ -246,6 +223,51 @@ position = Vector2( 138.775, 0 )
 
 position = Vector2( 138.775, 24 )
 
+[node name="BricksSecondBoss" parent="." index="9" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+position = Vector2( 410, 96 )
+
+[node name="Brick11" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
+
+position = Vector2( 120.06, 1.21002 )
+
+[node name="Brick16" parent="BricksSecondBoss" index="3" instance=ExtResource( 7 )]
+
+position = Vector2( 120.06, 25.21 )
+
+[node name="Brick12" parent="BricksSecondBoss" index="4" instance=ExtResource( 7 )]
+
+position = Vector2( 65.06, 1.21002 )
+
+[node name="Brick19" parent="BricksSecondBoss" index="5" instance=ExtResource( 7 )]
+
+position = Vector2( 65.06, 25.21 )
+
+[node name="Brick13" parent="BricksSecondBoss" index="6" instance=ExtResource( 7 )]
+
+position = Vector2( -137.31, 0.679016 )
+
+[node name="Brick18" parent="BricksSecondBoss" index="7" instance=ExtResource( 7 )]
+
+position = Vector2( -137.31, 24.679 )
+
+[node name="Brick14" parent="BricksSecondBoss" index="8" instance=ExtResource( 7 )]
+
+position = Vector2( -1.69211, 1.78699 )
+
+[node name="Brick17" parent="BricksSecondBoss" index="9" instance=ExtResource( 7 )]
+
+position = Vector2( -1.69211, 25.787 )
+
+[node name="Brick15" parent="BricksSecondBoss" index="10" instance=ExtResource( 7 )]
+
+position = Vector2( -69.6921, 1.78699 )
+
+[node name="Brick20" parent="BricksSecondBoss" index="11" instance=ExtResource( 7 )]
+
+position = Vector2( -69.6921, 25.787 )
+
 [node name="Ball" parent="." index="10" instance=ExtResource( 8 )]
 
 collision_layer = 2
@@ -253,25 +275,21 @@ collision_mask = 15
 mass = 0.01
 bounce = 1.0
 angular_velocity = 20.0
+maxBallXSpeed = 175
+maxBallYSpeed = 425
+ballSpeefFactor = 0.04
+hitAngle = 1
 
-[node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
+[node name="MusicBackground" type="AudioStreamPlayer" parent="." index="11"]
 
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = -1.0
-margin_right = 799.0
-margin_bottom = 598.0
-
-[node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
-
-stream = ExtResource( 10 )
+stream = ExtResource( 9 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="MusicHitBrick" type="AudioStreamPlayer" parent="." index="13"]
+[node name="MusicHitBrick" type="AudioStreamPlayer" parent="." index="12"]
 
 stream = null
 volume_db = 0.0
@@ -280,7 +298,7 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="MusicBound" type="AudioStreamPlayer" parent="." index="14"]
+[node name="MusicBound" type="AudioStreamPlayer" parent="." index="13"]
 
 stream = null
 volume_db = 0.0
@@ -288,8 +306,19 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="GUI" parent="." index="14" instance=ExtResource( 10 )]
+
+margin_right = 735.0
+margin_bottom = 540.0
+NameBossFirst = "NAME BOSS SECOND"
+NameBossSecond = "NAME BOSS SECOND"
+TextStage = "STAGE 3"
+NameLevel = "NAME LEVEL"
 
 [connection signal="addScorePoints" from="." to="." method="_on_Main_addScorePoints"]
+
+[connection signal="closePause" from="." to="." method="_on_Level_closePause"]
 
 [connection signal="setLifePoints" from="." to="." method="_on_Level_setLifePoints"]
 
@@ -309,12 +338,12 @@ bus = "Master"
 
 [connection signal="body_entered" from="TopBound" to="." method="_on_TopBound_body_entered"]
 
-[connection signal="dead" from="BricksSecondBoss" to="." method="_on_BricksSecondBoss_dead"]
-
-[connection signal="hitBoss" from="BricksSecondBoss" to="." method="_on_BricksSecondBoss_hitBoss"]
-
 [connection signal="dead" from="BricksFirstBoss" to="." method="_on_BricksFirstBoss_dead"]
 
 [connection signal="hitBoss" from="BricksFirstBoss" to="." method="_on_BricksFirstBoss_hitBoss"]
+
+[connection signal="dead" from="BricksSecondBoss" to="." method="_on_BricksSecondBoss_dead"]
+
+[connection signal="hitBoss" from="BricksSecondBoss" to="." method="_on_BricksSecondBoss_hitBoss"]
 
 

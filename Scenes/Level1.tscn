@@ -42,11 +42,12 @@ extents = Vector2( 25.6705, 27.3838 )
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 11.553 )
 
-[node name="Level1" type="Node2D" index="0" groups=[
+[node name="Level1" type="Node2D" groups=[
 "Level",
 ]]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 LifeCount = 3
 NextLevel = "Level2"
 
@@ -56,6 +57,8 @@ position = Vector2( 398.504, 299.853 )
 texture = ExtResource( 2 )
 
 [node name="Paddle" parent="." index="1" instance=ExtResource( 3 )]
+
+speed = 325
 
 [node name="PaddleStartPosition" type="Position2D" parent="." index="2"]
 
@@ -176,7 +179,7 @@ shape = SubResource( 6 )
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
 editor/display_folded = true
-position = Vector2( 389.604, 303.481 )
+position = Vector2( 389.604, 123.481 )
 
 [node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
 
@@ -193,7 +196,7 @@ position = Vector2( 24.7039, -1.69431 )
 [node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
 
 editor/display_folded = true
-position = Vector2( 391.654, 69.632 )
+position = Vector2( 391.654, 301.632 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 7 )]
@@ -219,6 +222,10 @@ collision_mask = 15
 mass = 0.01
 bounce = 1.0
 angular_velocity = 20.0
+maxBallXSpeed = 175
+maxBallYSpeed = 425
+ballSpeefFactor = 0.04
+hitAngle = 1
 
 [node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
 
@@ -227,17 +234,25 @@ anchor_bottom = 0.0
 margin_top = -1.0
 margin_right = 799.0
 margin_bottom = 598.0
+NameBossFirst = "NARANIA THE VENOMOUS"
+NameBossSecond = "SLYTHANG THE LETHAL"
+TextStage = "Stage 1"
+NameLevel = "Gump Forest"
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 
+pause_mode = 1
 stream = ExtResource( 10 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [connection signal="addScorePoints" from="." to="." method="_on_Main_addScorePoints"]
+
+[connection signal="closePause" from="." to="." method="_on_Level_closePause"]
 
 [connection signal="setLifePoints" from="." to="." method="_on_Level_setLifePoints"]
 

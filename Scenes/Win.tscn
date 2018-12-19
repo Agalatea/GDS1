@@ -131,7 +131,10 @@ custom_constants/separation = 25
 alignment = 0
 _sections_unfolded = [ "custom_constants" ]
 
-[node name="NextLevel" type="Label" parent="MarginContainer/CenterContainer/Rows/ExitRow" index="0"]
+[node name="NextLevel" type="Label" parent="MarginContainer/CenterContainer/Rows/ExitRow" index="0" groups=[
+"ButtonWin",
+"Next",
+]]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -157,6 +160,7 @@ _sections_unfolded = [ "Pause", "custom_colors", "custom_fonts" ]
 
 [node name="Return" type="Label" parent="MarginContainer/CenterContainer/Rows/ExitRow" index="1" groups=[
 "Return",
+"ButtonWin",
 ]]
 
 anchor_left = 0.0
@@ -217,17 +221,5 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-
-[connection signal="gui_input" from="MarginContainer/CenterContainer/Rows/ExitRow/NextLevel" to="." method="_on_NextLevel_gui_input"]
-
-[connection signal="mouse_entered" from="MarginContainer/CenterContainer/Rows/ExitRow/NextLevel" to="." method="_on_NextLevel_mouse_entered"]
-
-[connection signal="mouse_exited" from="MarginContainer/CenterContainer/Rows/ExitRow/NextLevel" to="." method="_on_NextLevel_mouse_exited"]
-
-[connection signal="gui_input" from="MarginContainer/CenterContainer/Rows/ExitRow/Return" to="." method="_on_Return_gui_input"]
-
-[connection signal="mouse_entered" from="MarginContainer/CenterContainer/Rows/ExitRow/Return" to="." method="_on_Return_mouse_entered"]
-
-[connection signal="mouse_exited" from="MarginContainer/CenterContainer/Rows/ExitRow/Return" to="." method="_on_Return_mouse_exited"]
 
 

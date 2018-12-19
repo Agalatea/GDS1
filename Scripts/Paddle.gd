@@ -23,7 +23,7 @@ func _process(delta):
     position += velocity * delta
 
     if velocity.x != 0:
-        $AnimatedSprite.animation = "right"
+        #$AnimatedSprite.animation = "right"
         $AnimatedSprite.flip_v = false
         $AnimatedSprite.flip_h = velocity.x < 0
 
@@ -35,9 +35,11 @@ func start(pos, xMin, xMax):
     show()
     $CollisionShape2D.disabled = false
 
-
-
-
 func _on_Paddle_body_entered(body):
-    var position = body.position #or body.get_pos()
-    print("collision position: ", str(position))
+	$AnimatedSprite.play("bound")
+	var position = body.position #or body.get_pos()
+	print("collision position: ", str(position))
+	
+
+func _on_AnimatedSprite_animation_finished():
+	$AnimatedSprite.animation="defualt"

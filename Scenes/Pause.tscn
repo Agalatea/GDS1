@@ -55,6 +55,7 @@ color = Color( 1, 1, 1, 0.419882 )
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -145,6 +146,7 @@ alignment = 0
 _sections_unfolded = [ "custom_constants" ]
 
 [node name="ReturnGame" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer" index="0" groups=[
+"ButtonPause",
 "ReturnGame",
 ]]
 
@@ -172,6 +174,7 @@ max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "custom_colors", "custom_fonts" ]
 
 [node name="RetunToMain" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer" index="1" groups=[
+"ButtonPause",
 "ReturnMenu",
 ]]
 
@@ -224,17 +227,5 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-
-[connection signal="gui_input" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/ReturnGame" to="." method="_on_ReturnGame_gui_input"]
-
-[connection signal="mouse_entered" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/ReturnGame" to="." method="_on_ReturnGame_mouse_entered"]
-
-[connection signal="mouse_exited" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/ReturnGame" to="." method="_on_ReturnGame_mouse_exited"]
-
-[connection signal="gui_input" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/RetunToMain" to="." method="_on_Retun_to_main_menu_gui_input"]
-
-[connection signal="mouse_entered" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/RetunToMain" to="." method="_on_Retun_to_main_menu_mouse_entered"]
-
-[connection signal="mouse_exited" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/RetunToMain" to="." method="_on_Retun_to_main_menu_mouse_exited"]
 
 
