@@ -1,10 +1,15 @@
 extends RigidBody2D
 
-var paddleSpeedFactor  #export (float) var boundSpeecFactor # 
+var paddleSpeedFactor  
+var hitTimes  #how many times ball hit brick
 export (int) var maxBallXSpeed
 export (int) var maxBallYSpeed
 export (float) var ballSpeefFactor
 export (int) var hitAngle
+export (int) var initialBallXSpeed
+export (int) var initialBallYSpeed
+export (int) var ballSpeedIncreaseX
+export (int) var ballSpeedIncreaseY
 signal paddleHit(paddlePosition)
 signal rightBoundHit
 signal leftBoundHit
@@ -21,6 +26,7 @@ func _ready():
     _initial_position = get_global_transform().origin
     self.set_physics_process(true)
     paddleSpeedFactor = 1.2
+    hitTimes=0
 	
     hide()
 
@@ -28,14 +34,24 @@ func _process(delta):
 	pass
 	
 func _integrate_forces(state):
-	if linear_velocity.y > maxBallYSpeed:
-		linear_velocity.y=maxBallYSpeed
-	elif linear_velocity.y < -1 * maxBallYSpeed:
-		linear_velocity.y=-1 * maxBallYSpeed
-	if linear_velocity.x > maxBallXSpeed:
-		linear_velocity.x = maxBallXSpeed
-	elif linear_velocity.x < -1 * maxBallXSpeed:
-		linear_velocity.x = -1 * maxBallXSpeed
+	var maxX = 0
+	var maxY = 0
+	if (initialBallXSpeed + hitTimes * ballSpeedIncreaseX < maxBallXSpeed ):
+		maxX = initialBallXSpeed + hitTimes * ballSpeedIncreaseX 
+	else:
+		maxX = maxBallXSpeed
+	if (initialBallYSpeed + hitTimes * ballSpeedIncreaseY < maxBallYSpeed ):
+		maxY = initialBallYSpeed + hitTimes * ballSpeedIncreaseY 
+	else:
+		maxY = maxBallYSpeed
+	if linear_velocity.y > maxY:
+		linear_velocity.y=maxY
+	elif linear_velocity.y < -1 * maxY:
+		linear_velocity.y=-1 * maxY
+	if linear_velocity.x > maxX:
+		linear_velocity.x = maxX
+	elif linear_velocity.x < -1 * maxX:
+		linear_velocity.x = -1 * maxX
 #	elif linear_velocity.x >0 and linear_velocity.x < 30:
 #		linear_velocity.x = 30
 #	elif linear_velocity.x <0 and linear_velocity.x > -30:
@@ -110,11 +126,7 @@ func _on_Ball_brickHit(brickBody):
 	print ("_on_Ball_brickHit linear_velocity " + str(linear_velocity))
 	var ImpulsePoint = Vector2 (0, $CollisionShape2D.shape.radius/2)
 	apply_impulse(ImpulsePoint, Vector2(linear_velocity.x * ballSpeefFactor, linear_velocity.y * -1 * ballSpeefFactor))
-#	if (linear_velocity.y >= 0):  #going down
-#		apply_impulse(ImpulsePoint, Vector2(-5, 2.5 * paddleSpeedFactor))
-#	else: #going up
-#		apply_impulse(ImpulsePoint, Vector2(-5, -2.5 * paddleSpeedFactor))
-#	print ("BrickBody  name " + brickBody.get_name())
+	hitTimes = hitTimes + 1
 	_Brick_Hit(brickBody)
 	pass
 

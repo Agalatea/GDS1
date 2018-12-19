@@ -279,6 +279,10 @@ maxBallXSpeed = 175
 maxBallYSpeed = 425
 ballSpeefFactor = 0.04
 hitAngle = 1
+initialBallXSpeed = 125
+initialBallYSpeed = 270
+ballSpeedIncreaseX = 10
+ballSpeedIncreaseY = 10
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="11"]
 
