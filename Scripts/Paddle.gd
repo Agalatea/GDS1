@@ -5,7 +5,7 @@ extends Area2D
 export (int) var speed  # How fast the player will move (pixels/sec).
 var xMin
 var xMax
-
+var bound_animation_flag =false
 func _ready():    
     hide()
 
@@ -17,16 +17,18 @@ func _process(delta):
         velocity.x -= 1
     if velocity.length() > 0:
         velocity = velocity.normalized() * speed
-        $AnimatedSprite.play()
     #else:
         #$AnimatedSprite.stop()
     position += velocity * delta
 
     if velocity.x != 0:
-        #$AnimatedSprite.animation = "right"
         $AnimatedSprite.flip_v = false
         $AnimatedSprite.flip_h = velocity.x < 0
+    
 
+func _physics_process(delta):
+	if(!bound_animation_flag):
+    	$AnimatedSprite.play("defualt")
    
 func start(pos, xMin, xMax):
     self.xMin = xMin + $CollisionShape2D.shape.extents.x/2   #so paddle does not leave bounds
@@ -36,10 +38,11 @@ func start(pos, xMin, xMax):
     $CollisionShape2D.disabled = false
 
 func _on_Paddle_body_entered(body):
+	bound_animation_flag=true
 	$AnimatedSprite.play("bound")
 	var position = body.position #or body.get_pos()
 	print("collision position: ", str(position))
 	
 
 func _on_AnimatedSprite_animation_finished():
-	$AnimatedSprite.animation="defualt"
+	bound_animation_flag=false

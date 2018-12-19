@@ -19,7 +19,7 @@ animations = [ {
 custom_solver_bias = 0.0
 radius = 5.08661
 
-[node name="Ball" type="RigidBody2D" index="0"]
+[node name="Ball" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
