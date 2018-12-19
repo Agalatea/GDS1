@@ -244,8 +244,8 @@ hitAngle = 1
 
 margin_right = 734.0
 margin_bottom = 539.0
-NameBossFirst = "AYRE THE IMP"
-NameBossSecond = "FOAN THE BEHOLDER"
+NameBossFirst = "FOAN THE BEHOLDER"
+NameBossSecond = "AYRE THE IMP"
 TextStage = "STAGE 2"
 NameLevel = "CAVE ENTRANCE"
 

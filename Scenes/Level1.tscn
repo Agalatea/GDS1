@@ -234,8 +234,8 @@ anchor_bottom = 0.0
 margin_top = -1.0
 margin_right = 799.0
 margin_bottom = 598.0
-NameBossFirst = "NARANIA THE VENOMOUS"
-NameBossSecond = "SLYTHANG THE LETHAL"
+NameBossFirst = "SLYTHANG THE LETHAL"
+NameBossSecond = "NARANIA THE VENOMOUS"
 TextStage = "Stage 1"
 NameLevel = "Gump Forest"
 
