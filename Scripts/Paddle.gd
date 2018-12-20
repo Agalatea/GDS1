@@ -38,8 +38,9 @@ func start(pos, xMin, xMax):
     $CollisionShape2D.disabled = false
 
 func _on_Paddle_body_entered(body):
-	bound_animation_flag=true
-	$AnimatedSprite.play("bound")
+	if (body.get_name() == "Ball"):
+		bound_animation_flag=true
+		$AnimatedSprite.play("bound")
 	var position = body.position #or body.get_pos()
 	print("collision position: ", str(position))
 	

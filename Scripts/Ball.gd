@@ -130,11 +130,6 @@ func _on_Ball_brickHit(brickBody):
 	_Brick_Hit(brickBody)
 	pass
 
-#Sprawdzanie czy pilka odbila sie od brick i czy wszystkieklocki zostaly zbite
-#func _on_Ball_body_entered(body):
-#	print ("on_Ball_body_entered " + str(linear_velocity))
-#	_Brick_Hit(body)
-
 func _Brick_Hit(body):
 	#Sprawdzenie trafienia klocka
 		body.get_parent().emit_signal("hitBoss")

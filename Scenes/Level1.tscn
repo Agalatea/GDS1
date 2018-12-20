@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Backround_Level1.png" type="Texture" id=2]
@@ -30,17 +30,32 @@ extents = Vector2( 423.819, 94.3451 )
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 315.285, 792.863 )
+extents = Vector2( 9.86256, 10 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 25.6705, 27.3838 )
+extents = Vector2( 315.285, 792.863 )
 
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 25.6705, 27.3838 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
 extents = Vector2( 193.469, 11.553 )
+
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [node name="Level1" type="Node2D" index="0" groups=[
 "Level",
@@ -99,6 +114,24 @@ scale = Vector2( 4.60096, 0.106579 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility" ]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="RightBound" index="2"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 7
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound/StaticBody2D" index="0"]
+
+position = Vector2( 500.801, 10.5521 )
+scale = Vector2( -49.0801, 4.88533 )
+shape = SubResource( 4 )
+
 [node name="LeftBound" type="Area2D" parent="." index="5"]
 
 editor/display_folded = true
@@ -126,14 +159,32 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 position = Vector2( -310.207, 769.049 )
 scale = Vector2( 1, 1.35241 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftBound" index="2"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 7
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound/StaticBody2D" index="0"]
+
+position = Vector2( -100.506, 110.232 )
+scale = Vector2( 8.73127, 41.2046 )
+shape = SubResource( 6 )
 
 [node name="BottomBound" type="Area2D" parent="." index="6"]
 
 editor/display_folded = true
-position = Vector2( 366.027, 815.624 )
-scale = Vector2( -17.5834, -6.08222 )
+position = Vector2( 463.543, 815.624 )
+scale = Vector2( -65.177, -6.08222 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -151,14 +202,14 @@ __meta__ = {
 
 position = Vector2( 0, 3.04252 )
 scale = Vector2( 1, 1.14006 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="TopBound" type="Area2D" parent="." index="7"]
 
 editor/display_folded = true
-position = Vector2( 400.469, -11.4674 )
-scale = Vector2( 6.65625, 1.07914 )
+position = Vector2( 412.399, -11.4674 )
+scale = Vector2( 12.627, 1.07914 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -174,7 +225,27 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TopBound" index="1"]
+
+editor/display_folded = true
+position = Vector2( 0, -52.0831 )
+scale = Vector2( 1, 0.870583 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 7
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound/StaticBody2D" index="0"]
+
+position = Vector2( -1.89925, 33.3655 )
+scale = Vector2( 3.28593, 3.56657 )
+shape = SubResource( 9 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 

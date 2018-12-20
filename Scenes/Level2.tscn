@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Backround_Level1.png" type="Texture" id=2]
@@ -30,19 +30,34 @@ extents = Vector2( 423.819, 94.3451 )
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 315.285, 792.863 )
+extents = Vector2( 1924.71, 38.8692 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 25.6705, 27.3838 )
+extents = Vector2( 315.285, 792.863 )
 
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
+extents = Vector2( 8.06727, 541.263 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 78.6226, 27.3838 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
 extents = Vector2( 193.469, 11.553 )
 
-[node name="Level2" type="Node2D" groups=[
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 108.444, 76.2115 )
+
+[node name="Level2" type="Node2D" index="0" groups=[
 "Level",
 ]]
 
@@ -100,6 +115,24 @@ scale = Vector2( 4.60096, 0.106579 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility" ]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="RightBound" index="2"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 7
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound/StaticBody2D" index="0"]
+
+position = Vector2( 500.195, 1.21051 )
+scale = Vector2( 0.248953, 0.971088 )
+shape = SubResource( 4 )
+
 [node name="LeftBound" type="Area2D" parent="." index="5"]
 
 editor/display_folded = true
@@ -127,8 +160,26 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 position = Vector2( -310.207, 769.049 )
 scale = Vector2( 1, 1.35241 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftBound" index="2"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 7
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound/StaticBody2D" index="0"]
+
+position = Vector2( -198.407, 118.698 )
+scale = Vector2( 16.2621, 0.78191 )
+shape = SubResource( 6 )
 
 [node name="BottomBound" type="Area2D" parent="." index="6"]
 
@@ -152,7 +203,7 @@ __meta__ = {
 
 position = Vector2( 0, 3.04252 )
 scale = Vector2( 1, 1.14006 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="TopBound" type="Area2D" parent="." index="7"]
@@ -175,7 +226,24 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TopBound" index="1"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 3
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound/StaticBody2D" index="0"]
+
+position = Vector2( 0, -38.4607 )
+scale = Vector2( 1, 0.514455 )
+shape = SubResource( 9 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
