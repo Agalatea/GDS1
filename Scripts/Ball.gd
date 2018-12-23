@@ -152,7 +152,7 @@ func _Brick_Hit(body):
 				boss.emit_signal("dead")
 				
 			#Sprawdzanie hit bossa
-			if (body.get_parent() == boss && !boss._isDead() && ((countBrick-1)/boss.countBricks) < float(boss.rangeHit)/float(3)):
+			if (body.get_parent() == boss && !boss._isDead() && ((countBrick-1)/boss.countBricks) <= float(boss.rangeHit)/float(3)):
 				boss.emit_signal("hitBoss")
 
 #		#Sprawdzanie wygranej
