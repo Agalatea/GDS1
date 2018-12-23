@@ -51,7 +51,8 @@ func enterButton(button):
 	actionInput=false
 
 func focusButton(button):
-	button.set("custom_colors/font_color", Color(0,0,0))
-	
+	button.texture_normal =button.texture_hover
+
 func exitfocusButton(button):
-	button.set("custom_colors/font_color", Color(1,1,1))
+	button.texture_normal =button.texture_pressed
+	

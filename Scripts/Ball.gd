@@ -132,20 +132,28 @@ func _on_Ball_brickHit(brickBody):
 
 func _Brick_Hit(body):
 	#Sprawdzenie trafienia klocka
-		body.get_parent().emit_signal("hitBoss")
 		body.beFree=true
 		var tree=body.get_tree()
 		get_tree().root.get_tree().get_nodes_in_group("Level")[0].emit_signal("addScorePoints")
 		$MusicBoundBrick.play()
-#		#Sprawdzanie bossa
+		
+#		#Sprawdzanie dead bossa
+		
 		for boss in tree.get_nodes_in_group("bricksBoss"):
+			var  countBrick=float(0)
 			var dead=true
 			for node in boss.get_children():
-				if(node.is_in_group("brick") && !node.beFree):
-					dead=false
-					break
+				if(node.is_in_group("brick")): 
+					if(!node.beFree):
+						dead=false
+					countBrick=countBrick+1
+				
 			if(dead && !boss._isDead()):
 				boss.emit_signal("dead")
+				
+			#Sprawdzanie hit bossa
+			if (body.get_parent() == boss && !boss._isDead() && ((countBrick-1)/boss.countBricks) < float(boss.rangeHit)/float(3)):
+				boss.emit_signal("hitBoss")
 
 #		#Sprawdzanie wygranej
 		var win=true

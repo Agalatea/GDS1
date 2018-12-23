@@ -7,7 +7,8 @@ var xMin
 var xMax
 var bound_animation_flag =false
 func _ready():    
-    hide()
+    #hide()
+	pass
 
 func _process(delta):
     var velocity = Vector2(0,0) # The player's movement vector.

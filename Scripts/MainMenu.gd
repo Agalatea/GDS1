@@ -3,17 +3,15 @@ var Buttons
 var focusIndex=0
 var actionInput=true
 func _ready():
-	Input.set_mouse_mode( Input.MOUSE_MODE_HIDDEN)
-	get_tree().paused=true
 	Buttons=self.get_tree().get_nodes_in_group("Button")
 	focusButton(Buttons[focusIndex])
-	$Music.play()
 
 func focusButton(button):
-	button.set("custom_colors/font_color", Color(0,0,0))
+	button.texture_normal =button.texture_hover
 	
 func exitfocusButton(button):
-	button.set("custom_colors/font_color", Color(1,1,1))
+	button.texture_normal =button.texture_pressed
+	
 
 func _process(delta):
 	actionInput=true
