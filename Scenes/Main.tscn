@@ -52,13 +52,13 @@ visible = false
 [node name="Paddle" parent="." index="3" instance=ExtResource( 5 )]
 
 pause_mode = 2
-position = Vector2( 433.776, 475.677 )
+position = Vector2( 407.776, 475.677 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 
 [node name="LeftBound" type="Area2D" parent="." index="4"]
 
 editor/display_folded = true
-position = Vector2( 275.018, 483.929 )
+position = Vector2( 134.018, 483.929 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
