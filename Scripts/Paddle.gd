@@ -6,6 +6,7 @@ export (int) var speed  # How fast the player will move (pixels/sec).
 var xMin
 var xMax
 var bound_animation_flag =false
+
 func _ready():    
     #hide()
 	pass

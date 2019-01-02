@@ -24,6 +24,11 @@ func _ready():
 	get_tree().paused=false
 	start()
 
+
+func _process(delta):
+	if Input.is_action_pressed("ui_left")  ||  Input.is_action_pressed("ui_right"): 
+		$Ball.emit_signal("paddleMove", $Paddle.position) 
+
 func _input(event):
 	if event.is_action("ui_cancel") and event.is_pressed() && !winer && !loose:
 		get_tree().paused=true
@@ -31,6 +36,7 @@ func _input(event):
 		$GUI/Pause.showPause()
 		pauseMusic = $MusicBackground.get_playback_position( )
 		$MusicBackground.stop()
+	
 
 func _on_Paddle_body_entered(body):
 	print ("Paddle collision with " + body.get_name())
@@ -96,7 +102,7 @@ func _on_TopBound_body_entered(body):
 func start():
 	$Paddle.start($PaddleStartPosition.position, $LeftBound.position.x+15, $RightBound.position.x-15  )  #to be moved to start game function
 	$Ball._reset()
-	$Ball.start($BallStartPosition.position)
+	$Ball.start($PaddleStartPosition.position)
 
 func _on_Main_addScorePoints():
 	scorePoints=scorePoints+1

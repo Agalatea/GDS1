@@ -96,6 +96,8 @@ bus = "Master"
 
 [connection signal="paddleHit" from="." to="." method="_on_Ball_paddleHit"]
 
+[connection signal="paddleMove" from="." to="." method="_on_Ball_paddleMove"]
+
 [connection signal="rightBoundHit" from="." to="." method="_on_Ball_rightBoundHit"]
 
 [connection signal="topBoundHit" from="." to="." method="_on_Ball_topBoundHit"]

@@ -297,10 +297,10 @@ maxBallXSpeed = 175
 maxBallYSpeed = 425
 ballSpeefFactor = 0.04
 hitAngle = 1
-initialBallXSpeed = 100
-initialBallYSpeed = 250
-ballSpeedIncreaseX = 10
-ballSpeedIncreaseY = 10
+initialBallXSpeed = 150
+initialBallYSpeed = 300
+ballSpeedIncreaseX = 15
+ballSpeedIncreaseY = 20
 
 [node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
 

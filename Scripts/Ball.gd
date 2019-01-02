@@ -2,6 +2,8 @@ extends RigidBody2D
 
 var paddleSpeedFactor  
 var hitTimes  #how many times ball hit brick
+var paddlePosition
+var starting
 export (int) var maxBallXSpeed
 export (int) var maxBallYSpeed
 export (float) var ballSpeefFactor
@@ -15,6 +17,7 @@ signal rightBoundHit
 signal leftBoundHit
 signal topBoundHit
 signal brickHit(brickBody)
+signal paddleMove(pos)
 
 # class member variables go here, for example:
 # var a = 2
@@ -25,33 +28,38 @@ var _initial_position
 func _ready():
     _initial_position = get_global_transform().origin
     self.set_physics_process(true)
-    paddleSpeedFactor = 1.2
+    paddleSpeedFactor = 1.3
     hitTimes=0
-	
     hide()
 
 func _process(delta):
+	if starting && (Input.is_action_pressed("ui_up") ||  Input.is_key_pressed(KEY_SPACE)  ):
+		set_linear_velocity(Vector2(rand_range(-200,200),-200).normalized()*300)
+		starting = false
 	pass
 	
 func _integrate_forces(state):
-	var maxX = 0
-	var maxY = 0
-	if (initialBallXSpeed + hitTimes * ballSpeedIncreaseX < maxBallXSpeed ):
-		maxX = initialBallXSpeed + hitTimes * ballSpeedIncreaseX 
+	if (starting) :
+		state.transform.origin = paddlePosition
 	else:
-		maxX = maxBallXSpeed
-	if (initialBallYSpeed + hitTimes * ballSpeedIncreaseY < maxBallYSpeed ):
-		maxY = initialBallYSpeed + hitTimes * ballSpeedIncreaseY 
-	else:
-		maxY = maxBallYSpeed
-	if linear_velocity.y > maxY:
-		linear_velocity.y=maxY
-	elif linear_velocity.y < -1 * maxY:
-		linear_velocity.y=-1 * maxY
-	if linear_velocity.x > maxX:
-		linear_velocity.x = maxX
-	elif linear_velocity.x < -1 * maxX:
-		linear_velocity.x = -1 * maxX
+		var maxX = 0
+		var maxY = 0
+		if (initialBallXSpeed + hitTimes * ballSpeedIncreaseX < maxBallXSpeed ):
+			maxX = initialBallXSpeed + hitTimes * ballSpeedIncreaseX 
+		else:
+			maxX = maxBallXSpeed
+		if (initialBallYSpeed + hitTimes * ballSpeedIncreaseY < maxBallYSpeed ):
+			maxY = initialBallYSpeed + hitTimes * ballSpeedIncreaseY 
+		else:
+			maxY = maxBallYSpeed
+		if linear_velocity.y > maxY:
+			linear_velocity.y=maxY
+		elif linear_velocity.y < -1 * maxY:
+			linear_velocity.y=-1 * maxY
+		if linear_velocity.x > maxX:
+			linear_velocity.x = maxX
+		elif linear_velocity.x < -1 * maxX:
+			linear_velocity.x = -1 * maxX
 #	elif linear_velocity.x >0 and linear_velocity.x < 30:
 #		linear_velocity.x = 30
 #	elif linear_velocity.x <0 and linear_velocity.x > -30:
@@ -60,6 +68,8 @@ func _integrate_forces(state):
 
 func start(pos):
     position=pos
+    starting =true
+    paddlePosition=pos
     show()
     $CollisionShape2D.disabled = false
 
@@ -168,3 +178,8 @@ func _reset():
 	self.linear_velocity=Vector2(0,0)
 	self.angular_velocity=0
 	self.global_translate(_initial_position)
+
+func _on_Ball_paddleMove(pos):
+	if (starting):
+		paddlePosition=pos
+	
