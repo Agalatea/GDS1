@@ -52,7 +52,7 @@ func enterButton(button):
 
 	$MusicInteract.play()
 	if button.is_in_group("NewGame"):
-		get_tree().change_scene("res://Scenes//Level1.tscn")
+		get_tree().change_scene("res://Scenes/Level1.tscn")
 	elif button.is_in_group("Credits"):
 		self.visible=false
 		get_tree().current_scene.get_node("Credits").pause_mode=PAUSE_MODE_PROCESS

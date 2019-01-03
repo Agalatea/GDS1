@@ -49,4 +49,4 @@ func enterButton(button):
 	$MusicInteract.play()
 	if button.is_in_group("Return"):
 		get_tree().root.get_children()[0].queue_free()
-		get_tree().change_scene("res://Scenes//Main.tscn")
+		get_tree().change_scene("res://Scenes/Main.tscn")

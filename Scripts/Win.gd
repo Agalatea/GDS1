@@ -57,7 +57,7 @@ func enterButton(button):
 		var level = get_tree().root.get_children()[0]
 		level.queue_free()
 		#Add level to scen
-		var next_level_resource =load("res://Scenes//"+NextLevel+".tscn")
+		var next_level_resource =load("res://Scenes/"+NextLevel+".tscn")
 		var next=next_level_resource.instance()
 		next.emit_signal("setScorePoints",SoccerPoint)
 		next.emit_signal("setLifePoints",LifePoint)
@@ -65,4 +65,4 @@ func enterButton(button):
 		get_tree().root.add_child(next)
 	elif button.is_in_group("Return"):
 		get_tree().root.get_children()[0].queue_free()
-		get_tree().change_scene("res://Scenes//Main.tscn")
+		get_tree().change_scene("res://Scenes/Main.tscn")

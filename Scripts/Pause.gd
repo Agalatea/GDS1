@@ -53,7 +53,7 @@ func enterButton(button):
 	$MusicInteraction.play()
 	if button.is_in_group("ReturnMenu"):
 		get_tree().root.get_children()[0].queue_free()
-		get_tree().change_scene("res://Scenes//Main.tscn")
+		get_tree().change_scene("res://Scenes/Main.tscn")
 	elif button.is_in_group("ReturnGame"):
 		get_tree().paused=false
 		self.hide()
