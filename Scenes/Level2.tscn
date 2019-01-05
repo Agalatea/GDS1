@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Backround_Level1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Background_-_level_2.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Paddle.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Right_Sidewalls.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Left_Sidewalls.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sidewall_-_level_2_(right).png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sidewall_-_level_2_(left).png" type="Texture" id=5]
 [ext_resource path="res://Scenes/BricksBoss.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Brick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=8]
@@ -67,7 +67,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Level2" type="Node2D" index="0" groups=[
+[node name="Level2" type="Node2D" groups=[
 "Level",
 ]]
 
@@ -77,7 +77,6 @@ NextLevel = "Level3"
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
-modulate = Color( 0.709804, 0.25098, 0.25098, 1 )
 position = Vector2( 398.504, 299.853 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Visibility" ]
@@ -99,9 +98,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="RightBound" type="Area2D" parent="." index="4"]
 
-editor/display_folded = true
 material = SubResource( 2 )
-position = Vector2( 587.127, 291.591 )
+position = Vector2( 588, 291.591 )
 scale = Vector2( 0.214351, 9.39829 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -145,8 +143,7 @@ shape = SubResource( 4 )
 
 [node name="LeftBound" type="Area2D" parent="." index="5"]
 
-editor/display_folded = true
-position = Vector2( 214.015, 208.054 )
+position = Vector2( 213.015, 208.054 )
 scale = Vector2( 0.233815, 0.835998 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -333,12 +330,12 @@ NameLevel = "CAVE ENTRANCE"
 
 [node name="Left" parent="GUI/HBoxContainer" index="0"]
 
-margin_right = 592.0
+margin_right = 594.0
 margin_bottom = 603.0
 
 [node name="LeftBottom" parent="GUI/HBoxContainer/Left" index="0"]
 
-margin_right = 592.0
+margin_right = 594.0
 margin_bottom = 603.0
 
 [node name="MarginContainer" parent="GUI/HBoxContainer/Left/LeftBottom/Rows" index="0"]
@@ -357,7 +354,7 @@ frames = SubResource( 10 )
 
 [node name="Right" parent="GUI/HBoxContainer" index="1"]
 
-margin_left = 596.0
+margin_left = 598.0
 margin_right = 798.0
 margin_bottom = 603.0
 
