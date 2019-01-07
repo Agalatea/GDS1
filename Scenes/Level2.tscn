@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Background_-_level_2.png" type="Texture" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://Scenes/Brick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Gui.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/Imp.png" type="Texture" id=10]
-[ext_resource path="res://Sounds/Level2/15 - Dungeon.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Beholder.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Imp.png" type="Texture" id=11]
+[ext_resource path="res://Sounds/Level2/15 - Dungeon.ogg" type="AudioStream" id=12]
 
 [sub_resource type="Shader" id=1]
 
@@ -28,20 +29,10 @@ shader = SubResource( 1 )
 custom_solver_bias = 0.0
 extents = Vector2( 423.819, 94.3451 )
 
-[sub_resource type="RectangleShape2D" id=4]
-
-custom_solver_bias = 0.0
-extents = Vector2( 1924.71, 38.8692 )
-
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 315.285, 792.863 )
-
-[sub_resource type="RectangleShape2D" id=6]
-
-custom_solver_bias = 0.0
-extents = Vector2( 8.06727, 541.263 )
 
 [sub_resource type="RectangleShape2D" id=7]
 
@@ -51,12 +42,7 @@ extents = Vector2( 78.6226, 27.3838 )
 [sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
-extents = Vector2( 193.469, 11.553 )
-
-[sub_resource type="RectangleShape2D" id=9]
-
-custom_solver_bias = 0.0
-extents = Vector2( 108.444, 76.2115 )
+extents = Vector2( 193.469, 32.4322 )
 
 [sub_resource type="SpriteFrames" id=10]
 
@@ -67,7 +53,16 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Level2" type="Node2D" groups=[
+[sub_resource type="SpriteFrames" id=11]
+
+animations = [ {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Level2" type="Node2D" index="0" groups=[
 "Level",
 ]]
 
@@ -98,6 +93,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="RightBound" type="Area2D" parent="." index="4"]
 
+editor/display_folded = true
 material = SubResource( 2 )
 position = Vector2( 588, 291.591 )
 scale = Vector2( 0.214351, 9.39829 )
@@ -113,33 +109,15 @@ _sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound" index="0"]
 
-position = Vector2( 415.516, 58.0317 )
+position = Vector2( 420.181, 58.0317 )
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="RightBound" index="1"]
 
-position = Vector2( 21.5095, 0.84159 )
-scale = Vector2( 4.60096, 0.106579 )
+position = Vector2( 21.5095, 0.947993 )
+scale = Vector2( 4.66525, 0.106402 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility" ]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="RightBound" index="2"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 7
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound/StaticBody2D" index="0"]
-
-position = Vector2( 500.195, 1.21051 )
-scale = Vector2( 0.248953, 0.971088 )
-shape = SubResource( 4 )
 
 [node name="LeftBound" type="Area2D" parent="." index="5"]
 
@@ -157,36 +135,18 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="LeftBound" index="0"]
 
-position = Vector2( -29.5859, 108.187 )
+position = Vector2( -33.8628, 110.579 )
 rotation = 3.14159
-scale = Vector2( 5.59766, 1.19982 )
+scale = Vector2( 4.27689, 1.19618 )
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound" index="1"]
 
-position = Vector2( -310.207, 769.049 )
+position = Vector2( -331.591, 769.049 )
 scale = Vector2( 1, 1.35241 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="LeftBound" index="2"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 7
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound/StaticBody2D" index="0"]
-
-position = Vector2( -198.407, 118.698 )
-scale = Vector2( 16.2621, 0.78191 )
-shape = SubResource( 6 )
 
 [node name="BottomBound" type="Area2D" parent="." index="6"]
 
@@ -233,24 +193,8 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound" index="0"]
 
+position = Vector2( 0, -21.3132 )
 shape = SubResource( 8 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TopBound" index="1"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 3
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound/StaticBody2D" index="0"]
-
-position = Vector2( 0, -38.4607 )
-scale = Vector2( 1, 0.514455 )
-shape = SubResource( 9 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
@@ -321,6 +265,7 @@ ballSpeedIncreaseY = 15
 
 [node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
 
+editor/display_folded = true
 margin_right = 734.0
 margin_bottom = 539.0
 NameBossFirst = "AYRE THE IMP"
@@ -348,9 +293,13 @@ margin_bottom = 545.0
 margin_top = 549.0
 margin_bottom = 603.0
 
-[node name="TextureRect" parent="GUI/HBoxContainer/Left/BossFirst" index="0"]
+[node name="TextureRect" parent="GUI/HBoxContainer/Left/BossSecond" index="0"]
 
 frames = SubResource( 10 )
+
+[node name="TextureRect" parent="GUI/HBoxContainer/Left/BossFirst" index="0"]
+
+frames = SubResource( 11 )
 
 [node name="Right" parent="GUI/HBoxContainer" index="1"]
 
@@ -397,7 +346,7 @@ margin_bottom = 602.0
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -454,4 +403,5 @@ bus = "Master"
 
 
 [editable path="GUI"]
+[editable path="GUI/HBoxContainer/Left/BossSecond"]
 [editable path="GUI/HBoxContainer/Left/BossFirst"]

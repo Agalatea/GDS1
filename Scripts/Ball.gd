@@ -22,7 +22,7 @@ signal paddleMove(pos)
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-
+var _initial_state
 var _initial_position
 
 func _ready():
@@ -36,9 +36,36 @@ func _process(delta):
 	if starting && (Input.is_action_pressed("ui_up") ||  Input.is_key_pressed(KEY_SPACE)  ):
 		set_linear_velocity(Vector2(rand_range(-200,200),-200).normalized()*300)
 		starting = false
-	pass
+	if (starting) :
+		self._initial_state.transform.origin = paddlePosition
+		self.transform.origin = paddlePosition
+	else:
+		var maxX = 0
+		var maxY = 0
+		if (initialBallXSpeed + hitTimes * ballSpeedIncreaseX < maxBallXSpeed ):
+			maxX = initialBallXSpeed + hitTimes * ballSpeedIncreaseX 
+		else:
+			maxX = maxBallXSpeed
+		if (initialBallYSpeed + hitTimes * ballSpeedIncreaseY < maxBallYSpeed ):
+			maxY = initialBallYSpeed + hitTimes * ballSpeedIncreaseY 
+		else:
+			maxY = maxBallYSpeed
+		if linear_velocity.y > maxY:
+			linear_velocity.y=maxY
+		elif linear_velocity.y < -1 * maxY:
+			linear_velocity.y=-1 * maxY
+		if linear_velocity.x > maxX:
+			linear_velocity.x = maxX
+		elif linear_velocity.x < -1 * maxX:
+			linear_velocity.x = -1 * maxX
+#	elif linear_velocity.x >0 and linear_velocity.x < 30:
+#		linear_velocity.x = 30
+#	elif linear_velocity.x <0 and linear_velocity.x > -30:
+#		linear_velocity.x = -30 
+#	print ("LI  "+ str(linear_velocity))
 	
 func _integrate_forces(state):
+	_initial_state=state
 	if (starting) :
 		state.transform.origin = paddlePosition
 	else:

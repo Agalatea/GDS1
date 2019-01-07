@@ -16,13 +16,14 @@ signal setLifePoints(points)
 signal setTime(minute, secondd)
 signal closePause
 func _ready():
+	start()
 	$GUI.emit_signal("addLifePoints",LifeCount)
 	$GUI.emit_signal("setNextLevel",NextLevel)
 	winer=false
 	loose=false
 	$MusicBackground.play()
 	get_tree().paused=false
-	start()
+	
 
 
 func _process(delta):
