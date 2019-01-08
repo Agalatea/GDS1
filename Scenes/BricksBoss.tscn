@@ -9,6 +9,7 @@
 ]]
 
 script = ExtResource( 1 )
+rangeHit = 2
 
 [node name="MusicHitBoss" type="AudioStreamPlayer" parent="." index="0"]
 

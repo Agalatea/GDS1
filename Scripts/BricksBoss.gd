@@ -3,6 +3,7 @@ signal dead
 signal hitBoss
 var isDead=false
 var countBricks
+var hpBoss
 var rangeHit=2
 func _ready():
 	countBricks=float(self.get_child_count()-2)

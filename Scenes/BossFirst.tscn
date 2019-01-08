@@ -13,7 +13,7 @@ animations = [ {
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[node name="BossFirst" index="0" instance=ExtResource( 1 )]
+[node name="BossFirst" instance=ExtResource( 1 )]
 
 [node name="TextureRect" parent="." index="0"]
 

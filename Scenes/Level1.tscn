@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Background_-_level_1.png" type="Texture" id=2]
@@ -27,10 +27,20 @@ shader = SubResource( 1 )
 custom_solver_bias = 0.0
 extents = Vector2( 423.819, 94.3451 )
 
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 86.7136, 38.1369 )
+
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 315.285, 792.863 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 149.411, 437.273 )
 
 [sub_resource type="RectangleShape2D" id=7]
 
@@ -42,7 +52,7 @@ extents = Vector2( 25.6705, 27.3838 )
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 30.4565 )
 
-[node name="Level1" type="Node2D" groups=[
+[node name="Level1" type="Node2D" index="0" groups=[
 "Level",
 ]]
 
@@ -73,7 +83,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="RightBound" type="Area2D" parent="." index="4"]
 
-editor/display_folded = true
 material = SubResource( 2 )
 position = Vector2( 589, 291.591 )
 scale = Vector2( 0.214351, 9.39829 )
@@ -99,9 +108,24 @@ scale = Vector2( 4.66525, 0.106402 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility" ]
 
-[node name="LeftBound" type="Area2D" parent="." index="5"]
+[node name="StaticBody2D" type="StaticBody2D" parent="RightBound" index="2"]
 
 editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound/StaticBody2D" index="0"]
+
+position = Vector2( 111.966, 0 )
+shape = SubResource( 4 )
+
+[node name="LeftBound" type="Area2D" parent="." index="5"]
+
 position = Vector2( 213.015, 208.054 )
 scale = Vector2( 0.233815, 0.835998 )
 input_pickable = true
@@ -128,6 +152,23 @@ rotation = 3.14159
 scale = Vector2( 4.27689, 1.19618 )
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Area2D" type="StaticBody2D" parent="LeftBound" index="2"]
+
+editor/display_folded = true
+position = Vector2( 0, 137.56 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound/Area2D" index="0"]
+
+position = Vector2( -188.183, 0 )
+shape = SubResource( 6 )
 
 [node name="BottomBound" type="Area2D" parent="." index="6"]
 
@@ -179,20 +220,67 @@ shape = SubResource( 8 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 389.604, 123.481 )
 
-[node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
+[node name="Brick14" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( 140.456, -2.2713 )
+editor/display_folded = true
+position = Vector2( -125.681, 15.151 )
 
-[node name="Brick3" parent="BricksSecondBoss" index="1" instance=ExtResource( 7 )]
+[node name="Brick19" parent="BricksSecondBoss" index="3" instance=ExtResource( 7 )]
 
-position = Vector2( -116.914, -2.80234 )
+editor/display_folded = true
+position = Vector2( -125.681, -14.849 )
 
-[node name="Brick4" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
+[node name="Brick18" parent="BricksSecondBoss" index="4" instance=ExtResource( 7 )]
 
-position = Vector2( 24.7039, -1.69431 )
+editor/display_folded = true
+position = Vector2( -74.681, 15.151 )
+
+[node name="Brick20" parent="BricksSecondBoss" index="5" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( -74.681, -14.849 )
+
+[node name="Brick13" parent="BricksSecondBoss" index="6" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 35.0354, 15.151 )
+
+[node name="Brick24" parent="BricksSecondBoss" index="7" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 35.0354, -14.849 )
+
+[node name="Brick16" parent="BricksSecondBoss" index="8" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 87.0354, 15.151 )
+
+[node name="Brick22" parent="BricksSecondBoss" index="9" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 87.0354, -14.849 )
+
+[node name="Brick15" parent="BricksSecondBoss" index="10" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 137.825, 15.151 )
+
+[node name="Brick21" parent="BricksSecondBoss" index="11" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 137.825, -14.849 )
+
+[node name="Brick17" parent="BricksSecondBoss" index="12" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( -21.175, 15.151 )
+
+[node name="Brick23" parent="BricksSecondBoss" index="13" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( -21.175, -14.849 )
 
 [node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
 
@@ -202,19 +290,63 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 7 )]
 
+editor/display_folded = true
 position = Vector2( -127.731, 0 )
 
-[node name="AnimatedSprite" parent="BricksFirstBoss/Brick" index="0"]
+[node name="Brick8" parent="BricksFirstBoss" index="1" instance=ExtResource( 7 )]
 
-animation = "light_orange"
+editor/display_folded = true
+position = Vector2( -127.731, -30 )
 
-[node name="Brick2" parent="BricksFirstBoss" index="1" instance=ExtResource( 7 )]
+[node name="Brick4" parent="BricksFirstBoss" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( 12.9854, 0 )
+editor/display_folded = true
+position = Vector2( -76.731, 0 )
 
-[node name="Brick3" parent="BricksFirstBoss" index="2" instance=ExtResource( 7 )]
+[node name="Brick12" parent="BricksFirstBoss" index="3" instance=ExtResource( 7 )]
 
-position = Vector2( 138.775, 0 )
+editor/display_folded = true
+position = Vector2( -76.731, -30 )
+
+[node name="Brick2" parent="BricksFirstBoss" index="4" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 32.9854, 0 )
+
+[node name="Brick7" parent="BricksFirstBoss" index="5" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 32.9854, -30 )
+
+[node name="Brick5" parent="BricksFirstBoss" index="6" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 84.9854, 0 )
+
+[node name="Brick10" parent="BricksFirstBoss" index="7" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 84.9854, -30 )
+
+[node name="Brick3" parent="BricksFirstBoss" index="8" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 135.775, 0 )
+
+[node name="Brick9" parent="BricksFirstBoss" index="9" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( 135.775, -30 )
+
+[node name="Brick6" parent="BricksFirstBoss" index="10" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( -23.225, 0 )
+
+[node name="Brick11" parent="BricksFirstBoss" index="11" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+position = Vector2( -23.225, -30 )
 
 [node name="Ball" parent="." index="10" instance=ExtResource( 8 )]
 
@@ -286,9 +418,3 @@ _sections_unfolded = [ "Pause" ]
 [connection signal="hitBoss" from="BricksFirstBoss" to="." method="_on_BricksFirstBoss_hitBoss"]
 
 
-[editable path="BricksSecondBoss/Brick2"]
-[editable path="BricksSecondBoss/Brick3"]
-[editable path="BricksSecondBoss/Brick4"]
-[editable path="BricksFirstBoss/Brick"]
-[editable path="BricksFirstBoss/Brick2"]
-[editable path="BricksFirstBoss/Brick3"]

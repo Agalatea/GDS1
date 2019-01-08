@@ -169,34 +169,48 @@ func _on_Ball_brickHit(brickBody):
 
 func _Brick_Hit(body):
 	#Sprawdzenie trafienia klocka
-		body.beFree=true
+		if(body.HP-1<=0):
+			body.beFree=true
 		var tree=body.get_tree()
 		get_tree().root.get_tree().get_nodes_in_group("Level")[0].emit_signal("addScorePoints")
 		$MusicBoundBrick.play()
 		
 #		#Sprawdzanie dead bossa
-		
+		var win=true
 		for boss in tree.get_nodes_in_group("bricksBoss"):
 			var  countBrick=float(0)
 			var dead=true
+			var nodeBoss
 			for node in boss.get_children():
-				if(node.is_in_group("brick")): 
+				if(node.is_in_group("brick")):
+					if( node.is_in_group("Boss")):
+						nodeBoss=node
 					if(!node.beFree):
 						dead=false
+						win=false
 					countBrick=countBrick+1
 				
 			if(dead && !boss._isDead()):
 				boss.emit_signal("dead")
+				if(nodeBoss!=null):
+					nodeBoss.beFree=false
+					nodeBoss.emit_signal("dead")
 				
 			#Sprawdzanie hit bossa
 			if (body.get_parent() == boss && !boss._isDead() && ((countBrick-1)/boss.countBricks) <= float(boss.rangeHit)/float(3)):
-				boss.emit_signal("hitBoss")
-
-#		#Sprawdzanie wygranej
-		var win=true
-		for vbrick in tree.get_nodes_in_group("brick"):
-			if !vbrick.beFree:
-				win=false
+				var childrenIsBoss=null
+				var maxHP=1
+				for children in boss.get_children():
+					if(children.is_in_group("Boss")):
+						boss.hpBoss=float(children.HP)
+						maxHP=float(children.maxHP)
+						childrenIsBoss=children
+					elif(children.is_in_group("brick")):
+						_changeColorBricks(children,boss.rangeHit-1)
+				if(childrenIsBoss==null || (childrenIsBoss!=null && float(boss.hpBoss)/float(maxHP)<=float(boss.rangeHit)/float(3))):
+					boss.emit_signal("hitBoss")
+					if(childrenIsBoss!=null):
+						childrenIsBoss._hitBoss()
 
 		if(win):
 			get_tree().root.get_tree().get_nodes_in_group("Level")[0].emit_signal("showWin")
@@ -209,4 +223,6 @@ func _reset():
 func _on_Ball_paddleMove(pos):
 	if (starting):
 		paddlePosition=pos
-	
+
+func _changeColorBricks(brick,indexColor):
+	brick.emit_signal("changeColor",indexColor)

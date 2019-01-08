@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Background_-_level_2.png" type="Texture" id=2]
@@ -29,10 +29,20 @@ shader = SubResource( 1 )
 custom_solver_bias = 0.0
 extents = Vector2( 423.819, 94.3451 )
 
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 85.3098, 35.0294 )
+
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 315.285, 792.863 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 44.8892, 387.393 )
 
 [sub_resource type="RectangleShape2D" id=7]
 
@@ -44,7 +54,7 @@ extents = Vector2( 78.6226, 27.3838 )
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 32.4322 )
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=9]
 
 animations = [ {
 "frames": [ ExtResource( 10 ) ],
@@ -53,7 +63,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=10]
 
 animations = [ {
 "frames": [ ExtResource( 11 ) ],
@@ -62,7 +72,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Level2" type="Node2D" index="0" groups=[
+[node name="Level2" type="Node2D" groups=[
 "Level",
 ]]
 
@@ -119,6 +129,22 @@ scale = Vector2( 4.66525, 0.106402 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility" ]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="RightBound" index="2"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBound/StaticBody2D" index="0"]
+
+position = Vector2( 116.631, 0 )
+shape = SubResource( 4 )
+
 [node name="LeftBound" type="Area2D" parent="." index="5"]
 
 position = Vector2( 213.015, 208.054 )
@@ -147,6 +173,23 @@ position = Vector2( -331.591, 769.049 )
 scale = Vector2( 1, 1.35241 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftBound" index="2"]
+
+editor/display_folded = true
+position = Vector2( 0, 111.244 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound/StaticBody2D" index="0"]
+
+position = Vector2( -85.5377, 3.5885 )
+shape = SubResource( 6 )
 
 [node name="BottomBound" type="Area2D" parent="." index="6"]
 
@@ -198,54 +241,156 @@ shape = SubResource( 8 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 389.604, 71.481 )
 
 [node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
 
-position = Vector2( 140.456, -2.2713 )
+position = Vector2( 142.456, -3.2713 )
 
-[node name="Brick5" parent="BricksSecondBoss" index="1" instance=ExtResource( 7 )]
+[node name="Brick11" parent="BricksSecondBoss" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( 85.456, -2.2713 )
+position = Vector2( 142.456, 30.7287 )
 
-[node name="Brick3" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
+[node name="Brick14" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
+
+position = Vector2( 142.456, 66.7287 )
+
+[node name="Brick5" parent="BricksSecondBoss" index="3" instance=ExtResource( 7 )]
+
+position = Vector2( 91.456, -3.2713 )
+
+[node name="Brick13" parent="BricksSecondBoss" index="4" instance=ExtResource( 7 )]
+
+position = Vector2( 91.456, 30.7287 )
+
+[node name="Brick16" parent="BricksSecondBoss" index="5" instance=ExtResource( 7 )]
+
+position = Vector2( 91.456, 66.7287 )
+
+[node name="Brick3" parent="BricksSecondBoss" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( -116.914, -2.80234 )
 
-[node name="Brick4" parent="BricksSecondBoss" index="3" instance=ExtResource( 7 )]
+[node name="Brick12" parent="BricksSecondBoss" index="7" instance=ExtResource( 7 )]
 
-position = Vector2( 18.7039, -1.69431 )
+position = Vector2( -116.914, 31.1977 )
 
-[node name="Brick6" parent="BricksSecondBoss" index="4" instance=ExtResource( 7 )]
+[node name="Brick15" parent="BricksSecondBoss" index="8" instance=ExtResource( 7 )]
 
-position = Vector2( -49.2961, -1.69431 )
+position = Vector2( -116.914, 67.1977 )
+
+[node name="Brick4" parent="BricksSecondBoss" index="9" instance=ExtResource( 7 )]
+
+position = Vector2( 40.7039, -3.69431 )
+
+[node name="Brick8" parent="BricksSecondBoss" index="10" instance=ExtResource( 7 )]
+
+position = Vector2( 40.7039, 30.3057 )
+
+[node name="Brick18" parent="BricksSecondBoss" index="11" instance=ExtResource( 7 )]
+
+position = Vector2( 40.7039, 66.3057 )
+
+[node name="Brick7" parent="BricksSecondBoss" index="12" instance=ExtResource( 7 )]
+
+position = Vector2( -12.2961, -2.69431 )
+
+[node name="Brick10" parent="BricksSecondBoss" index="13" instance=ExtResource( 7 )]
+
+position = Vector2( -12.2961, 31.3057 )
+
+[node name="Brick17" parent="BricksSecondBoss" index="14" instance=ExtResource( 7 )]
+
+position = Vector2( -12.2961, 67.3057 )
+
+[node name="Brick6" parent="BricksSecondBoss" index="15" instance=ExtResource( 7 )]
+
+position = Vector2( -64.2961, -2.69431 )
+
+[node name="Brick9" parent="BricksSecondBoss" index="16" instance=ExtResource( 7 )]
+
+position = Vector2( -64.2961, 31.3057 )
+
+[node name="Brick19" parent="BricksSecondBoss" index="17" instance=ExtResource( 7 )]
+
+position = Vector2( -64.2961, 67.3057 )
 
 [node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 391.654, 299.632 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 7 )]
+[node name="Brick35" parent="BricksFirstBoss" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( -127.731, 0 )
+position = Vector2( 140.406, -57.4223 )
 
-[node name="Brick4" parent="BricksFirstBoss" index="1" instance=ExtResource( 7 )]
+[node name="Brick20" parent="BricksFirstBoss" index="3" instance=ExtResource( 7 )]
 
-position = Vector2( -60.731, 0 )
+position = Vector2( 140.406, -23.4223 )
 
-[node name="Brick2" parent="BricksFirstBoss" index="2" instance=ExtResource( 7 )]
+[node name="Brick27" parent="BricksFirstBoss" index="4" instance=ExtResource( 7 )]
 
-position = Vector2( 12.9854, 0 )
+position = Vector2( 140.406, 12.5777 )
 
-[node name="Brick5" parent="BricksFirstBoss" index="3" instance=ExtResource( 7 )]
+[node name="Brick37" parent="BricksFirstBoss" index="5" instance=ExtResource( 7 )]
 
-position = Vector2( 76.9854, 0 )
+position = Vector2( 89.406, -57.4223 )
 
-[node name="Brick3" parent="BricksFirstBoss" index="4" instance=ExtResource( 7 )]
+[node name="Brick22" parent="BricksFirstBoss" index="6" instance=ExtResource( 7 )]
 
-position = Vector2( 138.775, 0 )
+position = Vector2( 89.406, -23.4223 )
+
+[node name="Brick25" parent="BricksFirstBoss" index="7" instance=ExtResource( 7 )]
+
+position = Vector2( 89.406, 12.5777 )
+
+[node name="Brick36" parent="BricksFirstBoss" index="8" instance=ExtResource( 7 )]
+
+position = Vector2( -118.964, -56.9533 )
+
+[node name="Brick21" parent="BricksFirstBoss" index="9" instance=ExtResource( 7 )]
+
+position = Vector2( -118.964, -22.9533 )
+
+[node name="Brick24" parent="BricksFirstBoss" index="10" instance=ExtResource( 7 )]
+
+position = Vector2( -118.964, 13.0467 )
+
+[node name="Brick32" parent="BricksFirstBoss" index="11" instance=ExtResource( 7 )]
+
+position = Vector2( 38.6539, -57.8453 )
+
+[node name="Brick26" parent="BricksFirstBoss" index="12" instance=ExtResource( 7 )]
+
+position = Vector2( 38.6539, -23.8453 )
+
+[node name="Brick29" parent="BricksFirstBoss" index="13" instance=ExtResource( 7 )]
+
+position = Vector2( 38.6539, 12.1547 )
+
+[node name="Brick34" parent="BricksFirstBoss" index="14" instance=ExtResource( 7 )]
+
+position = Vector2( -14.3461, -56.8453 )
+
+[node name="Brick23" parent="BricksFirstBoss" index="15" instance=ExtResource( 7 )]
+
+position = Vector2( -14.3461, -22.8453 )
+
+[node name="Brick28" parent="BricksFirstBoss" index="16" instance=ExtResource( 7 )]
+
+position = Vector2( -14.3461, 13.1547 )
+
+[node name="Brick33" parent="BricksFirstBoss" index="17" instance=ExtResource( 7 )]
+
+position = Vector2( -66.3461, -56.8453 )
+
+[node name="Brick31" parent="BricksFirstBoss" index="18" instance=ExtResource( 7 )]
+
+position = Vector2( -66.3461, -22.8453 )
+
+[node name="Brick30" parent="BricksFirstBoss" index="19" instance=ExtResource( 7 )]
+
+position = Vector2( -66.3461, 13.1547 )
 
 [node name="Ball" parent="." index="10" instance=ExtResource( 8 )]
 
@@ -295,11 +440,11 @@ margin_bottom = 603.0
 
 [node name="TextureRect" parent="GUI/HBoxContainer/Left/BossSecond" index="0"]
 
-frames = SubResource( 10 )
+frames = SubResource( 9 )
 
 [node name="TextureRect" parent="GUI/HBoxContainer/Left/BossFirst" index="0"]
 
-frames = SubResource( 11 )
+frames = SubResource( 10 )
 
 [node name="Right" parent="GUI/HBoxContainer" index="1"]
 
