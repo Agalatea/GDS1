@@ -70,7 +70,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Level3" type="Node2D" groups=[
+[node name="Level3" type="Node2D" index="0" groups=[
 "Level",
 ]]
 
@@ -260,8 +260,8 @@ ballSpeefFactor = 0.04
 hitAngle = 1
 initialBallXSpeed = 125
 initialBallYSpeed = 270
-ballSpeedIncreaseX = 10
-ballSpeedIncreaseY = 10
+ballSpeedIncreaseX = 15
+ballSpeedIncreaseY = 15
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="10"]
 

@@ -52,7 +52,7 @@ extents = Vector2( 25.6705, 27.3838 )
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 30.4565 )
 
-[node name="Level1" type="Node2D" index="0" groups=[
+[node name="Level1" type="Node2D" groups=[
 "Level",
 ]]
 
@@ -361,8 +361,8 @@ ballSpeefFactor = 0.04
 hitAngle = 1
 initialBallXSpeed = 150
 initialBallYSpeed = 300
-ballSpeedIncreaseX = 15
-ballSpeedIncreaseY = 20
+ballSpeedIncreaseX = 10
+ballSpeedIncreaseY = 10
 
 [node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
 
