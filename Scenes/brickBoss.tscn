@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/brick.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Boss_brick.png" type="Texture" id=2]
@@ -12,13 +12,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-
-custom_solver_bias = 0.0
-radius = 61.6009
-height = 46.8251
-
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 resource_name = "Dead"
 length = 1.0
@@ -37,7 +31,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 resource_name = "Hit"
 length = 1.0
@@ -81,21 +75,21 @@ frames = SubResource( 1 )
 animation = "default"
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-
-position = Vector2( 0, 9 )
-shape = SubResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Dead = SubResource( 3 )
-anims/Hit = SubResource( 4 )
+anims/Dead = SubResource( 2 )
+anims/Hit = SubResource( 3 )
 blend_times = [  ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
+
+build_mode = 0
+polygon = PoolVector2Array( -43.5, 2.75, -52.5, 2.5, -52.75, 12.75, -62.25, 13, -62.5, 22, -72.75, 23, -72.75, 43.25, -64, 43.25, -64, 52.5, -34, 52.5, -34, 62.5, -43.5, 62.5, -43.25, 84.75, 37.5, 84.25, 37.25, 62.75, 28, 62.75, 28, 52.75, 57, 53, 56.5, 43.5, 67, 44, 67.75, 21.75, 58, 22.25, 57.75, 13, 48.75, 12.5, 48.25, 2.5, 36.5, 2.25, 37.5, -7.5, 46.75, -7.5, 47.5, -28, 56.25, -26.5, 56.5, -36.5, 68, -36.5, 68, -47.1154, 77.25, -47.1154, 76, -87.8654, 65.75, -86.3654, 66.5, -67.8654, 56.75, -68.1154, 57, -58.1154, 27.5, -57.3654, 27.5, -67.8654, -34, -67.3654, -33.75, -58.3654, -62, -57.3654, -61.75, -68.3654, -72, -68.8654, -72.5, -86.8654, -84.5, -86.3654, -83.75, -47.1154, -73.5, -46.8654, -73.5, -37.3654, -63, -37.1154, -64, -25.8654, -52.5, -26.8654, -53.5, -7.36539, -43.5, -7.61539 )
 
 [connection signal="body_entered" from="." to="." method="_on_brick_body_entered"]
 
