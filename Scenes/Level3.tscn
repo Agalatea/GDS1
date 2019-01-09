@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Background_-_level_3.png" type="Texture" id=2]
@@ -6,10 +6,12 @@
 [ext_resource path="res://Assets/Sidewall_-_level_3_(right).png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sidewall_-_level_3_(left).png" type="Texture" id=5]
 [ext_resource path="res://Scenes/BricksBoss.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/brickBoss.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Sounds/Level3/Boss Battle #4 V2.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/Boss/hitBoss.wav" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/brickBoss.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Gui.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/emulogic.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Sounds/Level3/Boss Battle #4 V2.wav" type="AudioStream" id=12]
 
 [sub_resource type="Shader" id=1]
 
@@ -70,12 +72,21 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=11]
+
+size = 17
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Font", "Settings" ]
+
 [node name="Level3" type="Node2D" index="0" groups=[
 "Level",
 ]]
 
 script = ExtResource( 1 )
 LifeCount = 1
+LifeBossCount = 3
 NextLevel = ""
 
 [node name="Background" type="Sprite" parent="." index="0"]
@@ -102,6 +113,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="RightBound" type="Area2D" parent="." index="4"]
 
+editor/display_folded = true
 material = SubResource( 2 )
 position = Vector2( 587.127, 291.591 )
 scale = Vector2( 0.214351, 9.39829 )
@@ -239,15 +251,32 @@ shape = SubResource( 8 )
 
 [node name="BricksFirstBoss" parent="." index="8" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 391.654, 223.632 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="brickBoss" parent="BricksFirstBoss" index="2" instance=ExtResource( 7 )]
+[node name="MusicHitBoss" parent="BricksFirstBoss" index="0"]
+
+stream = ExtResource( 7 )
+
+[node name="brickBoss" parent="BricksFirstBoss" index="2" instance=ExtResource( 8 )]
 
 position = Vector2( 18, 0 )
 HP = 11
 
-[node name="Ball" parent="." index="9" instance=ExtResource( 8 )]
+[node name="BricksSecondBoss" parent="." index="9" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+
+[node name="MusicHitBoss" parent="BricksSecondBoss" index="0"]
+
+stream = null
+
+[node name="MusicDeadBoss" parent="BricksSecondBoss" index="1"]
+
+stream = null
+
+[node name="Ball" parent="." index="10" instance=ExtResource( 9 )]
 
 collision_layer = 2
 collision_mask = 15
@@ -263,42 +292,17 @@ initialBallYSpeed = 270
 ballSpeedIncreaseX = 15
 ballSpeedIncreaseY = 15
 
-[node name="MusicBackground" type="AudioStreamPlayer" parent="." index="10"]
-
-stream = ExtResource( 9 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="MusicHitBrick" type="AudioStreamPlayer" parent="." index="11"]
-
-stream = null
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="MusicBound" type="AudioStreamPlayer" parent="." index="12"]
-
-stream = null
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="GUI" parent="." index="13" instance=ExtResource( 10 )]
+[node name="GUI" parent="." index="11" instance=ExtResource( 10 )]
 
 margin_right = 735.0
 margin_bottom = 540.0
+NameBossFirst = "SCREEDAS THE DEMON OF GREED"
 TextStage = "STAGE 3"
-NameLevel = "NAME LEVEL"
+NameLevel = "CAVE OF EVIL"
 
 [node name="Left" parent="GUI/HBoxContainer" index="0"]
 
+editor/display_folded = false
 margin_right = 595.0
 margin_bottom = 604.0
 
@@ -307,19 +311,39 @@ margin_bottom = 604.0
 margin_right = 595.0
 margin_bottom = 604.0
 
-[node name="MarginContainer" parent="GUI/HBoxContainer/Left/LeftBottom/Rows" index="0"]
+[node name="LifeBoss" parent="GUI/HBoxContainer/Left/LeftBottom/Rows" index="0"]
+
+margin_bottom = 488.0
+
+[node name="VBoxContainer" parent="GUI/HBoxContainer/Left/LeftBottom/Rows/LifeBoss" index="0"]
+
+margin_bottom = 488.0
+
+[node name="LifePoints" parent="GUI/HBoxContainer/Left/LeftBottom/Rows/LifeBoss/VBoxContainer" index="0"]
+
+margin_bottom = 258.0
+
+[node name="MarginContainer" parent="GUI/HBoxContainer/Left/LeftBottom/Rows" index="1"]
 
 margin_top = 492.0
 margin_bottom = 546.0
 
-[node name="MarginContainer2" parent="GUI/HBoxContainer/Left/LeftBottom/Rows" index="1"]
+[node name="MarginContainer2" parent="GUI/HBoxContainer/Left/LeftBottom/Rows" index="2"]
 
 margin_top = 550.0
 margin_bottom = 604.0
 
+[node name="BossSecond" parent="GUI/HBoxContainer/Left" index="1"]
+
+editor/display_folded = true
+
 [node name="TextureRect" parent="GUI/HBoxContainer/Left/BossSecond" index="0"]
 
 frames = SubResource( 9 )
+
+[node name="BossFirst" parent="GUI/HBoxContainer/Left" index="2"]
+
+editor/display_folded = true
 
 [node name="TextureRect" parent="GUI/HBoxContainer/Left/BossFirst" index="0"]
 
@@ -335,7 +359,7 @@ margin_bottom = 604.0
 
 margin_bottom = 604.0
 
-[node name="NameBossSecond" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="2"]
+[node name="NameBossSecond" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="0"]
 
 margin_bottom = 190.0
 
@@ -344,7 +368,7 @@ margin_bottom = 190.0
 margin_top = 61.0
 margin_bottom = 139.0
 
-[node name="NameBossFirst" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="3"]
+[node name="NameBossFirst" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="1"]
 
 margin_top = 194.0
 margin_bottom = 384.0
@@ -354,7 +378,7 @@ margin_bottom = 384.0
 margin_top = 61.0
 margin_bottom = 139.0
 
-[node name="Player" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="4"]
+[node name="Player" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="2"]
 
 margin_top = 388.0
 margin_bottom = 578.0
@@ -363,20 +387,82 @@ margin_bottom = 578.0
 
 margin_bottom = 190.0
 
-[node name="Life" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="5"]
+[node name="Life" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="3"]
 
 margin_top = 582.0
 margin_bottom = 602.0
 
-[connection signal="addScorePoints" from="." to="." method="_on_Main_addScorePoints"]
+[node name="Win" parent="GUI" index="1"]
+
+editor/display_folded = true
+
+[node name="CenterContainer" parent="GUI/Win/MarginContainer" index="0"]
+
+margin_right = 679.0
+margin_bottom = 484.0
+
+[node name="Rows" parent="GUI/Win/MarginContainer/CenterContainer" index="0"]
+
+margin_top = 87.0
+margin_bottom = 277.0
+
+[node name="Text" parent="GUI/Win/MarginContainer/CenterContainer/Rows" index="1"]
+
+text = "Oh hero Sampras!
+You saved
+the world again.
+Forest is at
+peace,
+Prisfolk village
+is safe.
+You can rest
+easy.
+Until the next
+day..."
+
+[node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
+
+margin_right = 679.0
+margin_bottom = 488.0
+
+[node name="VBoxContainer" parent="GUI/Story/MarginContainer/CenterContainer" index="0"]
+
+margin_left = 92.0
+margin_top = 0.0
+margin_right = 466.0
+margin_bottom = 368.0
+
+[node name="TITLE" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="0"]
+
+text = "Stage 3
+Screedas' Lair"
+
+[node name="Label" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="1"]
+
+custom_fonts/font = SubResource( 11 )
+text = "Just one step,
+nest of all evil
+is here,
+Hero smells 
+sulfur and death.
+horrific beast
+was ready,
+demon Screedas
+grins. Final battle is
+about to begin..."
+
+[node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
+
+stream = ExtResource( 12 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="closePause" from="." to="." method="_on_Level_closePause"]
 
 [connection signal="setLifePoints" from="." to="." method="_on_Level_setLifePoints"]
-
-[connection signal="setScorePoints" from="." to="." method="_on_Level_setScorePoints"]
-
-[connection signal="setTime" from="." to="." method="_on_Level_setTime"]
 
 [connection signal="showWin" from="." to="." method="_on_Main_showWin"]
 
@@ -395,6 +481,10 @@ margin_bottom = 602.0
 [connection signal="hitBoss" from="BricksFirstBoss" to="." method="_on_BricksFirstBoss_hitBoss"]
 
 
+[editable path="BricksFirstBoss"]
+[editable path="BricksSecondBoss"]
 [editable path="GUI"]
 [editable path="GUI/HBoxContainer/Left/BossSecond"]
 [editable path="GUI/HBoxContainer/Left/BossFirst"]
+[editable path="GUI/Win"]
+[editable path="GUI/Story"]

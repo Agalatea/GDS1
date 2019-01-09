@@ -1,12 +1,14 @@
 extends Node
-var NextLevel=""
-var LifePoint=0
 var Buttons
 var focusIndex=0
 func getButtons():
 	focusIndex=0
-	Buttons=self.get_tree().get_nodes_in_group("ButtonWin")
+	Buttons=self.get_tree().get_nodes_in_group("ButtonStory")
 	focusButton(Buttons[focusIndex])
+
+func showPause():
+	getButtons()
+	$MusicShow.play()
 
 func focusButton(button):
 	button.set("custom_colors/font_color", Color(1,0,0))
@@ -48,16 +50,13 @@ func enterButton(button):
 	if !self.visible:
 		return
 
-	$MusicInteract.play()
-	if button.is_in_group("Next"):
-		# Remove the current level
-		var level = get_tree().root.get_children()[0]
-		level.queue_free()
-		#Add level to scen
-		var next_level_resource =load("res://Scenes/"+NextLevel+".tscn")
-		var next=next_level_resource.instance()
-		next.emit_signal("setLifePoints",LifePoint)
-		get_tree().root.add_child(next)
-	elif button.is_in_group("Return"):
+	$MusicInteraction.play()
+	if button.is_in_group("ReturnMenu"):
+		$MusicShow.stop()
 		get_tree().root.get_children()[0].queue_free()
 		get_tree().change_scene("res://Scenes/Main.tscn")
+	elif button.is_in_group("ReturnGame"):
+		$MusicShow.stop()
+		get_tree().paused=false
+		self.hide()
+		self.get_parent().get_parent()._on_Level_closeStory()

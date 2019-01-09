@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Background_-_level_1.png" type="Texture" id=2]
@@ -6,10 +6,12 @@
 [ext_resource path="res://Assets/Sidewall_-_level_1_(right).png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sidewall_-_level_1_(left).png" type="Texture" id=5]
 [ext_resource path="res://Scenes/BricksBoss.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Brick.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Gui.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sounds/Level1/13 - Danger.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/Monster/hitMonster2.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Monster/deadMonster2.wav" type="AudioStream" id=8]
+[ext_resource path="res://Scenes/Brick.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Gui.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Sounds/Level1/13 - Danger.ogg" type="AudioStream" id=12]
 
 [sub_resource type="Shader" id=1]
 
@@ -59,6 +61,7 @@ extents = Vector2( 193.469, 30.4565 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 LifeCount = 3
+LifeBossCount = 0
 NextLevel = "Level2"
 
 [node name="Background" type="Sprite" parent="." index="0"]
@@ -83,6 +86,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="RightBound" type="Area2D" parent="." index="4"]
 
+editor/display_folded = true
 material = SubResource( 2 )
 position = Vector2( 589, 291.591 )
 scale = Vector2( 0.214351, 9.39829 )
@@ -126,6 +130,7 @@ shape = SubResource( 4 )
 
 [node name="LeftBound" type="Area2D" parent="." index="5"]
 
+editor/display_folded = true
 position = Vector2( 213.015, 208.054 )
 scale = Vector2( 0.233815, 0.835998 )
 input_pickable = true
@@ -220,64 +225,73 @@ shape = SubResource( 8 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 389.604, 123.481 )
 
-[node name="Brick14" parent="BricksSecondBoss" index="2" instance=ExtResource( 7 )]
+[node name="MusicHitBoss" parent="BricksSecondBoss" index="0"]
+
+stream = ExtResource( 7 )
+
+[node name="MusicDeadBoss" parent="BricksSecondBoss" index="1"]
+
+stream = ExtResource( 8 )
+
+[node name="Brick14" parent="BricksSecondBoss" index="2" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -125.681, 15.151 )
 
-[node name="Brick19" parent="BricksSecondBoss" index="3" instance=ExtResource( 7 )]
+[node name="Brick19" parent="BricksSecondBoss" index="3" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -125.681, -14.849 )
 
-[node name="Brick18" parent="BricksSecondBoss" index="4" instance=ExtResource( 7 )]
+[node name="Brick18" parent="BricksSecondBoss" index="4" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -74.681, 15.151 )
 
-[node name="Brick20" parent="BricksSecondBoss" index="5" instance=ExtResource( 7 )]
+[node name="Brick20" parent="BricksSecondBoss" index="5" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -74.681, -14.849 )
 
-[node name="Brick13" parent="BricksSecondBoss" index="6" instance=ExtResource( 7 )]
+[node name="Brick13" parent="BricksSecondBoss" index="6" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 35.0354, 15.151 )
 
-[node name="Brick24" parent="BricksSecondBoss" index="7" instance=ExtResource( 7 )]
+[node name="Brick24" parent="BricksSecondBoss" index="7" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 35.0354, -14.849 )
 
-[node name="Brick16" parent="BricksSecondBoss" index="8" instance=ExtResource( 7 )]
+[node name="Brick16" parent="BricksSecondBoss" index="8" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 87.0354, 15.151 )
 
-[node name="Brick22" parent="BricksSecondBoss" index="9" instance=ExtResource( 7 )]
+[node name="Brick22" parent="BricksSecondBoss" index="9" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 87.0354, -14.849 )
 
-[node name="Brick15" parent="BricksSecondBoss" index="10" instance=ExtResource( 7 )]
+[node name="Brick15" parent="BricksSecondBoss" index="10" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 137.825, 15.151 )
 
-[node name="Brick21" parent="BricksSecondBoss" index="11" instance=ExtResource( 7 )]
+[node name="Brick21" parent="BricksSecondBoss" index="11" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 137.825, -14.849 )
 
-[node name="Brick17" parent="BricksSecondBoss" index="12" instance=ExtResource( 7 )]
+[node name="Brick17" parent="BricksSecondBoss" index="12" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -21.175, 15.151 )
 
-[node name="Brick23" parent="BricksSecondBoss" index="13" instance=ExtResource( 7 )]
+[node name="Brick23" parent="BricksSecondBoss" index="13" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -21.175, -14.849 )
@@ -288,67 +302,67 @@ editor/display_folded = true
 position = Vector2( 391.654, 301.632 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 7 )]
+[node name="Brick" parent="BricksFirstBoss" index="0" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -127.731, 0 )
 
-[node name="Brick8" parent="BricksFirstBoss" index="1" instance=ExtResource( 7 )]
+[node name="Brick8" parent="BricksFirstBoss" index="1" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -127.731, -30 )
 
-[node name="Brick4" parent="BricksFirstBoss" index="2" instance=ExtResource( 7 )]
+[node name="Brick4" parent="BricksFirstBoss" index="2" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -76.731, 0 )
 
-[node name="Brick12" parent="BricksFirstBoss" index="3" instance=ExtResource( 7 )]
+[node name="Brick12" parent="BricksFirstBoss" index="3" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -76.731, -30 )
 
-[node name="Brick2" parent="BricksFirstBoss" index="4" instance=ExtResource( 7 )]
+[node name="Brick2" parent="BricksFirstBoss" index="4" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 32.9854, 0 )
 
-[node name="Brick7" parent="BricksFirstBoss" index="5" instance=ExtResource( 7 )]
+[node name="Brick7" parent="BricksFirstBoss" index="5" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 32.9854, -30 )
 
-[node name="Brick5" parent="BricksFirstBoss" index="6" instance=ExtResource( 7 )]
+[node name="Brick5" parent="BricksFirstBoss" index="6" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 84.9854, 0 )
 
-[node name="Brick10" parent="BricksFirstBoss" index="7" instance=ExtResource( 7 )]
+[node name="Brick10" parent="BricksFirstBoss" index="7" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 84.9854, -30 )
 
-[node name="Brick3" parent="BricksFirstBoss" index="8" instance=ExtResource( 7 )]
+[node name="Brick3" parent="BricksFirstBoss" index="8" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 135.775, 0 )
 
-[node name="Brick9" parent="BricksFirstBoss" index="9" instance=ExtResource( 7 )]
+[node name="Brick9" parent="BricksFirstBoss" index="9" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 135.775, -30 )
 
-[node name="Brick6" parent="BricksFirstBoss" index="10" instance=ExtResource( 7 )]
+[node name="Brick6" parent="BricksFirstBoss" index="10" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -23.225, 0 )
 
-[node name="Brick11" parent="BricksFirstBoss" index="11" instance=ExtResource( 7 )]
+[node name="Brick11" parent="BricksFirstBoss" index="11" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -23.225, -30 )
 
-[node name="Ball" parent="." index="10" instance=ExtResource( 8 )]
+[node name="Ball" parent="." index="10" instance=ExtResource( 10 )]
 
 collision_layer = 2
 collision_mask = 15
@@ -364,7 +378,7 @@ initialBallYSpeed = 300
 ballSpeedIncreaseX = 10
 ballSpeedIncreaseY = 10
 
-[node name="GUI" parent="." index="11" instance=ExtResource( 9 )]
+[node name="GUI" parent="." index="11" instance=ExtResource( 11 )]
 
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -376,10 +390,55 @@ NameBossSecond = "SLYTHANG THE LETHAL"
 TextStage = "Stage 1"
 NameLevel = "Gump Forest"
 
+[node name="Left" parent="GUI/HBoxContainer" index="0"]
+
+margin_right = 595.0
+
+[node name="LeftBottom" parent="GUI/HBoxContainer/Left" index="0"]
+
+margin_right = 595.0
+
+[node name="Right" parent="GUI/HBoxContainer" index="1"]
+
+margin_left = 599.0
+margin_right = 799.0
+
+[node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
+
+margin_right = 679.0
+margin_bottom = 552.0
+
+[node name="VBoxContainer" parent="GUI/Story/MarginContainer/CenterContainer" index="0"]
+
+margin_left = 99.0
+margin_top = 0.0
+margin_right = 459.0
+margin_bottom = 432.0
+
+[node name="TITLE" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="0"]
+
+text = "Stage 1
+Gump Forest"
+
+[node name="Label" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="1"]
+
+text = "Magic knight
+Sampras,
+Prisfolk guard,
+enters dread forest,
+house of evil,
+it is said.
+Standing up
+to a quest
+He encounters:
+deadly snake
+and
+queen of spiders."
+
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 
 pause_mode = 1
-stream = ExtResource( 10 )
+stream = ExtResource( 12 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -387,15 +446,9 @@ mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Pause" ]
 
-[connection signal="addScorePoints" from="." to="." method="_on_Main_addScorePoints"]
-
 [connection signal="closePause" from="." to="." method="_on_Level_closePause"]
 
 [connection signal="setLifePoints" from="." to="." method="_on_Level_setLifePoints"]
-
-[connection signal="setScorePoints" from="." to="." method="_on_Level_setScorePoints"]
-
-[connection signal="setTime" from="." to="." method="_on_Level_setTime"]
 
 [connection signal="showWin" from="." to="." method="_on_Main_showWin"]
 
@@ -418,3 +471,7 @@ _sections_unfolded = [ "Pause" ]
 [connection signal="hitBoss" from="BricksFirstBoss" to="." method="_on_BricksFirstBoss_hitBoss"]
 
 
+[editable path="BricksSecondBoss"]
+[editable path="BricksFirstBoss"]
+[editable path="GUI"]
+[editable path="GUI/Story"]

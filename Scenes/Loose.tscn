@@ -119,8 +119,8 @@ alignment = 0
 _sections_unfolded = [ "custom_constants" ]
 
 [node name="Return" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer" index="0" groups=[
-"Return",
 "ButtonLoose",
+"Return",
 ]]
 
 anchor_left = 0.0

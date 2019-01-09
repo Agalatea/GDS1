@@ -5,28 +5,29 @@ extends Node2D
 # var b = "textvar"
 var winer=false
 var loose=false
+var startingGame=true
 var pauseMusic
 export (int) var LifeCount
+export (int) var LifeBossCount=0
 export var NextLevel=""
-var scorePoints=0
 signal showWin
-signal addScorePoints
-signal setScorePoints(points)
 signal setLifePoints(points)
-signal setTime(minute, secondd)
 signal closePause
 func _ready():
 	start()
 	$GUI.emit_signal("addLifePoints",LifeCount)
+	if(LifeBossCount>0):
+		$GUI.emit_signal("addLifePointsBoss",LifeBossCount)
 	$GUI.emit_signal("setNextLevel",NextLevel)
 	winer=false
 	loose=false
 	$MusicBackground.play()
 	get_tree().paused=false
-	
-
 
 func _process(delta):
+	if(startingGame):
+		_showStory()
+		startingGame=false
 	if Input.is_action_pressed("ui_left")  ||  Input.is_action_pressed("ui_right"): 
 		$Ball.emit_signal("paddleMove", $Paddle.position) 
 
@@ -87,11 +88,11 @@ func _on_Main_showWin():
 	else:
 		$GUI.emit_signal("visibleNextLexel",false)
 		$GUI.emit_signal("visibleReturnMain",true)
+		$GUI/Win/MarginContainer/CenterContainer/Rows/Title.visible=false
+		$GUI/Win/MarginContainer/CenterContainer/Rows/Text.visible=true
 		$GUI/Win/Victory.play()
 	$GUI/Win.show()
 	$GUI/AnimationPlayer.play("Win")
-	$GUI/Win.Seconds=$GUI.second
-	$GUI/Win.Minute=$GUI.minute
 	$GUI/Win.LifePoint=self.LifeCount
 
 
@@ -105,39 +106,46 @@ func start():
 	$Ball._reset()
 	$Ball.start($PaddleStartPosition.position)
 
-func _on_Main_addScorePoints():
-	scorePoints=scorePoints+1
-	$GUI.emit_signal("addScorePoints",scorePoints)
-
-
 func _on_BricksSecondBoss_dead():
 	$GUI.emit_signal("deadBossSecond")
 
-
 func _on_BricksFirstBoss_dead():
 	$GUI.emit_signal("deadBossFirst")
-
+	if(LifeBossCount>0):
+		$GUI.emit_signal("losseLifePointBoss")
 
 func _on_BricksSecondBoss_hitBoss():
 	$GUI.emit_signal("hitBossSecond")
 
-
 func _on_BricksFirstBoss_hitBoss():
 	$GUI.emit_signal("hitBossFirst")
-
-func _on_Level_setScorePoints(points):
-	scorePoints=points
-	$GUI.emit_signal("addScorePoints",scorePoints)
-
+	if(LifeBossCount>0):
+		$GUI.emit_signal("losseLifePointBoss")
 
 func _on_Level_setLifePoints(points):
 	LifeCount=points
 
-
-func _on_Level_setTime(minute, secondd):
-	$GUI.minute=minute
-	$GUI.second=secondd
-
 func _on_Level_closePause():
+	$MusicBackground.play()
+	$MusicBackground.seek(pauseMusic)
+
+func _showStory():
+	get_tree().paused=true
+	$Ball.visible=false
+	$Paddle.visible=false
+	$BricksFirstBoss.visible=false
+	$BricksSecondBoss.visible=false
+	$GUI._on_GUI_hideElement()
+	$GUI/Story.show()
+	$GUI/Story.showPause()
+	pauseMusic = $MusicBackground.get_playback_position( )
+	$MusicBackground.stop()
+
+func _on_Level_closeStory():
+	$Ball.visible=true
+	$Paddle.visible=true
+	$BricksFirstBoss.visible=true
+	$BricksSecondBoss.visible=true
+	$GUI._on_GUI_showElement()
 	$MusicBackground.play()
 	$MusicBackground.seek(pauseMusic)

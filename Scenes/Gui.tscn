@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Gui.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Background_-_left&right_side_200x600.png" type="Texture" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://Scenes/Win.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Loose.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Sounds/GameOver/lostLifePoint.wav" type="AudioStream" id=9]
+[ext_resource path="res://Scenes/Story.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sounds/GameOver/lostLifePoint.wav" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -20,45 +21,13 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
 
-size = 10
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=3]
-
-size = 10
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=4]
-
-size = 10
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=5]
-
-size = 10
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=6]
-
 size = 18
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 
 resource_name = "deadBossFirst"
 length = 1.0
@@ -77,7 +46,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.475137 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 
 resource_name = "deadBossSecond"
 length = 1.0
@@ -96,7 +65,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.486196 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 
 length = 1.0
 loop = false
@@ -114,7 +83,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 660 ), Vector2( 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=6]
 
 length = 1.0
 loop = false
@@ -170,6 +139,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="Left" type="MarginContainer" parent="HBoxContainer" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -222,8 +192,68 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Left/LeftBottom/Rows" index="0"]
+[node name="LifeBoss" type="MarginContainer" parent="HBoxContainer/Left/LeftBottom/Rows" index="0"]
 
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 200.0
+margin_bottom = 484.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 230
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Margin", "Size Flags", "custom_constants" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left/LeftBottom/Rows/LifeBoss" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 230.0
+margin_right = 180.0
+margin_bottom = 484.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 10
+alignment = 1
+_sections_unfolded = [ "custom_constants" ]
+
+[node name="LifePoints" type="HBoxContainer" parent="HBoxContainer/Left/LeftBottom/Rows/LifeBoss/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 160.0
+margin_bottom = 254.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 40
+alignment = 1
+_sections_unfolded = [ "Anchor", "Margin", "Size Flags", "custom_constants" ]
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Left/LeftBottom/Rows" index="1"]
+
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -265,8 +295,9 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Left/LeftBottom/Rows" index="1"]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Left/LeftBottom/Rows" index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -341,7 +372,6 @@ _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Pause", "Rect", "S
 [node name="LeftTop2" type="TextureRect" parent="HBoxContainer/Right" index="0"]
 
 pause_mode = 2
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -361,7 +391,6 @@ _sections_unfolded = [ "Pause", "Theme" ]
 [node name="RightPanel" type="VBoxContainer" parent="HBoxContainer/Right/LeftTop2" index="0"]
 
 pause_mode = 2
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -373,183 +402,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 1
-_sections_unfolded = [ "Pause", "Size Flags" ]
+_sections_unfolded = [ "Pause" ]
 
-[node name="ScorePoint" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="0"]
-
-editor/display_folded = true
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 202.0
-margin_bottom = 62.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_constants/margin_top = 30
-_sections_unfolded = [ "Margin", "Pause", "custom_constants" ]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel/ScorePoint" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 8.0
-margin_top = 30.0
-margin_right = 202.0
-margin_bottom = 62.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/ScorePoint/VBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 194.0
-margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
-text = "Soccer point"
-align = 1
-valign = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="Score" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/ScorePoint/VBoxContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 18.0
-margin_right = 194.0
-margin_bottom = 32.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
-text = "000000000"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="Time" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="1"]
-
-editor/display_folded = true
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 66.0
-margin_right = 202.0
-margin_bottom = 128.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_constants/margin_top = 30
-_sections_unfolded = [ "Margin" ]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel/Time" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 8.0
-margin_top = 30.0
-margin_right = 202.0
-margin_bottom = 62.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/Time/VBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 194.0
-margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
-text = "Time"
-align = 1
-valign = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="Time" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/Time/VBoxContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 18.0
-margin_right = 194.0
-margin_bottom = 32.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
-text = "0:00"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="NameBossSecond" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="2"]
+[node name="NameBossSecond" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="0"]
 
 pause_mode = 2
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -566,7 +423,7 @@ custom_constants/margin_right = 20
 custom_constants/margin_top = 30
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
-_sections_unfolded = [ "Margin", "Pause", "Size Flags", "Visibility", "custom_constants" ]
+_sections_unfolded = [ "Anchor", "Margin", "Pause", "Size Flags", "Visibility", "custom_constants" ]
 
 [node name="NameBossSecond" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/NameBossSecond" index="0"]
 
@@ -585,7 +442,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "Name Boss Second"
 align = 1
 valign = 1
@@ -595,7 +452,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Pause", "Visibility", "custom_fonts" ]
 
-[node name="NameBossFirst" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="3"]
+[node name="NameBossFirst" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="1"]
 
 pause_mode = 2
 editor/display_folded = true
@@ -616,7 +473,7 @@ custom_constants/margin_right = 20
 custom_constants/margin_top = 30
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
-_sections_unfolded = [ "Margin", "Pause", "Size Flags", "Visibility", "custom_constants" ]
+_sections_unfolded = [ "Pause", "Size Flags", "Visibility" ]
 
 [node name="NameBossFirst" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/NameBossFirst" index="0"]
 
@@ -635,7 +492,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "Name Boss First"
 align = 1
 valign = 1
@@ -645,7 +502,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Pause", "custom_fonts" ]
 
-[node name="Player" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="4"]
+[node name="Player" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="2"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -700,7 +557,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Player Avatar"
 align = 1
@@ -711,7 +568,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="Life" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="5"]
+[node name="Life" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="3"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -767,24 +624,24 @@ custom_constants/separation = 40
 alignment = 1
 _sections_unfolded = [ "Anchor", "Margin", "Size Flags", "custom_constants" ]
 
-[node name="AnimationBossFirst" type="AnimationPlayer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="6"]
+[node name="AnimationBossFirst" type="AnimationPlayer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="4"]
 
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/deadBossFirst = SubResource( 7 )
+anims/deadBossFirst = SubResource( 3 )
 blend_times = [  ]
 
-[node name="AnimationBossSecond" type="AnimationPlayer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="7"]
+[node name="AnimationBossSecond" type="AnimationPlayer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="5"]
 
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/deadBossSecond = SubResource( 8 )
+anims/deadBossSecond = SubResource( 4 )
 blend_times = [  ]
 
 [node name="Win" parent="." index="1" instance=ExtResource( 6 )]
@@ -811,8 +668,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Loose = SubResource( 9 )
-anims/Win = SubResource( 10 )
+anims/Loose = SubResource( 5 )
+anims/Win = SubResource( 6 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 
@@ -820,18 +677,13 @@ _sections_unfolded = [ "Pause" ]
 
 visible = false
 
-[node name="Timer" type="Timer" parent="." index="5"]
+[node name="Story" parent="." index="5" instance=ExtResource( 9 )]
 
-pause_mode = 1
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = true
-_sections_unfolded = [ "Pause" ]
+visible = false
 
 [node name="MusicLostLifePoint" type="AudioStreamPlayer" parent="." index="6"]
 
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -840,7 +692,7 @@ bus = "Master"
 
 [connection signal="addLifePoints" from="." to="." method="_on_GUI_addLifePoints"]
 
-[connection signal="addScorePoints" from="." to="." method="_on_GUI_addScorePoints"]
+[connection signal="addLifePointsBoss" from="." to="." method="_on_GUI_addLifePointsBoss"]
 
 [connection signal="deadBossFirst" from="." to="." method="_on_GUI_deadBossFirst"]
 
@@ -850,18 +702,20 @@ bus = "Master"
 
 [connection signal="deadBossSecond" from="." to="HBoxContainer/Left/BossSecond" method="_on_Boss_dead"]
 
+[connection signal="hideElement" from="." to="." method="_on_GUI_hideElement"]
+
 [connection signal="hitBossFirst" from="." to="HBoxContainer/Left/BossFirst" method="_hitBoss"]
 
 [connection signal="hitBossSecond" from="." to="HBoxContainer/Left/BossSecond" method="_hitBoss"]
 
+[connection signal="losseLifePointBoss" from="." to="." method="_on_GUI_losseLifePointBoss"]
+
 [connection signal="setNextLevel" from="." to="." method="_on_GUI_setNextLevel"]
 
-[connection signal="setTime" from="." to="." method="_on_GUI_setTime"]
+[connection signal="showElement" from="." to="." method="_on_GUI_showElement"]
 
 [connection signal="visibleNextLexel" from="." to="." method="_on_GUI_visibleNextLexel"]
 
 [connection signal="visibleReturnMain" from="." to="." method="_on_GUI_visibleReturnMain"]
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

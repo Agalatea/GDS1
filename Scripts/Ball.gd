@@ -26,6 +26,7 @@ var _initial_state
 var _initial_position
 
 func _ready():
+    starting =true
     _initial_position = get_global_transform().origin
     self.set_physics_process(true)
     paddleSpeedFactor = 1.3
@@ -37,7 +38,8 @@ func _process(delta):
 		set_linear_velocity(Vector2(rand_range(-200,200),-200).normalized()*300)
 		starting = false
 	if (starting) :
-		self._initial_state.transform.origin = paddlePosition
+		if(_initial_state!=null):
+			self._initial_state.transform.origin = paddlePosition
 		self.transform.origin = paddlePosition
 	else:
 		var maxX = 0
@@ -63,7 +65,7 @@ func _process(delta):
 #	elif linear_velocity.x <0 and linear_velocity.x > -30:
 #		linear_velocity.x = -30 
 #	print ("LI  "+ str(linear_velocity))
-	
+
 func _integrate_forces(state):
 	_initial_state=state
 	if (starting) :
@@ -172,7 +174,6 @@ func _Brick_Hit(body):
 		if(body.HP-1<=0):
 			body.beFree=true
 		var tree=body.get_tree()
-		get_tree().root.get_tree().get_nodes_in_group("Level")[0].emit_signal("addScorePoints")
 		$MusicBoundBrick.play()
 		
 #		#Sprawdzanie dead bossa
