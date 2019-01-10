@@ -54,13 +54,13 @@ extents = Vector2( 25.6705, 27.3838 )
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 30.4565 )
 
-[node name="Level1" type="Node2D" groups=[
+[node name="Level1" type="Node2D" index="0" groups=[
 "Level",
 ]]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
-LifeCount = 3
+LifeCount = 5
 LifeBossCount = 0
 NextLevel = "Level2"
 
@@ -405,14 +405,14 @@ margin_right = 799.0
 
 [node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
 
-margin_right = 679.0
+margin_right = 789.0
 margin_bottom = 552.0
 
 [node name="VBoxContainer" parent="GUI/Story/MarginContainer/CenterContainer" index="0"]
 
-margin_left = 99.0
+margin_left = 200.0
 margin_top = 0.0
-margin_right = 459.0
+margin_right = 578.0
 margin_bottom = 432.0
 
 [node name="TITLE" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="0"]
@@ -422,18 +422,18 @@ Gump Forest"
 
 [node name="Label" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="1"]
 
-text = "Magic knight
-Sampras,
-Prisfolk guard,
-enters dread forest,
-house of evil,
-it is said.
-Standing up
-to a quest
-He encounters:
-deadly snake
-and
-queen of spiders."
+text = "Sampras, 
+a magic knight and 
+a guard of Prisfolk 
+enters 
+a dreadful forest, 
+\"the house of evil\" 
+some call it.
+Standing up 
+to his quest 
+he encounters 
+a deadly snake and 
+the queen of spiders."
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 

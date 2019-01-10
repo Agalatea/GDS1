@@ -80,7 +80,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Level3" type="Node2D" index="0" groups=[
+[node name="Level3" type="Node2D" groups=[
 "Level",
 ]]
 
@@ -300,9 +300,12 @@ NameBossFirst = "SCREEDAS THE DEMON OF GREED"
 TextStage = "STAGE 3"
 NameLevel = "CAVE OF EVIL"
 
+[node name="HBoxContainer" parent="GUI" index="0"]
+
+editor/display_folded = true
+
 [node name="Left" parent="GUI/HBoxContainer" index="0"]
 
-editor/display_folded = false
 margin_right = 595.0
 margin_bottom = 604.0
 
@@ -392,10 +395,6 @@ margin_bottom = 190.0
 margin_top = 582.0
 margin_bottom = 602.0
 
-[node name="Win" parent="GUI" index="1"]
-
-editor/display_folded = true
-
 [node name="CenterContainer" parent="GUI/Win/MarginContainer" index="0"]
 
 margin_right = 679.0
@@ -409,28 +408,26 @@ margin_bottom = 277.0
 [node name="Text" parent="GUI/Win/MarginContainer/CenterContainer/Rows" index="1"]
 
 text = "Oh hero Sampras!
-You saved
-the world again.
-Forest is at
-peace,
+You saved the world 
+again.
+Forest is at peace,
 Prisfolk village
 is safe.
-You can rest
-easy.
-Until the next
-day..."
+You can rest easy.
+Until the next day..."
+align = 1
 
 [node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
 
-margin_right = 679.0
-margin_bottom = 488.0
+margin_right = 789.0
+margin_bottom = 514.0
 
 [node name="VBoxContainer" parent="GUI/Story/MarginContainer/CenterContainer" index="0"]
 
-margin_left = 92.0
+margin_left = 168.0
 margin_top = 0.0
-margin_right = 466.0
-margin_bottom = 368.0
+margin_right = 610.0
+margin_bottom = 394.0
 
 [node name="TITLE" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="0"]
 
@@ -440,16 +437,17 @@ Screedas' Lair"
 [node name="Label" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="1"]
 
 custom_fonts/font = SubResource( 11 )
-text = "Just one step,
-nest of all evil
-is here,
-Hero smells 
-sulfur and death.
-horrific beast
-was ready,
-demon Screedas
-grins. Final battle is
-about to begin..."
+text = "Just a single step closer,
+the nest of all evil 
+is here.
+The hero's nostrils fill 
+with the stench 
+of sulfur and death.
+But the horrific beast 
+was ready. 
+The demon Screedas grins. 
+The final battle 
+is about to begin."
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 

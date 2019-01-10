@@ -246,6 +246,7 @@ shape = SubResource( 8 )
 
 [node name="BricksSecondBoss" parent="." index="8" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 389.604, 71.481 )
 
 [node name="Brick2" parent="BricksSecondBoss" index="0" instance=ExtResource( 7 )]
@@ -330,6 +331,7 @@ stream = ExtResource( 9 )
 
 [node name="BricksFirstBoss" parent="." index="9" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 391.654, 299.632 )
 _sections_unfolded = [ "Transform" ]
 
@@ -440,7 +442,6 @@ NameLevel = "CAVE ENTRANCE"
 
 [node name="Left" parent="GUI/HBoxContainer" index="0"]
 
-editor/display_folded = false
 margin_right = 594.0
 margin_bottom = 603.0
 
@@ -524,14 +525,14 @@ margin_bottom = 602.0
 
 [node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
 
-margin_right = 678.0
+margin_right = 788.0
 margin_bottom = 552.0
 
 [node name="VBoxContainer" parent="GUI/Story/MarginContainer/CenterContainer" index="0"]
 
-margin_left = 108.0
+margin_left = 218.0
 margin_top = 0.0
-margin_right = 450.0
+margin_right = 560.0
 margin_bottom = 432.0
 
 [node name="TITLE" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="0"]
@@ -543,16 +544,13 @@ Ni'q Cave"
 
 text = "Moving forward, 
 Sampras sees 
-cave entrance
-and feels 
-the danger
-from within.
-However it is
-guarded by two
-vile monsters:
-sneaky imp
-and
-hideous beholder..."
+a cave entrance 
+and feels danger 
+emanating from within.
+It is guarded by 
+two vile monsters, 
+a sneaky imp and 
+a hideous beholder."
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 
