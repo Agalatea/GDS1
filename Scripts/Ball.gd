@@ -41,30 +41,6 @@ func _process(delta):
 		if(_initial_state!=null):
 			self._initial_state.transform.origin = paddlePosition
 		self.transform.origin = paddlePosition
-	else:
-		var maxX = 0
-		var maxY = 0
-		if (initialBallXSpeed + hitTimes * ballSpeedIncreaseX < maxBallXSpeed ):
-			maxX = initialBallXSpeed + hitTimes * ballSpeedIncreaseX 
-		else:
-			maxX = maxBallXSpeed
-		if (initialBallYSpeed + hitTimes * ballSpeedIncreaseY < maxBallYSpeed ):
-			maxY = initialBallYSpeed + hitTimes * ballSpeedIncreaseY 
-		else:
-			maxY = maxBallYSpeed
-		if linear_velocity.y > maxY:
-			linear_velocity.y=maxY
-		elif linear_velocity.y < -1 * maxY:
-			linear_velocity.y=-1 * maxY
-		if linear_velocity.x > maxX:
-			linear_velocity.x = maxX
-		elif linear_velocity.x < -1 * maxX:
-			linear_velocity.x = -1 * maxX
-#	elif linear_velocity.x >0 and linear_velocity.x < 30:
-#		linear_velocity.x = 30
-#	elif linear_velocity.x <0 and linear_velocity.x > -30:
-#		linear_velocity.x = -30 
-#	print ("LI  "+ str(linear_velocity))
 
 func _integrate_forces(state):
 	_initial_state=state
@@ -170,33 +146,37 @@ func _on_Ball_brickHit(brickBody):
 	pass
 
 func _Brick_Hit(body):
-	#Sprawdzenie trafienia klocka
-		if(body.HP-1<=0):
-			body.beFree=true
 		var tree=body.get_tree()
 		$MusicBoundBrick.play()
-		
-#		#Sprawdzanie dead bossa
 		var win=true
+#			#Sprawdzenie trafienia klocka
 		for boss in tree.get_nodes_in_group("bricksBoss"):
 			var  countBrick=float(0)
-			var dead=true
+			var dead=false
 			var nodeBoss
+			if(boss.get_children().size()-2<=0):
+				dead=true
 			for node in boss.get_children():
 				if(node.is_in_group("brick")):
 					if( node.is_in_group("Boss")):
 						nodeBoss=node
-					if(!node.beFree):
-						dead=false
-						win=false
+						if(nodeBoss.HP>0):
+							dead=false
+						else:
+							dead=true
+					elif(boss.get_children().size()-3<=0):
+							if(body==node):
+								dead=true
 					countBrick=countBrick+1
-				
+			#Sprawdzanie dead bossa
 			if(dead && !boss._isDead()):
 				boss.emit_signal("dead")
 				if(nodeBoss!=null):
 					nodeBoss.beFree=false
 					nodeBoss.emit_signal("dead")
-				
+			if(!boss._isDead()):
+				win=false
+
 			#Sprawdzanie hit bossa
 			if (body.get_parent() == boss && !boss._isDead() && ((countBrick-1)/boss.countBricks) <= float(boss.rangeHit)/float(3)):
 				var childrenIsBoss=null
@@ -212,7 +192,8 @@ func _Brick_Hit(body):
 					boss.emit_signal("hitBoss")
 					if(childrenIsBoss!=null):
 						childrenIsBoss._hitBoss()
-
+		
+		#Sprawdzenie wygranej
 		if(win):
 			get_tree().root.get_tree().get_nodes_in_group("Level")[0].emit_signal("showWin")
 

@@ -33,15 +33,15 @@ func losse_LifePoint():
 
 
 func _on_GUI_visibleNextLexel(value):
-	$Win/MarginContainer/CenterContainer/Rows/ExitRow/NextLevel.visible=value
+	$Win/MarginContainer/CenterContainer/Rows/ExitRow/Next/NextLevel.visible=value
 	if(!value):
-		$Win.Buttons.erase($Win/MarginContainer/CenterContainer/Rows/ExitRow/NextLevel)
+		$Win.Buttons.erase($Win/MarginContainer/CenterContainer/Rows/ExitRow/Next/NextLevel)
 		$Win.focusButton($Win.Buttons[0])
 
 func _on_GUI_visibleReturnMain(value):
-	$Win/MarginContainer/CenterContainer/Rows/ExitRow/Return.visible=value
+	$Win/MarginContainer/CenterContainer/Rows/ExitRow/Main/Return.visible=value
 	if(!value):
-		$Win.Buttons.erase($Win/MarginContainer/CenterContainer/Rows/ExitRow/Return)
+		$Win.Buttons.erase($Win/MarginContainer/CenterContainer/Rows/ExitRow/Main/Return)
 		$Win.focusButton($Win.Buttons[0])
 
 func _on_GUI_setNextLevel(text):

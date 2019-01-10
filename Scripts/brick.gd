@@ -28,7 +28,7 @@ func _on_brick_body_entered(body):
 	if (body.get_name() == "Ball"):
 		HP=HP-1
 		body.emit_signal("brickHit", self )
-		if(HP<=0):
+		if(HP<=0 && !self.is_in_group("Boss")):
 			beFree = true
 
 func _on_brick_changeColor(index):

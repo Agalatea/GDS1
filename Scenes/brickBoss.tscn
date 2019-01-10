@@ -50,7 +50,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.320313, 0.0613098, 0.0613098, 1 ), Color( 1, 1, 1, 1 ), Color( 0.359375, 0.0715942, 0.0715942, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="brickBoss" type="Area2D" index="0" groups=[
+[node name="brickBoss" type="Area2D" groups=[
 "brick",
 "Boss",
 ]]

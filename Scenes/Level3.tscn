@@ -80,7 +80,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Level3" type="Node2D" groups=[
+[node name="Level3" type="Node2D" index="0" groups=[
 "Level",
 ]]
 
@@ -251,7 +251,6 @@ shape = SubResource( 8 )
 
 [node name="BricksFirstBoss" parent="." index="8" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 391.654, 223.632 )
 _sections_unfolded = [ "Transform" ]
 
@@ -320,11 +319,8 @@ margin_bottom = 488.0
 
 [node name="VBoxContainer" parent="GUI/HBoxContainer/Left/LeftBottom/Rows/LifeBoss" index="0"]
 
-margin_bottom = 488.0
-
-[node name="LifePoints" parent="GUI/HBoxContainer/Left/LeftBottom/Rows/LifeBoss/VBoxContainer" index="0"]
-
-margin_bottom = 258.0
+margin_top = 244.0
+margin_bottom = 244.0
 
 [node name="MarginContainer" parent="GUI/HBoxContainer/Left/LeftBottom/Rows" index="1"]
 
@@ -402,8 +398,10 @@ margin_bottom = 484.0
 
 [node name="Rows" parent="GUI/Win/MarginContainer/CenterContainer" index="0"]
 
-margin_top = 87.0
-margin_bottom = 277.0
+margin_left = 114.0
+margin_top = 117.0
+margin_right = 444.0
+margin_bottom = 246.0
 
 [node name="Text" parent="GUI/Win/MarginContainer/CenterContainer/Rows" index="1"]
 
@@ -419,15 +417,19 @@ align = 1
 
 [node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
 
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 120.0
 margin_right = 789.0
-margin_bottom = 514.0
+margin_bottom = 538.0
 
 [node name="VBoxContainer" parent="GUI/Story/MarginContainer/CenterContainer" index="0"]
 
 margin_left = 168.0
 margin_top = 0.0
 margin_right = 610.0
-margin_bottom = 394.0
+margin_bottom = 418.0
 
 [node name="TITLE" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="0"]
 
@@ -448,6 +450,13 @@ was ready.
 The demon Screedas grins. 
 The final battle 
 is about to begin."
+
+[node name="ReturnGame" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/CenterContainer" index="0"]
+
+margin_left = 185.0
+margin_top = 197.0
+margin_right = 257.0
+margin_bottom = 221.0
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 

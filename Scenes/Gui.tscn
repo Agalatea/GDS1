@@ -190,7 +190,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 2
 
-[node name="LifeBoss" type="MarginContainer" parent="HBoxContainer/Left/LeftBottom/Rows" index="0"]
+[node name="LifeBoss" type="CenterContainer" parent="HBoxContainer/Left/LeftBottom/Rows" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -204,11 +204,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 20
-custom_constants/margin_top = 230
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 0
-_sections_unfolded = [ "Margin", "Size Flags", "custom_constants" ]
+use_top_left = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left/LeftBottom/Rows/LifeBoss" index="0"]
 
@@ -216,10 +212,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 20.0
-margin_top = 230.0
-margin_right = 180.0
-margin_bottom = 484.0
+margin_left = 100.0
+margin_top = 242.0
+margin_right = 100.0
+margin_bottom = 242.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -230,14 +226,12 @@ custom_constants/separation = 10
 alignment = 1
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
 
-[node name="LifePoints" type="HBoxContainer" parent="HBoxContainer/Left/LeftBottom/Rows/LifeBoss/VBoxContainer" index="0"]
+[node name="LifePoints" type="VBoxContainer" parent="HBoxContainer/Left/LeftBottom/Rows/LifeBoss/VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 160.0
-margin_bottom = 254.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -347,6 +341,7 @@ position = Vector2( 99.495, 280.797 )
 [node name="Right" type="MarginContainer" parent="HBoxContainer" index="1"]
 
 pause_mode = 2
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
