@@ -54,13 +54,13 @@ extents = Vector2( 25.6705, 27.3838 )
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 30.4565 )
 
-[node name="Level1" type="Node2D" groups=[
+[node name="Level1" type="Node2D" index="0" groups=[
 "Level",
 ]]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
-LifeCount = 4
+LifeCount = 3
 LifeBossCount = 0
 NextLevel = "Level2"
 
@@ -71,7 +71,7 @@ texture = ExtResource( 2 )
 
 [node name="Paddle" parent="." index="1" instance=ExtResource( 3 )]
 
-speed = 325
+speed = 450
 
 [node name="PaddleStartPosition" type="Position2D" parent="." index="2"]
 
@@ -369,8 +369,8 @@ collision_mask = 15
 mass = 0.01
 bounce = 1.0
 angular_velocity = 20.0
-maxBallXSpeed = 175
-maxBallYSpeed = 425
+maxBallXSpeed = 999
+maxBallYSpeed = 999
 ballSpeefFactor = 0.04
 hitAngle = 1
 initialBallXSpeed = 150
@@ -385,13 +385,14 @@ anchor_bottom = 0.0
 margin_top = -1.0
 margin_right = 799.0
 margin_bottom = 598.0
-NameBossFirst = "NARANIA THE VENOMOUS"
-NameBossSecond = "SLYTHANG THE LETHAL"
+NameBossFirst = "SLYTHANG THE LETHAL"
+NameBossSecond = "NARANIA THE VENOMOUS"
 TextStage = "Stage 1"
 NameLevel = "Gump Forest"
 
 [node name="Left" parent="GUI/HBoxContainer" index="0"]
 
+editor/display_folded = false
 margin_right = 595.0
 
 [node name="LeftBottom" parent="GUI/HBoxContainer/Left" index="0"]
@@ -403,12 +404,21 @@ margin_right = 595.0
 margin_left = 599.0
 margin_right = 799.0
 
-[node name="LeftTop2" parent="GUI/HBoxContainer/Right" index="0"]
+[node name="NameBossSecond" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="0"]
 
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 200.0
-margin_bottom = 600.0
+editor/display_folded = false
+
+[node name="NameBossSecond" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel/NameBossSecond" index="0"]
+
+text = "NARANIA THE VENOMOUS"
+
+[node name="NameBossFirst" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="1"]
+
+editor/display_folded = false
+
+[node name="NameBossFirst" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel/NameBossFirst" index="0"]
+
+text = "SLYTHANG THE LETHAL"
 
 [node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
 

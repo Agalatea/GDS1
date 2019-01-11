@@ -76,7 +76,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Level2" type="Node2D" groups=[
+[node name="Level2" type="Node2D" index="0" groups=[
 "Level",
 ]]
 
@@ -93,7 +93,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Paddle" parent="." index="1" instance=ExtResource( 3 )]
 
-speed = 325
+speed = 450
 
 [node name="PaddleStartPosition" type="Position2D" parent="." index="2"]
 
@@ -422,12 +422,12 @@ collision_mask = 15
 mass = 0.01
 bounce = 1.0
 angular_velocity = 20.0
-maxBallXSpeed = 175
-maxBallYSpeed = 425
+maxBallXSpeed = 340
+maxBallYSpeed = 590
 ballSpeefFactor = 0.04
 hitAngle = 1
-initialBallXSpeed = 110
-initialBallYSpeed = 250
+initialBallXSpeed = 150
+initialBallYSpeed = 300
 ballSpeedIncreaseX = 13
 ballSpeedIncreaseY = 13
 
@@ -490,46 +490,23 @@ margin_bottom = 603.0
 
 [node name="NameBossSecond" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="0"]
 
-margin_right = 240.0
-margin_bottom = 170.0
-
-[node name="NameBossSecond" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel/NameBossSecond" index="0"]
-
-margin_top = 64.0
-margin_right = 220.0
-margin_bottom = 115.0
+margin_top = 43.0
+margin_bottom = 171.0
 
 [node name="NameBossFirst" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="1"]
 
-margin_top = 174.0
-margin_right = 240.0
-margin_bottom = 344.0
-
-[node name="NameBossFirst" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel/NameBossFirst" index="0"]
-
-margin_top = 64.0
-margin_right = 220.0
-margin_bottom = 115.0
+margin_top = 201.0
+margin_bottom = 329.0
 
 [node name="Player" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="2"]
 
-margin_top = 348.0
-margin_right = 240.0
-margin_bottom = 578.0
+margin_top = 359.0
+margin_bottom = 509.0
 
 [node name="Life" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel" index="3"]
 
-margin_top = 582.0
-margin_right = 240.0
-margin_bottom = 602.0
-
-[node name="VBoxContainer" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel/Life" index="0"]
-
-margin_right = 220.0
-
-[node name="LifePoints" parent="GUI/HBoxContainer/Right/LeftTop2/RightPanel/Life/VBoxContainer" index="0"]
-
-margin_right = 200.0
+margin_top = 539.0
+margin_bottom = 559.0
 
 [node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
 
