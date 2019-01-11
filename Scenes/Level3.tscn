@@ -98,7 +98,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Paddle" parent="." index="1" instance=ExtResource( 3 )]
 
-speed = 450
+speed = 480
 
 [node name="PaddleStartPosition" type="Position2D" parent="." index="2"]
 
@@ -251,6 +251,7 @@ shape = SubResource( 8 )
 
 [node name="BricksFirstBoss" parent="." index="8" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 391.654, 223.632 )
 _sections_unfolded = [ "Transform" ]
 
@@ -261,7 +262,7 @@ stream = ExtResource( 7 )
 [node name="brickBoss" parent="BricksFirstBoss" index="2" instance=ExtResource( 8 )]
 
 position = Vector2( 18, 0 )
-HP = 27
+HP = 21
 
 [node name="BricksSecondBoss" parent="." index="9" instance=ExtResource( 6 )]
 
@@ -404,19 +405,15 @@ align = 1
 
 [node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
 
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 10.0
-margin_top = 120.0
 margin_right = 789.0
-margin_bottom = 538.0
+margin_bottom = 539.0
 
 [node name="VBoxContainer" parent="GUI/Story/MarginContainer/CenterContainer" index="0"]
 
 margin_left = 168.0
 margin_top = 0.0
 margin_right = 610.0
-margin_bottom = 418.0
+margin_bottom = 419.0
 
 [node name="TITLE" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="0"]
 
@@ -437,13 +434,6 @@ was ready.
 The demon Screedas grins. 
 The final battle 
 is about to begin."
-
-[node name="ReturnGame" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/CenterContainer" index="0"]
-
-margin_left = 185.0
-margin_top = 197.0
-margin_right = 257.0
-margin_bottom = 221.0
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 
