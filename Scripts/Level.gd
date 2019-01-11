@@ -63,7 +63,9 @@ func _on_LeftBound_body_entered(body):
 func _on_BottomBound_body_entered(body):
 	print ("BottomBound collision with " + body.get_name())
 	if (body.get_name() == "Ball"):
-		if (LifeCount == 0):
+		if (LifeCount == 1):
+			$GUI/HBoxContainer/Right/LeftTop2/RightPanel/Player.emit_signal("losseLifePoint")
+			$GUI.losse_LifePoint()
 			get_tree().paused=true
 			loose=true
 			$MusicBackground.stop()
