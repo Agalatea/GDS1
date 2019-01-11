@@ -60,7 +60,7 @@ extents = Vector2( 193.469, 30.4565 )
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
-LifeCount = 5
+LifeCount = 4
 LifeBossCount = 0
 NextLevel = "Level2"
 
@@ -402,6 +402,13 @@ margin_right = 595.0
 
 margin_left = 599.0
 margin_right = 799.0
+
+[node name="LeftTop2" parent="GUI/HBoxContainer/Right" index="0"]
+
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 200.0
+margin_bottom = 600.0
 
 [node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
 

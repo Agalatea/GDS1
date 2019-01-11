@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Gui.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Background_-_left&right_side_200x600.png" type="Texture" id=2]
 [ext_resource path="res://Assets/emulogic.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/BossSecond.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/BossFirst.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Win.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Loose.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Story.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sounds/GameOver/lostLifePoint.wav" type="AudioStream" id=10]
+[ext_resource path="res://Scenes/PlayerAvatar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Win.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Loose.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Story.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sounds/GameOver/lostLifePoint.wav" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -101,7 +102,7 @@ tracks/0/keys = {
 "values": [ Vector2( 7, 661 ), Vector2( 7, 1 ) ]
 }
 
-[node name="GUI" type="Control"]
+[node name="GUI" type="Control" index="0"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -139,6 +140,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="Left" type="MarginContainer" parent="HBoxContainer" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -159,6 +161,7 @@ _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags
 
 [node name="LeftBottom" type="TextureRect" parent="HBoxContainer/Left" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -192,6 +195,7 @@ alignment = 2
 
 [node name="LifeBoss" type="CenterContainer" parent="HBoxContainer/Left/LeftBottom/Rows" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -208,6 +212,7 @@ use_top_left = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left/LeftBottom/Rows/LifeBoss" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -341,7 +346,6 @@ position = Vector2( 99.495, 280.797 )
 [node name="Right" type="MarginContainer" parent="HBoxContainer" index="1"]
 
 pause_mode = 2
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -393,24 +397,27 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_constants/separation = 30
 alignment = 1
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Pause", "custom_constants" ]
 
 [node name="NameBossSecond" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="0"]
 
 pause_mode = 2
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_top = 42.0
 margin_right = 200.0
-margin_bottom = 189.0
+margin_bottom = 170.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 3
+size_flags_vertical = 1
 custom_constants/margin_right = 20
 custom_constants/margin_top = 30
 custom_constants/margin_left = 20
@@ -425,9 +432,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 20.0
-margin_top = 60.0
+margin_top = 30.0
 margin_right = 180.0
-margin_bottom = 138.0
+margin_bottom = 108.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -447,19 +454,20 @@ _sections_unfolded = [ "Pause", "Visibility", "custom_fonts" ]
 [node name="NameBossFirst" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="1"]
 
 pause_mode = 2
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 193.0
+margin_top = 200.0
 margin_right = 200.0
-margin_bottom = 382.0
+margin_bottom = 328.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 3
+size_flags_vertical = 1
 custom_constants/margin_right = 20
 custom_constants/margin_top = 30
 custom_constants/margin_left = 20
@@ -474,9 +482,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 20.0
-margin_top = 60.0
+margin_top = 30.0
 margin_right = 180.0
-margin_bottom = 138.0
+margin_bottom = 108.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -493,80 +501,24 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Pause", "custom_fonts" ]
 
-[node name="Player" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="2"]
+[node name="Player" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="2" instance=ExtResource( 6 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 386.0
+margin_top = 358.0
 margin_right = 200.0
-margin_bottom = 575.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 3
-custom_constants/margin_right = 20
-custom_constants/margin_top = 30
-custom_constants/margin_left = 20
-_sections_unfolded = [ "Margin", "Size Flags", "custom_constants" ]
-
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Right/LeftTop2/RightPanel/Player" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 20.0
-margin_top = 30.0
-margin_right = 180.0
-margin_bottom = 189.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 1, 1, 1, 1 )
-
-[node name="PlayerAvatar" type="Label" parent="HBoxContainer/Right/LeftTop2/RightPanel/Player" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 20.0
-margin_top = 84.0
-margin_right = 180.0
-margin_bottom = 135.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Player Avatar"
-align = 1
-valign = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+margin_bottom = 508.0
 
 [node name="Life" type="MarginContainer" parent="HBoxContainer/Right/LeftTop2/RightPanel" index="3"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 579.0
+margin_top = 538.0
 margin_right = 200.0
-margin_bottom = 599.0
+margin_bottom = 558.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -633,7 +585,7 @@ playback_speed = 1.0
 anims/deadBossSecond = SubResource( 4 )
 blend_times = [  ]
 
-[node name="Win" parent="." index="1" instance=ExtResource( 6 )]
+[node name="Win" parent="." index="1" instance=ExtResource( 7 )]
 
 visible = false
 margin_left = 7.0
@@ -642,7 +594,7 @@ margin_right = 7.0
 margin_bottom = 661.0
 _sections_unfolded = [ "Anchor", "Pause", "Rect", "custom_constants" ]
 
-[node name="Loose" parent="." index="2" instance=ExtResource( 7 )]
+[node name="Loose" parent="." index="2" instance=ExtResource( 8 )]
 
 visible = false
 margin_top = 660.0
@@ -662,18 +614,18 @@ anims/Win = SubResource( 6 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 
-[node name="Pause" parent="." index="4" instance=ExtResource( 8 )]
+[node name="Pause" parent="." index="4" instance=ExtResource( 9 )]
 
 visible = false
 
-[node name="Story" parent="." index="5" instance=ExtResource( 9 )]
+[node name="Story" parent="." index="5" instance=ExtResource( 10 )]
 
 visible = false
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Pause", "Rect", "custom_constants" ]
 
 [node name="MusicLostLifePoint" type="AudioStreamPlayer" parent="." index="6"]
 
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false

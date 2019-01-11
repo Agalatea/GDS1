@@ -69,10 +69,12 @@ func _on_BottomBound_body_entered(body):
 			$MusicBackground.stop()
 			$GUI/Loose.getButtons()
 			$GUI/Loose.show()
+			$GUI/HBoxContainer/Right/LeftTop2/RightPanel/Player.emit_signal("gameOver")
 			$GUI/AnimationPlayer.play("Loose")
 			$GUI/Loose/Music.play()
 		else:
 			LifeCount=LifeCount-1
+			$GUI/HBoxContainer/Right/LeftTop2/RightPanel/Player.emit_signal("losseLifePoint")
 			$GUI.losse_LifePoint()
 			start() # restart
 
