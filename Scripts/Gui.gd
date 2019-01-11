@@ -55,16 +55,19 @@ func _on_GUI_deadBossSecond():
 
 
 func _on_GUI_addLifePointsBoss(lifePoints):
-	var life_resource = preload("res://Scenes/LifePoint.tscn")
+	var life_resource = preload("res://Scenes/BossLifePoint.tscn")
 	for i in range(0, lifePoints):
 		var life = life_resource.instance()
 		$HBoxContainer/Left/LeftBottom/Rows/LifeBoss/VBoxContainer/LifePoints.add_child(life)
 
 func _on_GUI_losseLifePointBoss():
-	$HBoxContainer/Left/LeftBottom/Rows/LifeBoss/VBoxContainer/LifePoints.get_child(0).queue_free()
-	var emptyLifePoint_resource = preload("res://Scenes/EmptyLifePoint.tscn")
-	var emptyLifePoint = emptyLifePoint_resource.instance()
-	$HBoxContainer/Left/LeftBottom/Rows/LifeBoss/VBoxContainer/LifePoints.add_child(emptyLifePoint)
+	#$HBoxContainer/Left/LeftBottom/Rows/LifeBoss/VBoxContainer/LifePoints.get_child(hp).queue_free()
+	#var emptyLifePoint_resource = preload("res://Scenes/EmptyLifePoint.tscn")
+	#var emptyLifePoint = emptyLifePoint_resource.instance()
+	for life in $HBoxContainer/Left/LeftBottom/Rows/LifeBoss/VBoxContainer/LifePoints.get_children():
+		if(!life.isEmpty):
+			life.emit_signal("changeEmptyLifePoint")
+			break
 
 func _on_GUI_hideElement():
 	$HBoxContainer/Left/BossFirst.visible=false

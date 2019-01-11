@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CREDITS.png-69ea45c479cdf4b6d3fa8a6a46b39e89.stex"
+path="res://.import/Heart_(big).png-fb8d1da09d8accd6f959ab2d14957779.stex"
 
 [deps]
 
-source_file="res://Assets/CREDITS.png"
-dest_files=[ "res://.import/CREDITS.png-69ea45c479cdf4b6d3fa8a6a46b39e89.stex" ]
+source_file="res://Assets/Heart_(big).png"
+dest_files=[ "res://.import/Heart_(big).png-fb8d1da09d8accd6f959ab2d14957779.stex" ]
 
 [params]
 

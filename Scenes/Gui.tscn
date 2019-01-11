@@ -238,7 +238,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 40
+custom_constants/separation = 60
 alignment = 1
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "custom_constants" ]
 

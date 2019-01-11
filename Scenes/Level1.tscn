@@ -54,7 +54,7 @@ extents = Vector2( 25.6705, 27.3838 )
 custom_solver_bias = 0.0
 extents = Vector2( 193.469, 30.4565 )
 
-[node name="Level1" type="Node2D" index="0" groups=[
+[node name="Level1" type="Node2D" groups=[
 "Level",
 ]]
 
@@ -405,15 +405,19 @@ margin_right = 799.0
 
 [node name="CenterContainer" parent="GUI/Story/MarginContainer" index="0"]
 
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 120.0
 margin_right = 789.0
-margin_bottom = 552.0
+margin_bottom = 576.0
 
 [node name="VBoxContainer" parent="GUI/Story/MarginContainer/CenterContainer" index="0"]
 
 margin_left = 200.0
 margin_top = 0.0
 margin_right = 578.0
-margin_bottom = 432.0
+margin_bottom = 456.0
 
 [node name="TITLE" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer" index="0"]
 
@@ -434,6 +438,13 @@ to his quest
 he encounters 
 a deadly snake and 
 the queen of spiders."
+
+[node name="ReturnGame" parent="GUI/Story/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/CenterContainer" index="0"]
+
+margin_left = 153.0
+margin_top = 216.0
+margin_right = 225.0
+margin_bottom = 240.0
 
 [node name="MusicBackground" type="AudioStreamPlayer" parent="." index="12"]
 
