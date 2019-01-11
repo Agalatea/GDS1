@@ -2,9 +2,10 @@
 
 [ext_resource path="res://Scripts/Story.gd" type="Script" id=1]
 [ext_resource path="res://Assets/emulogic.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Sounds/MainMenu/340943__projectsu012__activate-ringing.wav" type="AudioStream" id=3]
-[ext_resource path="res://Sounds/MainMenu/360869__projectsu012__ticking1-chiptone.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/MainMenu/Avgvst - Dispersion Foundry (edit).ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Next.png" type="Texture" id=3]
+[ext_resource path="res://Sounds/MainMenu/340943__projectsu012__activate-ringing.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/MainMenu/360869__projectsu012__ticking1-chiptone.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/MainMenu/Avgvst - Dispersion Foundry (edit).ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -14,15 +15,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=2]
-
-size = 18
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 2 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[node name="Story" type="Control"]
+[node name="Story" type="Control" index="0"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -74,8 +67,12 @@ _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Pause", "Rect", "c
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 120.0
+margin_right = 790.0
+margin_bottom = 480.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -86,15 +83,14 @@ use_top_left = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 355.0
-margin_top = 234.0
-margin_right = 445.0
-margin_bottom = 366.0
+margin_left = 345.0
+margin_top = 113.0
+margin_right = 435.0
+margin_bottom = 246.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -154,11 +150,13 @@ _sections_unfolded = [ "Anchor", "Margin", "custom_colors", "custom_constants", 
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer" index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 108.0
+margin_right = 90.0
+margin_bottom = 133.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -173,8 +171,10 @@ _sections_unfolded = [ "custom_constants" ]
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 90.0
+margin_bottom = 25.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -183,44 +183,35 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 use_top_left = false
 
-[node name="ReturnGame" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/CenterContainer" index="0" groups=[
-"ButtonStory",
+[node name="ReturnGame" type="TextureButton" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/CenterContainer" index="0" groups=[
 "ReturnGame",
+"ButtonStory",
 ]]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 9.0
-margin_top = 54.0
-margin_right = 81.0
-margin_bottom = 78.0
+margin_left = 17.0
+margin_right = 72.0
+margin_bottom = 25.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+focus_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
-text = "NEXT"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Textures", "custom_colors", "custom_fonts" ]
 
 [node name="MusicInteraction" type="AudioStreamPlayer" parent="." index="2"]
-
-stream = ExtResource( 3 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="MusicHighlight" type="AudioStreamPlayer" parent="." index="3"]
 
 stream = ExtResource( 4 )
 volume_db = 0.0
@@ -229,9 +220,18 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="MusicShow" type="AudioStreamPlayer" parent="." index="4"]
+[node name="MusicHighlight" type="AudioStreamPlayer" parent="." index="3"]
 
 stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="MusicShow" type="AudioStreamPlayer" parent="." index="4"]
+
+stream = ExtResource( 6 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
